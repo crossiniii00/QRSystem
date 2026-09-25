@@ -7,7 +7,7 @@
   *,
   *::before,
   *::after {
-    border-radius: 0.75rem !important; transition: all 0.3s ease;
+    border-radius: 0px !important;
   }
 
   :root {
@@ -16,16 +16,16 @@
 
   body {
     font-family: var(--font-sans);
-    background: radial-gradient(circle at top left, #0f172a, #020617 70%);
+    background: radial-gradient(circle at top left, #EBE3D5, #FAF8F5 70%);
     background-attachment: fixed;
-    color: #f8fafc;
+    color: #261F18;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   /* Microsoft Fluent-style crisp focus outlines */
   :focus-visible {
-    outline: 2px solid #8b5cf6; box-shadow: 0 0 10px #8b5cf6;
+    outline: 2px solid #F59E0B;
     outline-offset: 1px;
   }
 
@@ -36,12 +36,12 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0f172a;
+    background: #EBE3D5;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #334155;
-    border: 1px solid #020617;
+    background: #B8A183;
+    border: 1px solid #FAF8F5;
   }
 
   ::-webkit-scrollbar-thumb:hover {

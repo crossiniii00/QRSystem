@@ -321,7 +321,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
         width: 320,
         margin: 2,
         color: {
-          dark: '#f8fafc',
+          dark: '#261F18',
           light: '#FFFFFF',
         },
       });
@@ -373,15 +373,15 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
       )}
 
       {/* Top Banner & Control Bar */}
-      <div className="bg-[#0f172a] border-2 border-[#1e293b] p-5 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] p-5 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2">
             <Landmark className="w-5 h-5 text-[#855D1E]" />
-            <h2 className="text-base font-bold text-[#f8fafc] uppercase tracking-wide">
+            <h2 className="text-base font-bold text-[#261F18] uppercase tracking-wide">
               Institutional Depository Accounts & Settlement Routing
             </h2>
           </div>
-          <p className="text-xs text-[#94a3b8] mt-1 max-w-2xl leading-relaxed">
+          <p className="text-xs text-[#7A6A59] mt-1 max-w-2xl leading-relaxed">
             Manage official school bank accounts where student payments, tuition, downpayments, and Dragonpay automated settlement sweeps are credited.
           </p>
         </div>
@@ -390,7 +390,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
           <button
             onClick={fetchBankingData}
             disabled={isLoading}
-            className="px-3 py-2 text-xs font-bold uppercase tracking-wider bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] hover:bg-[#020617] transition-colors flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+            className="px-3 py-2 text-xs font-bold uppercase tracking-wider bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] hover:bg-[#FAF8F5] transition-colors flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
             title="Refresh bank details"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin' : ''}`} />
@@ -399,17 +399,17 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
 
           <button
             onClick={() => setIsGatewayModalOpen(true)}
-            className="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] hover:bg-[#FAF6EE] hover:border-[#8b5cf6] transition-colors flex items-center gap-1.5 cursor-pointer"
+            className="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] hover:bg-[#FAF6EE] hover:border-[#D97706] transition-colors flex items-center gap-1.5 cursor-pointer"
           >
-            <Settings className="w-3.5 h-3.5 text-[#8b5cf6]" />
+            <Settings className="w-3.5 h-3.5 text-[#D97706]" />
             <span>Settlement Config</span>
           </button>
 
           <button
             onClick={handleOpenAddModal}
-            className="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-[#6366f1] text-[#020617] hover:bg-[#4f46e5] border border-[#6366f1] transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+            className="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-[#2E2016] text-[#FAF8F5] hover:bg-[#422F22] border border-[#2E2016] transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
           >
-            <Plus className="w-3.5 h-3.5 text-[#a855f7]" />
+            <Plus className="w-3.5 h-3.5 text-[#F59E0B]" />
             <span>Add Bank Account</span>
           </button>
         </div>
@@ -418,24 +418,24 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
       {/* Institutional Overview KPI Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* KPI 1 */}
-        <div className="bg-[#0f172a] border-2 border-[#1e293b] p-4 shadow-xs">
-          <div className="flex items-center justify-between text-[#94a3b8] text-xs font-bold uppercase tracking-wider">
+        <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] p-4 shadow-xs">
+          <div className="flex items-center justify-between text-[#7A6A59] text-xs font-bold uppercase tracking-wider">
             <span>Active Accounts</span>
             <Building2 className="w-4 h-4 text-[#855D1E]" />
           </div>
-          <div className="mt-2 text-2xl font-black font-mono text-[#f8fafc]">
+          <div className="mt-2 text-2xl font-black font-mono text-[#261F18]">
             {accounts.filter((a) => a.status === 'ACTIVE').length} / {accounts.length}
           </div>
-          <p className="text-[11px] text-[#64748b] mt-1">Verified depository endpoints</p>
+          <p className="text-[11px] text-[#8A7968] mt-1">Verified depository endpoints</p>
         </div>
 
         {/* KPI 2 */}
-        <div className="bg-[#0f172a] border-2 border-[#1e293b] p-4 shadow-xs">
-          <div className="flex items-center justify-between text-[#94a3b8] text-xs font-bold uppercase tracking-wider">
+        <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] p-4 shadow-xs">
+          <div className="flex items-center justify-between text-[#7A6A59] text-xs font-bold uppercase tracking-wider">
             <span>Primary Payout Target</span>
             <ShieldCheck className="w-4 h-4 text-[#16A34A]" />
           </div>
-          <div className="mt-2 text-sm font-bold text-[#f8fafc] truncate">
+          <div className="mt-2 text-sm font-bold text-[#261F18] truncate">
             {primarySettlementAccount?.bankName || 'Not Assigned'}
           </div>
           <p className="text-[11px] font-mono text-[#855D1E] mt-1 truncate">
@@ -444,24 +444,24 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
         </div>
 
         {/* KPI 3 */}
-        <div className="bg-[#0f172a] border-2 border-[#1e293b] p-4 shadow-xs">
-          <div className="flex items-center justify-between text-[#94a3b8] text-xs font-bold uppercase tracking-wider">
+        <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] p-4 shadow-xs">
+          <div className="flex items-center justify-between text-[#7A6A59] text-xs font-bold uppercase tracking-wider">
             <span>Gateway Sweep Cadence</span>
-            <Zap className="w-4 h-4 text-[#8b5cf6]" />
+            <Zap className="w-4 h-4 text-[#D97706]" />
           </div>
-          <div className="mt-2 text-sm font-black font-mono text-[#f8fafc] uppercase">
+          <div className="mt-2 text-sm font-black font-mono text-[#261F18] uppercase">
             {gatewayConfig?.autoSettlementFrequency || 'DAILY'} (18:00 PHT)
           </div>
-          <p className="text-[11px] text-[#64748b] mt-1">Dragonpay automated merchant payout</p>
+          <p className="text-[11px] text-[#8A7968] mt-1">Dragonpay automated merchant payout</p>
         </div>
 
         {/* KPI 4 */}
-        <div className="bg-[#0f172a] border-2 border-[#1e293b] p-4 shadow-xs">
-          <div className="flex items-center justify-between text-[#94a3b8] text-xs font-bold uppercase tracking-wider">
+        <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] p-4 shadow-xs">
+          <div className="flex items-center justify-between text-[#7A6A59] text-xs font-bold uppercase tracking-wider">
             <span>Merchant Gateway ID</span>
             <CreditCard className="w-4 h-4 text-[#3B82F6]" />
           </div>
-          <div className="mt-2 text-xs font-mono font-bold text-[#f8fafc] truncate">
+          <div className="mt-2 text-xs font-mono font-bold text-[#261F18] truncate">
             {gatewayConfig?.merchantId || 'SFC_DRAGONPAY_LIVE'}
           </div>
           <span className="inline-block mt-1 text-[10px] font-mono px-1.5 py-0.2 bg-[#F0FDF4] text-[#166534] border border-[#BBF7D0]">
@@ -473,14 +473,14 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
       {/* Settlement Sweep Trigger Card */}
       <div className="bg-[#FAF6EE] border-2 border-[#E5D7BE] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div className="flex items-start gap-3">
-          <div className="p-2 bg-[#0f172a] border border-[#1e293b] text-[#855D1E] shrink-0">
-            <Zap className="w-5 h-5 text-[#8b5cf6]" />
+          <div className="p-2 bg-[#EBE3D5] border border-[#D8CEBE] text-[#855D1E] shrink-0">
+            <Zap className="w-5 h-5 text-[#D97706]" />
           </div>
           <div>
-            <h4 className="text-xs font-bold uppercase text-[#f8fafc] tracking-wider">
+            <h4 className="text-xs font-bold uppercase text-[#261F18] tracking-wider">
               Automated Dragonpay Settlement & Depository Sweeper
             </h4>
-            <p className="text-xs text-[#94a3b8] mt-0.5">
+            <p className="text-xs text-[#7A6A59] mt-0.5">
               Online fees collected through Dragonpay are credited to the primary depository account (
               <strong>{primarySettlementAccount?.bankName}</strong>).
               {gatewayConfig?.lastSettlementAt && (
@@ -495,42 +495,42 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
         <button
           onClick={handleSimulateSettlement}
           disabled={isSaving}
-          className="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-[#0f172a] border-2 border-[#1e293b] text-[#f8fafc] hover:border-[#8b5cf6] hover:bg-[#FAF4EA] transition-colors flex items-center gap-1.5 shrink-0 cursor-pointer disabled:opacity-50"
+          className="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-[#EBE3D5] border-2 border-[#D8CEBE] text-[#261F18] hover:border-[#D97706] hover:bg-[#FAF4EA] transition-colors flex items-center gap-1.5 shrink-0 cursor-pointer disabled:opacity-50"
         >
-          {isSaving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RefreshCw className="w-3.5 h-3.5 text-[#8b5cf6]" />}
+          {isSaving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RefreshCw className="w-3.5 h-3.5 text-[#D97706]" />}
           <span>Run Immediate Settlement Sweep</span>
         </button>
       </div>
 
       {/* Main Depository Accounts Cards */}
       <div className="space-y-4">
-        <div className="flex items-center justify-between border-b border-[#1e293b] pb-2">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-[#f8fafc] flex items-center gap-2">
+        <div className="flex items-center justify-between border-b border-[#D8CEBE] pb-2">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-[#261F18] flex items-center gap-2">
             <span>Configured Depository Bank Accounts</span>
             <span className="px-2 py-0.5 bg-[#FAF4EA] text-[#855D1E] border border-[#E5D7BE] font-mono text-[11px]">
               {accounts.length} Total
             </span>
           </h3>
-          <span className="text-xs text-[#94a3b8]">
+          <span className="text-xs text-[#7A6A59]">
             Active accounts automatically populate student payment instructions
           </span>
         </div>
 
         {isLoading ? (
-          <div className="p-12 text-center bg-[#0f172a] border-2 border-[#1e293b]">
+          <div className="p-12 text-center bg-[#EBE3D5] border-2 border-[#D8CEBE]">
             <Loader2 className="w-8 h-8 animate-spin mx-auto text-[#855D1E]" />
-            <p className="text-xs text-[#94a3b8] mt-2 font-mono">Loading banking registry...</p>
+            <p className="text-xs text-[#7A6A59] mt-2 font-mono">Loading banking registry...</p>
           </div>
         ) : accounts.length === 0 ? (
-          <div className="p-12 text-center bg-[#0f172a] border-2 border-[#1e293b]">
+          <div className="p-12 text-center bg-[#EBE3D5] border-2 border-[#D8CEBE]">
             <Landmark className="w-10 h-10 text-[#A89885] mx-auto mb-2" />
-            <h4 className="text-sm font-bold text-[#f8fafc] uppercase">No Bank Accounts Configured</h4>
-            <p className="text-xs text-[#94a3b8] mt-1 max-w-md mx-auto">
+            <h4 className="text-sm font-bold text-[#261F18] uppercase">No Bank Accounts Configured</h4>
+            <p className="text-xs text-[#7A6A59] mt-1 max-w-md mx-auto">
               Add your institution&apos;s first depository account so students can view payment details and receive official receipts.
             </p>
             <button
               onClick={handleOpenAddModal}
-              className="mt-4 px-4 py-2 bg-[#6366f1] text-[#020617] text-xs font-bold uppercase tracking-wider cursor-pointer"
+              className="mt-4 px-4 py-2 bg-[#2E2016] text-[#FAF8F5] text-xs font-bold uppercase tracking-wider cursor-pointer"
             >
               Add First Account
             </button>
@@ -548,33 +548,33 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
               return (
                 <div
                   key={acc.id}
-                  className={`bg-[#0f172a] border-2 transition-all shadow-xs flex flex-col justify-between ${
+                  className={`bg-[#EBE3D5] border-2 transition-all shadow-xs flex flex-col justify-between ${
                     acc.isDefault
-                      ? 'border-[#8b5cf6]'
+                      ? 'border-[#D97706]'
                       : acc.status === 'ACTIVE'
-                      ? 'border-[#1e293b]'
+                      ? 'border-[#D8CEBE]'
                       : 'border-[#E5D7BE] opacity-75'
                   }`}
                 >
                   {/* Card Header */}
-                  <div className="p-4 border-b border-[#0f172a] bg-[#020617] flex items-start justify-between gap-3">
+                  <div className="p-4 border-b border-[#EBE3D5] bg-[#FAF8F5] flex items-start justify-between gap-3">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-9 h-9 bg-[#0f172a] border border-[#1e293b] flex items-center justify-center text-[#855D1E] shrink-0 font-black text-sm">
+                      <div className="w-9 h-9 bg-[#EBE3D5] border border-[#D8CEBE] flex items-center justify-center text-[#855D1E] shrink-0 font-black text-sm">
                         {acc.bankName.slice(0, 3).toUpperCase()}
                       </div>
                       <div>
-                        <h4 className="font-bold text-sm text-[#f8fafc] leading-snug">{acc.bankName}</h4>
+                        <h4 className="font-bold text-sm text-[#261F18] leading-snug">{acc.bankName}</h4>
                         <div className="flex items-center gap-1.5 mt-0.5">
                           <span className={`text-[10px] font-mono px-2 py-0.5 border uppercase font-bold ${typeMeta.color}`}>
                             {typeMeta.label}
                           </span>
                           {acc.isDefault && (
-                            <span className="text-[10px] font-mono px-1.5 py-0.5 bg-[#8b5cf6] text-white font-bold uppercase">
+                            <span className="text-[10px] font-mono px-1.5 py-0.5 bg-[#D97706] text-[#000000] font-bold uppercase">
                               Default Depository
                             </span>
                           )}
                           {isPrimary && (
-                            <span className="text-[10px] font-mono px-1.5 py-0.5 bg-[#166534] text-white font-bold uppercase">
+                            <span className="text-[10px] font-mono px-1.5 py-0.5 bg-[#166534] text-[#000000] font-bold uppercase">
                               Settlement Target
                             </span>
                           )}
@@ -596,19 +596,19 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                   {/* Card Body */}
                   <div className="p-4 space-y-3 text-xs flex-1">
                     <div className="grid grid-cols-3 gap-2 py-1 border-b border-[#FAF4EA]">
-                      <span className="text-[#94a3b8] font-medium">Account Name:</span>
-                      <span className="col-span-2 font-bold text-[#f8fafc]">{acc.accountName}</span>
+                      <span className="text-[#7A6A59] font-medium">Account Name:</span>
+                      <span className="col-span-2 font-bold text-[#261F18]">{acc.accountName}</span>
                     </div>
 
                     <div className="grid grid-cols-3 gap-2 py-1 border-b border-[#FAF4EA] items-center">
-                      <span className="text-[#94a3b8] font-medium">Account Number:</span>
+                      <span className="text-[#7A6A59] font-medium">Account Number:</span>
                       <div className="col-span-2 flex items-center gap-2">
                         <span className="font-mono font-bold text-sm text-[#855D1E] tracking-wider">
                           {acc.accountNumber}
                         </span>
                         <button
                           onClick={() => copyToClipboard(acc.accountNumber, acc.id)}
-                          className="p-1 hover:bg-[#FAF6EE] text-[#94a3b8] hover:text-[#f8fafc] transition-colors cursor-pointer"
+                          className="p-1 hover:bg-[#FAF6EE] text-[#7A6A59] hover:text-[#261F18] transition-colors cursor-pointer"
                           title="Copy account number"
                         >
                           {copiedId === acc.id ? <Check className="w-3.5 h-3.5 text-[#16A34A]" /> : <Copy className="w-3.5 h-3.5" />}
@@ -618,21 +618,21 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
 
                     {acc.branchName && (
                       <div className="grid grid-cols-3 gap-2 py-1 border-b border-[#FAF4EA]">
-                        <span className="text-[#94a3b8] font-medium">Branch:</span>
-                        <span className="col-span-2 text-[#f8fafc]">{acc.branchName}</span>
+                        <span className="text-[#7A6A59] font-medium">Branch:</span>
+                        <span className="col-span-2 text-[#261F18]">{acc.branchName}</span>
                       </div>
                     )}
 
                     {acc.swiftCode && (
                       <div className="grid grid-cols-3 gap-2 py-1 border-b border-[#FAF4EA]">
-                        <span className="text-[#94a3b8] font-medium">SWIFT / BIC:</span>
-                        <span className="col-span-2 font-mono text-[#f8fafc]">{acc.swiftCode}</span>
+                        <span className="text-[#7A6A59] font-medium">SWIFT / BIC:</span>
+                        <span className="col-span-2 font-mono text-[#261F18]">{acc.swiftCode}</span>
                       </div>
                     )}
 
                     {acc.depositInstructions && (
-                      <div className="p-2.5 bg-[#FAF6EE] border border-[#E5D7BE] text-[11px] text-[#94a3b8] leading-relaxed">
-                        <span className="font-bold text-[#f8fafc] block mb-0.5 uppercase tracking-wide text-[10px]">
+                      <div className="p-2.5 bg-[#FAF6EE] border border-[#E5D7BE] text-[11px] text-[#7A6A59] leading-relaxed">
+                        <span className="font-bold text-[#261F18] block mb-0.5 uppercase tracking-wide text-[10px]">
                           Student Instructions:
                         </span>
                         {acc.depositInstructions}
@@ -641,10 +641,10 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                   </div>
 
                   {/* Card Actions Footer */}
-                  <div className="p-3 bg-[#020617] border-t border-[#0f172a] flex items-center justify-between gap-2 text-xs">
+                  <div className="p-3 bg-[#FAF8F5] border-t border-[#EBE3D5] flex items-center justify-between gap-2 text-xs">
                     <button
                       onClick={() => handleShowQR(acc)}
-                      className="px-2.5 py-1.5 bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] hover:bg-[#FAF4EA] transition-colors flex items-center gap-1.5 font-bold cursor-pointer"
+                      className="px-2.5 py-1.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] hover:bg-[#FAF4EA] transition-colors flex items-center gap-1.5 font-bold cursor-pointer"
                     >
                       <QrCode className="w-3.5 h-3.5 text-[#855D1E]" />
                       <span>QR Ph</span>
@@ -655,7 +655,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                         onClick={() => handleToggleStatus(acc)}
                         className={`px-2.5 py-1.5 border text-[11px] font-bold uppercase transition-colors cursor-pointer ${
                           acc.status === 'ACTIVE'
-                            ? 'bg-[#0f172a] border-[#1e293b] text-[#94a3b8] hover:text-[#991B1B] hover:border-[#FECACA]'
+                            ? 'bg-[#EBE3D5] border-[#D8CEBE] text-[#7A6A59] hover:text-[#991B1B] hover:border-[#FECACA]'
                             : 'bg-[#F0FDF4] border-[#86EFAC] text-[#166534]'
                         }`}
                       >
@@ -664,7 +664,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
 
                       <button
                         onClick={() => handleOpenEditModal(acc)}
-                        className="p-1.5 bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] hover:border-[#8b5cf6] hover:bg-[#FAF6EE] transition-colors cursor-pointer"
+                        className="p-1.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] hover:border-[#D97706] hover:bg-[#FAF6EE] transition-colors cursor-pointer"
                         title="Edit details"
                       >
                         <Edit2 className="w-3.5 h-3.5 text-[#855D1E]" />
@@ -672,7 +672,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
 
                       <button
                         onClick={() => handleDeleteAccount(acc)}
-                        className="p-1.5 bg-[#0f172a] border border-[#1e293b] text-[#991B1B] hover:bg-[#FEF2F2] hover:border-[#EF4444] transition-colors cursor-pointer"
+                        className="p-1.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#991B1B] hover:bg-[#FEF2F2] hover:border-[#EF4444] transition-colors cursor-pointer"
                         title="Delete account"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
@@ -689,18 +689,18 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
       {/* ADD / EDIT ACCOUNT MODAL */}
       {isAccountModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="bg-[#0f172a] border-2 border-[#1e293b] max-w-xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            <div className="h-1 bg-gradient-to-r from-[#8b5cf6] to-[#a855f7]" />
-            <div className="p-4 bg-[#FAF6EE] border-b border-[#1e293b] flex items-center justify-between">
+          <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] max-w-xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div className="h-1 bg-gradient-to-r from-[#D97706] to-[#F59E0B]" />
+            <div className="p-4 bg-[#FAF6EE] border-b border-[#D8CEBE] flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Landmark className="w-5 h-5 text-[#855D1E]" />
-                <h3 className="font-bold text-sm uppercase text-[#f8fafc]">
+                <h3 className="font-bold text-sm uppercase text-[#261F18]">
                   {editingAccount ? 'Edit Depository Bank Account' : 'Add Institutional Bank Account'}
                 </h3>
               </div>
               <button
                 onClick={() => setIsAccountModalOpen(false)}
-                className="text-[#94a3b8] hover:text-[#f8fafc] p-1 cursor-pointer"
+                className="text-[#7A6A59] hover:text-[#261F18] p-1 cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -708,13 +708,13 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
 
             <form onSubmit={handleSaveAccount} className="p-5 space-y-4 overflow-y-auto flex-1 text-xs">
               <div>
-                <label className="block font-bold text-[#f8fafc] uppercase tracking-wider mb-1">
+                <label className="block font-bold text-[#261F18] uppercase tracking-wider mb-1">
                   Bank / E-Wallet Institution <span className="text-red-500">*</span>
                 </label>
                 <select
                   value={formData.bankName}
                   onChange={(e) => setFormData({ ...formData, bankName: e.target.value })}
-                  className="w-full p-2.5 bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] focus:border-[#8b5cf6] focus:outline-none"
+                  className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                   required
                 >
                   {COMMON_PH_BANKS.map((b) => (
@@ -727,7 +727,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
 
               {formData.bankName === 'Other / Custom Bank' && (
                 <div>
-                  <label className="block font-bold text-[#f8fafc] uppercase tracking-wider mb-1">
+                  <label className="block font-bold text-[#261F18] uppercase tracking-wider mb-1">
                     Custom Bank Name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -735,7 +735,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                     value={formData.customBankName}
                     onChange={(e) => setFormData({ ...formData, customBankName: e.target.value })}
                     placeholder="e.g., Union Bank of the Philippines"
-                    className="w-full p-2.5 bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] focus:border-[#8b5cf6] focus:outline-none"
+                    className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                     required
                   />
                 </div>
@@ -743,7 +743,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-bold text-[#f8fafc] uppercase tracking-wider mb-1">
+                  <label className="block font-bold text-[#261F18] uppercase tracking-wider mb-1">
                     Account Holder Name <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -751,13 +751,13 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                     value={formData.accountName}
                     onChange={(e) => setFormData({ ...formData, accountName: e.target.value })}
                     placeholder="St. Francis College, Inc."
-                    className="w-full p-2.5 bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] focus:border-[#8b5cf6] focus:outline-none"
+                    className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="block font-bold text-[#f8fafc] uppercase tracking-wider mb-1">
+                  <label className="block font-bold text-[#261F18] uppercase tracking-wider mb-1">
                     Account Number <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -765,20 +765,20 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                     value={formData.accountNumber}
                     onChange={(e) => setFormData({ ...formData, accountNumber: e.target.value })}
                     placeholder="0045-8812-9901"
-                    className="w-full p-2.5 bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] font-mono font-bold focus:border-[#8b5cf6] focus:outline-none"
+                    className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] font-mono font-bold focus:border-[#D97706] focus:outline-none"
                     required
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-bold text-[#f8fafc] uppercase tracking-wider mb-1">
+                <label className="block font-bold text-[#261F18] uppercase tracking-wider mb-1">
                   Account Depository Purpose <span className="text-red-500">*</span>
                 </label>
                 <select
                   value={formData.accountType}
                   onChange={(e) => setFormData({ ...formData, accountType: e.target.value as BankAccountType })}
-                  className="w-full p-2.5 bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] focus:border-[#8b5cf6] focus:outline-none"
+                  className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                   required
                 >
                   <option value="TUITION_MATRICULATION">Tuition & Matriculation (Downpayment & Semestral Fees)</option>
@@ -786,14 +786,14 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                   <option value="SCHOLARSHIP_ESCROW">Scholarship, TES Subsidy & Grants</option>
                   <option value="GENERAL_OPERATING">General Operating & Auxiliary Services</option>
                 </select>
-                <p className="text-[11px] text-[#94a3b8] mt-1">
+                <p className="text-[11px] text-[#7A6A59] mt-1">
                   {ACCOUNT_TYPE_LABELS[formData.accountType]?.desc}
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-bold text-[#f8fafc] uppercase tracking-wider mb-1">
+                  <label className="block font-bold text-[#261F18] uppercase tracking-wider mb-1">
                     Branch Name
                   </label>
                   <input
@@ -801,12 +801,12 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                     value={formData.branchName}
                     onChange={(e) => setFormData({ ...formData, branchName: e.target.value })}
                     placeholder="Academic Heights Branch"
-                    className="w-full p-2.5 bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] focus:border-[#8b5cf6] focus:outline-none"
+                    className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-bold text-[#f8fafc] uppercase tracking-wider mb-1">
+                  <label className="block font-bold text-[#261F18] uppercase tracking-wider mb-1">
                     SWIFT / BIC Code
                   </label>
                   <input
@@ -814,13 +814,13 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                     value={formData.swiftCode}
                     onChange={(e) => setFormData({ ...formData, swiftCode: e.target.value })}
                     placeholder="e.g. BNORPHMM"
-                    className="w-full p-2.5 bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] font-mono focus:border-[#8b5cf6] focus:outline-none"
+                    className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] font-mono focus:border-[#D97706] focus:outline-none"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-bold text-[#f8fafc] uppercase tracking-wider mb-1">
+                <label className="block font-bold text-[#261F18] uppercase tracking-wider mb-1">
                   Student Transfer Instructions & Notes
                 </label>
                 <textarea
@@ -828,37 +828,37 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                   onChange={(e) => setFormData({ ...formData, depositInstructions: e.target.value })}
                   rows={2}
                   placeholder="e.g. Write student reference number in the deposit slip remarks."
-                  className="w-full p-2.5 bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] focus:border-[#8b5cf6] focus:outline-none"
+                  className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                 />
               </div>
 
-              <div className="p-3 bg-[#020617] border border-[#1e293b] flex items-center gap-2">
+              <div className="p-3 bg-[#FAF8F5] border border-[#D8CEBE] flex items-center gap-2">
                 <input
                   type="checkbox"
                   id="isDefault"
                   checked={formData.isDefault}
                   onChange={(e) => setFormData({ ...formData, isDefault: e.target.checked })}
-                  className="w-4 h-4 text-[#8b5cf6] focus:ring-0 cursor-pointer"
+                  className="w-4 h-4 text-[#D97706] focus:ring-0 cursor-pointer"
                 />
-                <label htmlFor="isDefault" className="font-bold text-[#f8fafc] cursor-pointer">
+                <label htmlFor="isDefault" className="font-bold text-[#261F18] cursor-pointer">
                   Set as Default Depository Account
                 </label>
               </div>
 
-              <div className="pt-2 flex items-center justify-end gap-2 border-t border-[#0f172a]">
+              <div className="pt-2 flex items-center justify-end gap-2 border-t border-[#EBE3D5]">
                 <button
                   type="button"
                   onClick={() => setIsAccountModalOpen(false)}
-                  className="px-4 py-2 border border-[#1e293b] text-[#94a3b8] hover:bg-[#020617] font-bold uppercase transition-colors cursor-pointer"
+                  className="px-4 py-2 border border-[#D8CEBE] text-[#7A6A59] hover:bg-[#FAF8F5] font-bold uppercase transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSaving}
-                  className="px-5 py-2 bg-[#6366f1] text-[#020617] font-bold uppercase tracking-wider hover:bg-[#4f46e5] transition-colors flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                  className="px-5 py-2 bg-[#2E2016] text-[#FAF8F5] font-bold uppercase tracking-wider hover:bg-[#422F22] transition-colors flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
                 >
-                  {isSaving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Check className="w-3.5 h-3.5 text-[#a855f7]" />}
+                  {isSaving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Check className="w-3.5 h-3.5 text-[#F59E0B]" />}
                   <span>{editingAccount ? 'Update Account' : 'Save Bank Account'}</span>
                 </button>
               </div>
@@ -870,18 +870,18 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
       {/* GATEWAY SETTLEMENT SETTINGS MODAL */}
       {isGatewayModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="bg-[#0f172a] border-2 border-[#1e293b] max-w-lg w-full shadow-2xl overflow-hidden flex flex-col">
-            <div className="h-1 bg-gradient-to-r from-[#8b5cf6] to-[#a855f7]" />
-            <div className="p-4 bg-[#FAF6EE] border-b border-[#1e293b] flex items-center justify-between">
+          <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] max-w-lg w-full shadow-2xl overflow-hidden flex flex-col">
+            <div className="h-1 bg-gradient-to-r from-[#D97706] to-[#F59E0B]" />
+            <div className="p-4 bg-[#FAF6EE] border-b border-[#D8CEBE] flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Settings className="w-5 h-5 text-[#855D1E]" />
-                <h3 className="font-bold text-sm uppercase text-[#f8fafc]">
+                <h3 className="font-bold text-sm uppercase text-[#261F18]">
                   Dragonpay Settlement & Merchant Routing
                 </h3>
               </div>
               <button
                 onClick={() => setIsGatewayModalOpen(false)}
-                className="text-[#94a3b8] hover:text-[#f8fafc] p-1 cursor-pointer"
+                className="text-[#7A6A59] hover:text-[#261F18] p-1 cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -889,7 +889,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
 
             <form onSubmit={handleSaveGatewayConfig} className="p-5 space-y-4 text-xs">
               <div>
-                <label className="block font-bold text-[#f8fafc] uppercase tracking-wider mb-1">
+                <label className="block font-bold text-[#261F18] uppercase tracking-wider mb-1">
                   Dragonpay Merchant ID
                 </label>
                 <input
@@ -897,19 +897,19 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                   value={gatewayForm.merchantId || ''}
                   onChange={(e) => setGatewayForm({ ...gatewayForm, merchantId: e.target.value })}
                   placeholder="SFC_DRAGONPAY_LIVE_092"
-                  className="w-full p-2.5 bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] font-mono focus:border-[#8b5cf6] focus:outline-none"
+                  className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] font-mono focus:border-[#D97706] focus:outline-none"
                   required
                 />
               </div>
 
               <div>
-                <label className="block font-bold text-[#f8fafc] uppercase tracking-wider mb-1">
+                <label className="block font-bold text-[#261F18] uppercase tracking-wider mb-1">
                   Target Depository Account for Payout Sweeps
                 </label>
                 <select
                   value={gatewayForm.primarySettlementBankId || ''}
                   onChange={(e) => setGatewayForm({ ...gatewayForm, primarySettlementBankId: e.target.value })}
-                  className="w-full p-2.5 bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] focus:border-[#8b5cf6] focus:outline-none"
+                  className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                   required
                 >
                   {accounts.map((a) => (
@@ -918,14 +918,14 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                     </option>
                   ))}
                 </select>
-                <p className="text-[11px] text-[#94a3b8] mt-1">
+                <p className="text-[11px] text-[#7A6A59] mt-1">
                   Where Dragonpay daily collections are automatically deposited by the clearinghouse.
                 </p>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block font-bold text-[#f8fafc] uppercase tracking-wider mb-1">
+                  <label className="block font-bold text-[#261F18] uppercase tracking-wider mb-1">
                     Auto-Settlement Cadence
                   </label>
                   <select
@@ -936,7 +936,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                         autoSettlementFrequency: e.target.value as 'DAILY' | 'WEEKLY' | 'BI_WEEKLY' | 'MONTHLY',
                       })
                     }
-                    className="w-full p-2.5 bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] focus:border-[#8b5cf6] focus:outline-none"
+                    className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                   >
                     <option value="DAILY">Daily (End of Day 18:00)</option>
                     <option value="WEEKLY">Weekly (Every Friday)</option>
@@ -946,7 +946,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                 </div>
 
                 <div>
-                  <label className="block font-bold text-[#f8fafc] uppercase tracking-wider mb-1">
+                  <label className="block font-bold text-[#261F18] uppercase tracking-wider mb-1">
                     Minimum Payout (₱)
                   </label>
                   <input
@@ -955,13 +955,13 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                     onChange={(e) =>
                       setGatewayForm({ ...gatewayForm, minimumPayoutThreshold: Number(e.target.value) })
                     }
-                    className="w-full p-2.5 bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] font-mono focus:border-[#8b5cf6] focus:outline-none"
+                    className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] font-mono focus:border-[#D97706] focus:outline-none"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-bold text-[#f8fafc] uppercase tracking-wider mb-1">
+                <label className="block font-bold text-[#261F18] uppercase tracking-wider mb-1">
                   Finance Notification Email
                 </label>
                 <input
@@ -969,24 +969,24 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                   value={gatewayForm.notifyFinanceEmail || 'finance@stfrancis.edu'}
                   onChange={(e) => setGatewayForm({ ...gatewayForm, notifyFinanceEmail: e.target.value })}
                   placeholder="finance@stfrancis.edu"
-                  className="w-full p-2.5 bg-[#0f172a] border border-[#1e293b] text-[#f8fafc] focus:border-[#8b5cf6] focus:outline-none"
+                  className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                 />
               </div>
 
-              <div className="pt-2 flex items-center justify-end gap-2 border-t border-[#0f172a]">
+              <div className="pt-2 flex items-center justify-end gap-2 border-t border-[#EBE3D5]">
                 <button
                   type="button"
                   onClick={() => setIsGatewayModalOpen(false)}
-                  className="px-4 py-2 border border-[#1e293b] text-[#94a3b8] hover:bg-[#020617] font-bold uppercase transition-colors cursor-pointer"
+                  className="px-4 py-2 border border-[#D8CEBE] text-[#7A6A59] hover:bg-[#FAF8F5] font-bold uppercase transition-colors cursor-pointer"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={isSaving}
-                  className="px-5 py-2 bg-[#6366f1] text-[#020617] font-bold uppercase tracking-wider hover:bg-[#4f46e5] transition-colors flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
+                  className="px-5 py-2 bg-[#2E2016] text-[#FAF8F5] font-bold uppercase tracking-wider hover:bg-[#422F22] transition-colors flex items-center gap-1.5 cursor-pointer disabled:opacity-50"
                 >
-                  {isSaving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Check className="w-3.5 h-3.5 text-[#a855f7]" />}
+                  {isSaving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Check className="w-3.5 h-3.5 text-[#F59E0B]" />}
                   <span>Save Configuration</span>
                 </button>
               </div>
@@ -998,20 +998,20 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
       {/* QR PH PREVIEW MODAL */}
       {isQRModalOpen && selectedQRData && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="bg-[#0f172a] border-2 border-[#1e293b] max-w-sm w-full shadow-2xl p-5 text-center">
-            <div className="flex items-center justify-between border-b border-[#1e293b] pb-2 mb-3">
+          <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] max-w-sm w-full shadow-2xl p-5 text-center">
+            <div className="flex items-center justify-between border-b border-[#D8CEBE] pb-2 mb-3">
               <span className="text-xs font-bold text-[#855D1E] uppercase tracking-wider">
                 Official QR Ph Merchant Standee
               </span>
               <button
                 onClick={() => setIsQRModalOpen(false)}
-                className="text-[#94a3b8] hover:text-[#f8fafc] p-1 cursor-pointer"
+                className="text-[#7A6A59] hover:text-[#261F18] p-1 cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            <div className="p-3 bg-[#020617] border border-[#1e293b] inline-block mb-3">
+            <div className="p-3 bg-[#FAF8F5] border border-[#D8CEBE] inline-block mb-3">
               <img
                 src={selectedQRData.qrUrl}
                 alt="QR Ph Code"
@@ -1019,16 +1019,16 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
               />
             </div>
 
-            <h4 className="font-bold text-sm text-[#f8fafc]">{selectedQRData.bankName}</h4>
+            <h4 className="font-bold text-sm text-[#261F18]">{selectedQRData.bankName}</h4>
             <p className="font-mono font-bold text-xs text-[#855D1E] mt-0.5">{selectedQRData.accountNumber}</p>
-            <p className="text-[11px] text-[#94a3b8] mt-0.5">{selectedQRData.accountName}</p>
-            <p className="text-[10px] text-[#64748b] mt-2 bg-[#FAF6EE] p-2 border border-[#E5D7BE]">
+            <p className="text-[11px] text-[#7A6A59] mt-0.5">{selectedQRData.accountName}</p>
+            <p className="text-[10px] text-[#8A7968] mt-2 bg-[#FAF6EE] p-2 border border-[#E5D7BE]">
               Compatible with GCash, Maya, ShopeePay, BDO, BPI, UnionBank and all InstaPay member institutions.
             </p>
 
             <button
               onClick={() => setIsQRModalOpen(false)}
-              className="mt-4 w-full py-2 bg-[#6366f1] text-[#020617] text-xs font-bold uppercase tracking-wider cursor-pointer"
+              className="mt-4 w-full py-2 bg-[#2E2016] text-[#FAF8F5] text-xs font-bold uppercase tracking-wider cursor-pointer"
             >
               Close
             </button>

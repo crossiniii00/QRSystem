@@ -108,7 +108,7 @@ export default function Page() {
   };
 
   return (
-    <div className="min-h-screen bg-[#020617] flex flex-col text-[#f8fafc] font-sans selection:bg-[#a855f7] selection:text-[#f8fafc]">
+    <div className="min-h-screen bg-[#FAF8F5] flex flex-col text-[#261F18] font-sans selection:bg-[#F59E0B] selection:text-[#261F18]">
       {/* Universal Navigation Header */}
       <Header
         activeTab={activeTab}

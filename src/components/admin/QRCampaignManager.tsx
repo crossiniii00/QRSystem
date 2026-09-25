@@ -57,7 +57,7 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
       width: 320,
       margin: 2,
       color: {
-        dark: '#f8fafc',
+        dark: '#261F18',
         light: '#ffffff',
       },
     })
@@ -118,12 +118,12 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
   return (
     <div className="space-y-6">
       {/* Header Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#0f172a] border-2 border-[#1e293b] p-6 shadow-xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#EBE3D5] border-2 border-[#D8CEBE] p-6 shadow-xs">
         <div>
-          <h2 className="text-lg font-black text-[#f8fafc] uppercase tracking-wide">
+          <h2 className="text-lg font-black text-[#261F18] uppercase tracking-wide">
             QR Campaigns & Admissions Promotion Portals
           </h2>
-          <p className="text-xs text-[#94a3b8] mt-0.5">
+          <p className="text-xs text-[#7A6A59] mt-0.5">
             Architect and monitor physical flyer codes, high school visit banners, and campus recruitment gateways.
           </p>
         </div>
@@ -131,9 +131,9 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
         {adminRole === 'ADMIN' && (
           <button
             onClick={() => setShowCreateModal(true)}
-            className="inline-flex items-center gap-2 px-4 py-2 bg-[#382B20] hover:bg-[#231A12] text-[#FFFBEB] border border-[#a855f7] text-xs font-bold uppercase tracking-wider shadow-xs transition-colors cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-[#382B20] hover:bg-[#231A12] text-[#FFFBEB] border border-[#F59E0B] text-xs font-bold uppercase tracking-wider shadow-xs transition-colors cursor-pointer"
           >
-            <Plus className="w-4 h-4 text-[#a855f7]" />
+            <Plus className="w-4 h-4 text-[#F59E0B]" />
             <span>Generate New QR Gateway</span>
           </button>
         )}
@@ -142,21 +142,21 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
       {/* Main Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Left: Campaign List */}
-        <div className="lg:col-span-2 bg-[#0f172a] border-2 border-[#1e293b] shadow-xs overflow-hidden">
-          <div className="px-6 py-4 border-b border-[#0f172a] bg-[#FAF6EE] flex items-center justify-between">
+        <div className="lg:col-span-2 bg-[#EBE3D5] border-2 border-[#D8CEBE] shadow-xs overflow-hidden">
+          <div className="px-6 py-4 border-b border-[#EBE3D5] bg-[#FAF6EE] flex items-center justify-between">
             <h3 className="text-xs font-bold uppercase tracking-wider text-[#382B20]">
               Active Campaign Gateways ({campaigns.length})
             </h3>
-            <span className="text-[11px] font-mono text-[#94a3b8] uppercase">Interaction Ledger</span>
+            <span className="text-[11px] font-mono text-[#7A6A59] uppercase">Interaction Ledger</span>
           </div>
 
           {loading ? (
-            <div className="p-8 text-center text-[#64748b] flex items-center justify-center gap-2">
-              <Loader2 className="w-5 h-5 animate-spin text-[#8b5cf6]" />
+            <div className="p-8 text-center text-[#8A7968] flex items-center justify-center gap-2">
+              <Loader2 className="w-5 h-5 animate-spin text-[#D97706]" />
               <span className="text-xs uppercase font-bold">Querying campaign records...</span>
             </div>
           ) : (
-            <div className="divide-y divide-[#0f172a]">
+            <div className="divide-y divide-[#EBE3D5]">
               {campaigns.map((camp) => {
                 const isSelected = selectedCampaign?.id === camp.id;
                 return (
@@ -164,7 +164,7 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
                     key={camp.id}
                     onClick={() => setSelectedCampaign(camp)}
                     className={`p-4 sm:p-5 flex items-center justify-between gap-4 cursor-pointer transition-colors ${
-                      isSelected ? 'bg-[#0f172a] border-l-4 border-[#8b5cf6]' : 'hover:bg-[#020617]'
+                      isSelected ? 'bg-[#EBE3D5] border-l-4 border-[#D97706]' : 'hover:bg-[#FAF8F5]'
                     }`}
                   >
                     <div className="space-y-1">
@@ -172,19 +172,19 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
                         <span className="font-mono text-xs font-black px-2 py-0.5 bg-[#FAF4EA] text-[#855D1E] border border-[#E5D7BE]">
                           {camp.code}
                         </span>
-                        <h4 className="font-bold text-[#f8fafc] text-sm">{camp.name}</h4>
+                        <h4 className="font-bold text-[#261F18] text-sm">{camp.name}</h4>
                       </div>
                       {camp.description && (
                         <p className="text-xs text-[#665646] line-clamp-1">{camp.description}</p>
                       )}
-                      <p className="text-[11px] font-mono text-[#64748b]">
+                      <p className="text-[11px] font-mono text-[#8A7968]">
                         Intake Destination: <span className="text-[#382B20] font-bold">{camp.destinationPath}</span>
                       </p>
                     </div>
 
                     <div className="text-right shrink-0">
-                      <div className="text-xl font-black text-[#f8fafc] font-mono tabular-nums">{camp.scanCount}</div>
-                      <div className="text-[10px] uppercase font-bold text-[#94a3b8]">Total Inbound Scans</div>
+                      <div className="text-xl font-black text-[#261F18] font-mono tabular-nums">{camp.scanCount}</div>
+                      <div className="text-[10px] uppercase font-bold text-[#7A6A59]">Total Inbound Scans</div>
                     </div>
                   </div>
                 );
@@ -194,29 +194,29 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
         </div>
 
         {/* Right: Printable QR Code Inspector */}
-        <div className="bg-[#0f172a] border-2 border-[#1e293b] shadow-xs p-6 flex flex-col items-center text-center">
+        <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] shadow-xs p-6 flex flex-col items-center text-center">
           <h3 className="text-xs font-bold uppercase tracking-wider text-[#382B20] mb-3">
             Printable QR Asset Frame
           </h3>
 
           {selectedCampaign ? (
             <div className="w-full space-y-4">
-              <div className="p-4 border-2 border-[#1e293b] bg-[#020617] flex flex-col items-center">
+              <div className="p-4 border-2 border-[#D8CEBE] bg-[#FAF8F5] flex flex-col items-center">
                 {qrDataUrl ? (
                   <img
                     src={qrDataUrl}
                     alt={`QR Code for ${selectedCampaign.code}`}
-                    className="w-52 h-52 border border-[#1e293b] p-2 bg-[#0f172a]"
+                    className="w-52 h-52 border border-[#D8CEBE] p-2 bg-[#EBE3D5]"
                   />
                 ) : (
-                  <div className="w-52 h-52 bg-[#0f172a] animate-pulse" />
+                  <div className="w-52 h-52 bg-[#EBE3D5] animate-pulse" />
                 )}
                 <div className="mt-3">
                   <span className="font-mono text-xs font-black px-2.5 py-1 bg-[#FAF4EA] text-[#855D1E] border border-[#E5D7BE]">
                     /?camp={selectedCampaign.code}
                   </span>
-                  <p className="text-xs font-bold text-[#f8fafc] mt-2 uppercase">{selectedCampaign.name}</p>
-                  <p className="text-[11px] font-mono text-[#94a3b8] mt-0.5">Interaction Metric: {selectedCampaign.scanCount} scans logged</p>
+                  <p className="text-xs font-bold text-[#261F18] mt-2 uppercase">{selectedCampaign.name}</p>
+                  <p className="text-[11px] font-mono text-[#7A6A59] mt-0.5">Interaction Metric: {selectedCampaign.scanCount} scans logged</p>
                 </div>
               </div>
 
@@ -224,7 +224,7 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
                 <button
                   type="button"
                   onClick={downloadQrPng}
-                  className="w-full py-2.5 px-4 bg-[#8b5cf6] hover:bg-[#B45309] text-white font-bold text-xs uppercase tracking-wider shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-2.5 px-4 bg-[#D97706] hover:bg-[#B45309] text-[#000000] font-bold text-xs uppercase tracking-wider shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
                   <span>Download Print-Ready PNG</span>
@@ -234,15 +234,15 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
                   href={`/?camp=${selectedCampaign.code}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full py-2 px-4 bg-[#0f172a] border border-[#1e293b] hover:bg-[#FAF6EE] text-[#382B20] font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
+                  className="w-full py-2 px-4 bg-[#EBE3D5] border border-[#D8CEBE] hover:bg-[#FAF6EE] text-[#382B20] font-bold text-xs uppercase tracking-wider transition-colors flex items-center justify-center gap-1.5"
                 >
                   <span>Test Gateway Link</span>
-                  <ExternalLink className="w-3.5 h-3.5 text-[#8b5cf6]" />
+                  <ExternalLink className="w-3.5 h-3.5 text-[#D97706]" />
                 </a>
               </div>
             </div>
           ) : (
-            <div className="py-20 text-[#64748b] text-xs uppercase font-bold">Select a campaign channel to view QR codes.</div>
+            <div className="py-20 text-[#8A7968] text-xs uppercase font-bold">Select a campaign channel to view QR codes.</div>
           )}
         </div>
       </div>
@@ -250,17 +250,17 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
       {/* Create Campaign Modal */}
       {showCreateModal && (
         <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4">
-          <div className="bg-[#0f172a] border-2 border-[#1e293b] shadow-2xl p-6 max-w-md w-full space-y-4">
-            <div className="flex items-center justify-between border-b border-[#0f172a] pb-2">
+          <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] shadow-2xl p-6 max-w-md w-full space-y-4">
+            <div className="flex items-center justify-between border-b border-[#EBE3D5] pb-2">
               <div className="flex items-center gap-2">
-                <QrCode className="w-5 h-5 text-[#8b5cf6]" />
-                <h3 className="font-black text-[#f8fafc] text-sm uppercase tracking-wide">
+                <QrCode className="w-5 h-5 text-[#D97706]" />
+                <h3 className="font-black text-[#261F18] text-sm uppercase tracking-wide">
                   New QR Enrollment Gateway
                 </h3>
               </div>
               <button
                 onClick={() => setShowCreateModal(false)}
-                className="text-[#64748b] hover:text-[#f8fafc] p-1 cursor-pointer"
+                className="text-[#8A7968] hover:text-[#261F18] p-1 cursor-pointer"
               >
                 ✕
               </button>
@@ -279,7 +279,7 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
                   Gateway Slug Code <span className="text-[#B45309]">*</span>
                 </label>
                 <div className="flex items-center">
-                  <span className="px-3 py-2 bg-[#FAF6EE] border border-r-0 border-[#1e293b] text-[#94a3b8] text-xs font-mono">
+                  <span className="px-3 py-2 bg-[#FAF6EE] border border-r-0 border-[#D8CEBE] text-[#7A6A59] text-xs font-mono">
                     /?camp=
                   </span>
                   <input
@@ -288,7 +288,7 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
                     value={code}
                     onChange={(e) => setCode(e.target.value)}
                     placeholder="e.g. spring-expo-2026"
-                    className="w-full px-3 py-2 bg-[#0f172a] border border-[#1e293b] text-xs font-mono text-[#f8fafc] focus:outline-none focus:border-[#8b5cf6]"
+                    className="w-full px-3 py-2 bg-[#EBE3D5] border border-[#D8CEBE] text-xs font-mono text-[#261F18] focus:outline-none focus:border-[#D97706]"
                   />
                 </div>
               </div>
@@ -303,7 +303,7 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Regional Science Fair 2026"
-                  className="w-full px-3 py-2 bg-[#0f172a] border border-[#1e293b] text-xs text-[#f8fafc] focus:outline-none focus:border-[#8b5cf6]"
+                  className="w-full px-3 py-2 bg-[#EBE3D5] border border-[#D8CEBE] text-xs text-[#261F18] focus:outline-none focus:border-[#D97706]"
                 />
               </div>
 
@@ -316,22 +316,22 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="e.g. Printed banners at booth B4, brochures, poster displays."
-                  className="w-full px-3 py-2 bg-[#0f172a] border border-[#1e293b] text-xs text-[#f8fafc] focus:outline-none focus:border-[#8b5cf6]"
+                  className="w-full px-3 py-2 bg-[#EBE3D5] border border-[#D8CEBE] text-xs text-[#261F18] focus:outline-none focus:border-[#D97706]"
                 />
               </div>
 
-              <div className="flex justify-end gap-2 pt-2 border-t border-[#0f172a]">
+              <div className="flex justify-end gap-2 pt-2 border-t border-[#EBE3D5]">
                 <button
                   type="button"
                   onClick={() => setShowCreateModal(false)}
-                  className="px-4 py-2 bg-[#0f172a] border border-[#1e293b] text-xs font-bold uppercase text-[#382B20] hover:bg-[#FAF6EE]"
+                  className="px-4 py-2 bg-[#EBE3D5] border border-[#D8CEBE] text-xs font-bold uppercase text-[#382B20] hover:bg-[#FAF6EE]"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={creating}
-                  className="px-4 py-2 bg-[#382B20] hover:bg-[#231A12] text-[#FFFBEB] border border-[#a855f7] text-xs font-bold uppercase tracking-wider disabled:opacity-50"
+                  className="px-4 py-2 bg-[#382B20] hover:bg-[#231A12] text-[#FFFBEB] border border-[#F59E0B] text-xs font-bold uppercase tracking-wider disabled:opacity-50"
                 >
                   {creating ? 'Registering...' : 'Publish Gateway'}
                 </button>

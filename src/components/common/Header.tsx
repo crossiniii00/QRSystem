@@ -18,9 +18,9 @@ export const Header: React.FC<HeaderProps> = ({
   activeCampaignName,
 }) => {
   return (
-    <header className="sticky top-0 z-40 bg-[#6366f1] border-b border-[#4A3525] shadow-md select-none">
+    <header className="sticky top-0 z-40 bg-[#2E2016] border-b border-[#4A3525] shadow-md select-none">
       {/* Top Office Gold Accent Bar */}
-      <div className="h-1 bg-gradient-to-r from-[#8b5cf6] via-[#a855f7] to-[#CA8A04] w-full" />
+      <div className="h-1 bg-gradient-to-r from-[#D97706] via-[#F59E0B] to-[#CA8A04] w-full" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14">
@@ -30,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setActiveTab('apply')}
           >
             <div className="w-8 h-8 bg-[#3D2B1E] flex items-center justify-center text-[#FBBF24] border border-[#543E2C] shadow-xs">
-              <GraduationCap className="w-5 h-5 text-[#a855f7]" />
+              <GraduationCap className="w-5 h-5 text-[#F59E0B]" />
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-2">
@@ -53,11 +53,11 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setActiveTab('apply')}
               className={`h-14 px-3 sm:px-4 text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors flex items-center gap-2 border-b-2 cursor-pointer ${
                 activeTab === 'apply'
-                  ? 'border-[#a855f7] text-white bg-[#4f46e5]'
-                  : 'border-transparent text-[#C9B9A6] hover:text-white hover:bg-[#3D2B1E]'
+                  ? 'border-[#F59E0B] text-[#000000] bg-[#422F22]'
+                  : 'border-transparent text-[#C9B9A6] hover:text-[#000000] hover:bg-[#3D2B1E]'
               }`}
             >
-              <QrCode className={`w-4 h-4 ${activeTab === 'apply' ? 'text-[#a855f7]' : 'text-[#A89885]'}`} />
+              <QrCode className={`w-4 h-4 ${activeTab === 'apply' ? 'text-[#F59E0B]' : 'text-[#A89885]'}`} />
               <span>Apply</span>
             </button>
 
@@ -65,11 +65,11 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setActiveTab('status')}
               className={`h-14 px-3 sm:px-4 text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors flex items-center gap-2 border-b-2 cursor-pointer ${
                 activeTab === 'status'
-                  ? 'border-[#a855f7] text-white bg-[#4f46e5]'
-                  : 'border-transparent text-[#C9B9A6] hover:text-white hover:bg-[#3D2B1E]'
+                  ? 'border-[#F59E0B] text-[#000000] bg-[#422F22]'
+                  : 'border-transparent text-[#C9B9A6] hover:text-[#000000] hover:bg-[#3D2B1E]'
               }`}
             >
-              <Search className={`w-4 h-4 ${activeTab === 'status' ? 'text-[#a855f7]' : 'text-[#A89885]'}`} />
+              <Search className={`w-4 h-4 ${activeTab === 'status' ? 'text-[#F59E0B]' : 'text-[#A89885]'}`} />
               <span>Check Status</span>
             </button>
 
@@ -81,13 +81,13 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => setActiveTab('admin')}
                   className={`h-9 px-3 text-xs font-semibold flex items-center gap-2 border transition-colors cursor-pointer ${
                     activeTab === 'admin'
-                      ? 'bg-[#a855f7] text-[#6366f1] border-[#a855f7]'
+                      ? 'bg-[#F59E0B] text-[#2E2016] border-[#F59E0B]'
                       : 'bg-[#3D2B1E] text-[#FAF6EE] border-[#6B4F37] hover:bg-[#4E3726]'
                   }`}
                 >
-                  <ShieldCheck className="w-4 h-4 text-[#a855f7]" />
+                  <ShieldCheck className="w-4 h-4 text-[#F59E0B]" />
                   <span className="hidden sm:inline">{adminUser.fullName.split(' ')[0]}</span>
-                  <span className="text-[10px] uppercase font-bold tracking-wider px-1 py-0.2 bg-[#a855f7] text-[#6366f1]">
+                  <span className="text-[10px] uppercase font-bold tracking-wider px-1 py-0.2 bg-[#F59E0B] text-[#2E2016]">
                     {adminUser.role}
                   </span>
                 </button>
@@ -103,11 +103,11 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={() => setActiveTab('admin')}
                 className={`h-9 px-3 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border transition-colors cursor-pointer ${
                   activeTab === 'admin'
-                    ? 'bg-[#a855f7] text-[#6366f1] border-[#a855f7]'
-                    : 'bg-[#3D2B1E] text-[#FDE047] border-[#6B4F37] hover:bg-[#4E3726] hover:border-[#a855f7]'
+                    ? 'bg-[#F59E0B] text-[#2E2016] border-[#F59E0B]'
+                    : 'bg-[#3D2B1E] text-[#FDE047] border-[#6B4F37] hover:bg-[#4E3726] hover:border-[#F59E0B]'
                 }`}
               >
-                <Lock className="w-3.5 h-3.5 text-[#a855f7]" />
+                <Lock className="w-3.5 h-3.5 text-[#F59E0B]" />
                 <span>Staff Portal</span>
               </button>
             )}
@@ -118,7 +118,7 @@ export const Header: React.FC<HeaderProps> = ({
         {activeCampaignName && (
           <div className="bg-[#FEF9C3] border-t border-b border-[#FDE047] px-4 py-1.5 text-xs text-[#713F12] flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-[#8b5cf6]" />
+              <span className="w-2 h-2 bg-[#D97706]" />
               <span>
                 Enrolling via QR Campaign: <strong>{activeCampaignName}</strong>
               </span>

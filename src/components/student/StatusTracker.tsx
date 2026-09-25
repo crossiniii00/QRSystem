@@ -146,9 +146,9 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
   return (
     <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6">
       {/* Lookup Header */}
-      <div className="bg-[#0f172a] border-2 border-[#1e293b] p-6 text-center mb-6 shadow-xs">
-        <div className="w-12 h-1 bg-[#8b5cf6] mx-auto mb-3" />
-        <h1 className="text-xl sm:text-2xl font-black text-[#f8fafc] uppercase tracking-tight">
+      <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] p-6 text-center mb-6 shadow-xs">
+        <div className="w-12 h-1 bg-[#D97706] mx-auto mb-3" />
+        <h1 className="text-xl sm:text-2xl font-black text-[#261F18] uppercase tracking-tight">
           Admissions Status Portal
         </h1>
         <p className="text-[#665646] text-xs sm:text-sm max-w-lg mx-auto mt-1 leading-relaxed">
@@ -157,7 +157,7 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
       </div>
 
       {/* Lookup Card */}
-      <div className="bg-[#0f172a] border-2 border-[#1e293b] shadow-xs p-6 mb-6">
+      <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] shadow-xs p-6 mb-6">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -174,7 +174,7 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
               value={reference}
               onChange={(e) => setReference(e.target.value)}
               placeholder="e.g. ENR-2026-000101"
-              className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] font-mono focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+              className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] font-mono focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
             />
           </div>
 
@@ -187,7 +187,7 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
               value={token}
               onChange={(e) => setToken(e.target.value)}
               placeholder="Paste your 64-character token"
-              className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] font-mono focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+              className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] font-mono focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
             />
           </div>
 
@@ -195,16 +195,16 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
             <button
               type="submit"
               disabled={loading}
-              className="w-full h-10 px-4 bg-[#382B20] text-[#FFFBEB] hover:bg-[#231A12] border border-[#a855f7] text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors disabled:opacity-50 cursor-pointer shadow-xs"
+              className="w-full h-10 px-4 bg-[#382B20] text-[#FFFBEB] hover:bg-[#231A12] border border-[#F59E0B] text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-colors disabled:opacity-50 cursor-pointer shadow-xs"
             >
-              {loading ? <Loader2 className="w-4 h-4 animate-spin text-[#a855f7]" /> : <Search className="w-4 h-4 text-[#a855f7]" />}
+              {loading ? <Loader2 className="w-4 h-4 animate-spin text-[#F59E0B]" /> : <Search className="w-4 h-4 text-[#F59E0B]" />}
               <span>Query Status</span>
             </button>
           </div>
         </form>
 
         {/* Demo Quick Fills for Evaluation */}
-        <div className="mt-4 pt-3 border-t border-[#0f172a] flex flex-wrap items-center gap-2 text-xs text-[#94a3b8]">
+        <div className="mt-4 pt-3 border-t border-[#EBE3D5] flex flex-wrap items-center gap-2 text-xs text-[#7A6A59]">
           <span className="font-bold text-[#382B20] uppercase text-[11px]">Evaluation Presets:</span>
           <button
             type="button"
@@ -213,7 +213,7 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
               setToken('sample-demo-token-applicant-001');
               fetchStatus('ENR-2026-000101', 'sample-demo-token-applicant-001');
             }}
-            className="px-2.5 py-1 bg-[#FAF6EE] border border-[#1e293b] hover:border-[#8b5cf6] hover:bg-[#F0E8DC] text-[#4A3B2C] text-[11px] font-mono transition-colors cursor-pointer"
+            className="px-2.5 py-1 bg-[#FAF6EE] border border-[#D8CEBE] hover:border-[#D97706] hover:bg-[#F0E8DC] text-[#4A3B2C] text-[11px] font-mono transition-colors cursor-pointer"
           >
             ENR-2026-000101 (Under Review)
           </button>
@@ -224,7 +224,7 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
               setToken('sample-demo-token-applicant-002');
               fetchStatus('ENR-2026-000102', 'sample-demo-token-applicant-002');
             }}
-            className="px-2.5 py-1 bg-[#FAF6EE] border border-[#1e293b] hover:border-[#8b5cf6] hover:bg-[#F0E8DC] text-[#4A3B2C] text-[11px] font-mono transition-colors cursor-pointer"
+            className="px-2.5 py-1 bg-[#FAF6EE] border border-[#D8CEBE] hover:border-[#D97706] hover:bg-[#F0E8DC] text-[#4A3B2C] text-[11px] font-mono transition-colors cursor-pointer"
           >
             ENR-2026-000102 (Needs Revision)
           </button>
@@ -235,7 +235,7 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
               setToken('sample-demo-token-applicant-003');
               fetchStatus('ENR-2026-000103', 'sample-demo-token-applicant-003');
             }}
-            className="px-2.5 py-1 bg-[#FAF6EE] border border-[#1e293b] hover:border-[#8b5cf6] hover:bg-[#F0E8DC] text-[#4A3B2C] text-[11px] font-mono transition-colors cursor-pointer"
+            className="px-2.5 py-1 bg-[#FAF6EE] border border-[#D8CEBE] hover:border-[#D97706] hover:bg-[#F0E8DC] text-[#4A3B2C] text-[11px] font-mono transition-colors cursor-pointer"
           >
             ENR-2026-000103 (Approved)
           </button>
@@ -261,11 +261,11 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
       {statusData && (
         <div className="space-y-6">
           {/* Main Status Header Card */}
-          <div className="bg-[#0f172a] border-2 border-[#1e293b] shadow-xs p-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#0f172a] pb-5">
+          <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] shadow-xs p-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#EBE3D5] pb-5">
               <div>
                 <div className="flex items-center gap-3">
-                  <span className="text-xl sm:text-2xl font-black font-mono text-[#f8fafc] tracking-wider">
+                  <span className="text-xl sm:text-2xl font-black font-mono text-[#261F18] tracking-wider">
                     {statusData.application.referenceNumber}
                   </span>
                   <StatusBadge status={statusData.application.status} size="lg" />
@@ -273,17 +273,17 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
                 <h2 className="text-base font-bold text-[#382B20] mt-1">
                   {statusData.applicant.firstName} {statusData.applicant.lastName}
                 </h2>
-                <p className="text-xs text-[#94a3b8]">
+                <p className="text-xs text-[#7A6A59]">
                   Program: <strong>{statusData.program.name}</strong> · Academic Year {statusData.application.academicYear}
                 </p>
               </div>
 
               <button
                 onClick={() => fetchStatus()}
-                className="self-start sm:self-auto px-3 py-2 bg-[#0f172a] border border-[#1e293b] text-[#382B20] hover:bg-[#FAF6EE] hover:border-[#8b5cf6] transition-colors flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider cursor-pointer"
+                className="self-start sm:self-auto px-3 py-2 bg-[#EBE3D5] border border-[#D8CEBE] text-[#382B20] hover:bg-[#FAF6EE] hover:border-[#D97706] transition-colors flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider cursor-pointer"
                 title="Refresh Status"
               >
-                <RefreshCw className="w-3.5 h-3.5 text-[#8b5cf6]" />
+                <RefreshCw className="w-3.5 h-3.5 text-[#D97706]" />
                 <span>Refresh Status</span>
               </button>
             </div>
@@ -291,8 +291,8 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
             {/* Status Explanation Banner */}
             <div className="mt-5 space-y-4">
               {statusData.application.status === ApplicationStatus.SUBMITTED && (
-                <div className="p-4 bg-[#FAF6EE] border-l-4 border-[#8b5cf6] text-[#713F12] text-xs flex items-start gap-3">
-                  <Clock className="w-5 h-5 text-[#8b5cf6] shrink-0 mt-0.5" />
+                <div className="p-4 bg-[#FAF6EE] border-l-4 border-[#D97706] text-[#713F12] text-xs flex items-start gap-3">
+                  <Clock className="w-5 h-5 text-[#D97706] shrink-0 mt-0.5" />
                   <div>
                     <h4 className="font-bold uppercase tracking-wider">Application Successfully Received</h4>
                     <p className="mt-0.5 leading-relaxed">
@@ -315,14 +315,14 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
               )}
 
               {statusData.application.status === ApplicationStatus.NEEDS_REVISION && (
-                <div className="p-5 bg-[#FEF9C3] border-l-4 border-[#8b5cf6] text-[#713F12] text-xs space-y-3">
+                <div className="p-5 bg-[#FEF9C3] border-l-4 border-[#D97706] text-[#713F12] text-xs space-y-3">
                   <div className="flex items-start gap-3">
-                    <AlertTriangle className="w-5 h-5 text-[#8b5cf6] shrink-0 mt-0.5" />
+                    <AlertTriangle className="w-5 h-5 text-[#D97706] shrink-0 mt-0.5" />
                     <div>
                       <h4 className="font-bold text-sm uppercase tracking-wider text-[#854D0E]">
                         Credential Revision Required
                       </h4>
-                      <p className="mt-1 font-medium bg-[#0f172a] p-3 border border-[#FDE047] text-[#713F12] leading-relaxed">
+                      <p className="mt-1 font-medium bg-[#EBE3D5] p-3 border border-[#FDE047] text-[#713F12] leading-relaxed">
                         {statusData.application.revisionNotes ||
                           'Please review the document checklist below and re-upload the flagged files.'}
                       </p>
@@ -334,7 +334,7 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
                     <button
                       onClick={handleResubmit}
                       disabled={resubmitting}
-                      className="px-4 py-2 bg-[#8b5cf6] hover:bg-[#B45309] text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-colors disabled:opacity-50 cursor-pointer shadow-xs"
+                      className="px-4 py-2 bg-[#D97706] hover:bg-[#B45309] text-[#000000] font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-colors disabled:opacity-50 cursor-pointer shadow-xs"
                     >
                       {resubmitting ? (
                         <Loader2 className="w-4 h-4 animate-spin" />
@@ -368,7 +368,7 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
                         setActivePaymentType('MATRICULATION_DEPOSIT');
                         setShowCheckout(true);
                       }}
-                      className="px-5 py-2.5 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs uppercase tracking-wider border border-[#86EFAC] shadow-xs flex items-center gap-2 shrink-0 cursor-pointer transition-colors"
+                      className="px-5 py-2.5 bg-[#15803D] hover:bg-[#166534] text-[#000000] font-bold text-xs uppercase tracking-wider border border-[#86EFAC] shadow-xs flex items-center gap-2 shrink-0 cursor-pointer transition-colors"
                     >
                       <CreditCard className="w-4 h-4" />
                       <span>Settle Matriculation (₱3,500)</span>
@@ -393,16 +393,16 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
           </div>
 
           {/* Dragonpay & Fee Collection Station */}
-          <div className="bg-[#0f172a] border-2 border-[#1e293b] shadow-xs p-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#0f172a] pb-3 mb-4">
+          <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] shadow-xs p-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#EBE3D5] pb-3 mb-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <Receipt className="w-4 h-4 text-[#8b5cf6]" />
-                  <h3 className="text-xs font-bold text-[#f8fafc] uppercase tracking-wider">
+                  <Receipt className="w-4 h-4 text-[#D97706]" />
+                  <h3 className="text-xs font-bold text-[#261F18] uppercase tracking-wider">
                     Dragonpay & Tuition Cashier Ledger
                   </h3>
                 </div>
-                <p className="text-xs text-[#94a3b8] mt-0.5">
+                <p className="text-xs text-[#7A6A59] mt-0.5">
                   Track admissions assessment fees, matriculation deposits, and official electronic receipts (OR).
                 </p>
               </div>
@@ -414,9 +414,9 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
                     setActivePaymentType('APPLICATION_ASSESSMENT');
                     setShowCheckout(true);
                   }}
-                  className="px-4 py-2 bg-[#6366f1] hover:bg-[#3D2B1E] text-[#FFFBEB] border border-[#a855f7] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
+                  className="px-4 py-2 bg-[#2E2016] hover:bg-[#3D2B1E] text-[#FFFBEB] border border-[#F59E0B] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
                 >
-                  <CreditCard className="w-3.5 h-3.5 text-[#a855f7]" />
+                  <CreditCard className="w-3.5 h-3.5 text-[#F59E0B]" />
                   <span>Pay Assessment Fee (₱500)</span>
                 </button>
               )}
@@ -424,7 +424,7 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
 
             {/* Transactions Table or Empty Notice */}
             {transactions.length === 0 ? (
-              <div className="p-4 bg-[#020617] border border-[#1e293b] text-center text-xs text-[#94a3b8] space-y-2">
+              <div className="p-4 bg-[#FAF8F5] border border-[#D8CEBE] text-center text-xs text-[#7A6A59] space-y-2">
                 <p>No fee transactions logged yet for this application.</p>
                 <button
                   type="button"
@@ -432,16 +432,16 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
                     setActivePaymentType('APPLICATION_ASSESSMENT');
                     setShowCheckout(true);
                   }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0f172a] border border-[#1e293b] text-[#382B20] hover:bg-[#FAF6EE] font-bold text-[11px] uppercase tracking-wider cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#382B20] hover:bg-[#FAF6EE] font-bold text-[11px] uppercase tracking-wider cursor-pointer"
                 >
-                  <CreditCard className="w-3.5 h-3.5 text-[#8b5cf6]" />
+                  <CreditCard className="w-3.5 h-3.5 text-[#D97706]" />
                   <span>Open Dragonpay Cashier Portal (₱500)</span>
                 </button>
               </div>
             ) : (
-              <div className="overflow-x-auto border border-[#1e293b]">
+              <div className="overflow-x-auto border border-[#D8CEBE]">
                 <table className="w-full text-left text-xs">
-                  <thead className="bg-[#FAF6EE] border-b border-[#1e293b] text-[#523F2D] font-bold uppercase tracking-wider">
+                  <thead className="bg-[#FAF6EE] border-b border-[#D8CEBE] text-[#523F2D] font-bold uppercase tracking-wider">
                     <tr>
                       <th className="px-3.5 py-2.5">Date</th>
                       <th className="px-3.5 py-2.5">Gateway Ref</th>
@@ -451,19 +451,19 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
                       <th className="px-3.5 py-2.5">Status</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[#0f172a]">
+                  <tbody className="divide-y divide-[#EBE3D5]">
                     {transactions.map((tx) => (
-                      <tr key={tx.id} className="hover:bg-[#020617]">
-                        <td className="px-3.5 py-2.5 font-mono text-[#94a3b8]">
+                      <tr key={tx.id} className="hover:bg-[#FAF8F5]">
+                        <td className="px-3.5 py-2.5 font-mono text-[#7A6A59]">
                           {new Date(tx.createdAt).toLocaleDateString()}
                         </td>
-                        <td className="px-3.5 py-2.5 font-mono font-bold text-[#f8fafc]">
+                        <td className="px-3.5 py-2.5 font-mono font-bold text-[#261F18]">
                           {tx.gatewayRefNo}
                         </td>
                         <td className="px-3.5 py-2.5 text-[#382B20] font-medium">
                           {tx.description}
                         </td>
-                        <td className="px-3.5 py-2.5 font-mono uppercase text-[11px] text-[#94a3b8]">
+                        <td className="px-3.5 py-2.5 font-mono uppercase text-[11px] text-[#7A6A59]">
                           {tx.channel.replace(/_/g, ' ')}
                         </td>
                         <td className="px-3.5 py-2.5 font-mono font-bold text-[#855D1E]">
@@ -493,17 +493,17 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
           </div>
 
           {/* Document Verification Checklist */}
-          <div className="bg-[#0f172a] border-2 border-[#1e293b] shadow-xs p-6">
-            <div className="border-b border-[#0f172a] pb-3 mb-4">
-              <h3 className="text-xs font-bold text-[#f8fafc] uppercase tracking-wider">
+          <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] shadow-xs p-6">
+            <div className="border-b border-[#EBE3D5] pb-3 mb-4">
+              <h3 className="text-xs font-bold text-[#261F18] uppercase tracking-wider">
                 Document Requirement Verification Station
               </h3>
-              <p className="text-xs text-[#94a3b8] mt-0.5">
+              <p className="text-xs text-[#7A6A59] mt-0.5">
                 Authenticity status for all submitted certificates and credentials.
               </p>
             </div>
 
-            <div className="divide-y divide-[#0f172a]">
+            <div className="divide-y divide-[#EBE3D5]">
               {statusData.requirements.map(({ requirement, uploadedDocument }) => {
                 const isRejected = uploadedDocument?.verificationStatus === 'REJECTED';
                 const isVerified = uploadedDocument?.verificationStatus === 'VERIFIED';
@@ -514,13 +514,13 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                       <div>
                         <div className="flex items-center gap-2">
-                          <h4 className="font-bold text-[#f8fafc] text-sm">{requirement.title}</h4>
+                          <h4 className="font-bold text-[#261F18] text-sm">{requirement.title}</h4>
                           {requirement.isMandatory ? (
                             <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-[#FAF4EA] text-[#855D1E] border border-[#E5D7BE] uppercase">
                               Mandatory
                             </span>
                           ) : (
-                            <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-[#F5EFE6] text-[#94a3b8] border border-[#1e293b] uppercase">
+                            <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-[#F5EFE6] text-[#7A6A59] border border-[#D8CEBE] uppercase">
                               Optional
                             </span>
                           )}
@@ -539,7 +539,7 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
 
                         {isPending && (
                           <span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-wider bg-[#FAF6EE] text-[#855D1E] border border-[#E5D7BE]">
-                            <Clock className="w-3.5 h-3.5 text-[#8b5cf6]" />
+                            <Clock className="w-3.5 h-3.5 text-[#D97706]" />
                             Pending Review
                           </span>
                         )}
@@ -565,7 +565,7 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
                         </p>
 
                         <div className="flex items-center gap-3">
-                          <label className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#0f172a] border border-[#FCA5A5] text-[#991B1B] hover:bg-[#FEE2E2] font-bold text-xs uppercase tracking-wider transition-colors shadow-xs">
+                          <label className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#EBE3D5] border border-[#FCA5A5] text-[#991B1B] hover:bg-[#FEE2E2] font-bold text-xs uppercase tracking-wider transition-colors shadow-xs">
                             <Upload className="w-3.5 h-3.5 text-[#DC2626]" />
                             <span>Upload Replacement File</span>
                             <input
@@ -597,7 +597,7 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
                           rel="noreferrer"
                           className="inline-flex items-center gap-1 text-[11px] text-[#855D1E] hover:text-[#523F2D] font-bold uppercase tracking-wider"
                         >
-                          <FileText className="w-3 h-3 text-[#8b5cf6]" />
+                          <FileText className="w-3 h-3 text-[#D97706]" />
                           <span>Inspect Attached File ({uploadedDocument.originalFilename})</span>
                           <ExternalLink className="w-2.5 h-2.5" />
                         </a>

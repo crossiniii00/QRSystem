@@ -386,13 +386,13 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
   return (
     <div className="max-w-4xl mx-auto py-8 px-4 sm:px-6">
       {/* Hero Welcome */}
-      <div className="bg-[#0f172a] border-2 border-[#1e293b] p-6 sm:p-8 mb-6 text-center shadow-xs">
-        <div className="w-12 h-1 bg-[#8b5cf6] mx-auto mb-4" />
+      <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] p-6 sm:p-8 mb-6 text-center shadow-xs">
+        <div className="w-12 h-1 bg-[#D97706] mx-auto mb-4" />
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#FAF4EA] text-[#855D1E] border border-[#E5D7BE] text-xs font-bold uppercase tracking-wider mb-2">
-          <QrCode className="w-3.5 h-3.5 text-[#8b5cf6]" />
+          <QrCode className="w-3.5 h-3.5 text-[#D97706]" />
           <span>Academic Year {APP_CONFIG.school.academicYear} · Admissions Intake</span>
         </div>
-        <h1 className="text-2xl sm:text-3xl font-black text-[#f8fafc] tracking-tight uppercase mt-1">
+        <h1 className="text-2xl sm:text-3xl font-black text-[#261F18] tracking-tight uppercase mt-1">
           Student Enrollment Application
         </h1>
         <p className="text-[#665646] text-xs sm:text-sm max-w-xl mx-auto mt-2 leading-relaxed">
@@ -401,7 +401,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
       </div>
 
       {/* Microsoft-Style Step Progress Bar */}
-      <div className="mb-6 bg-[#0f172a] border border-[#1e293b] p-3 shadow-xs">
+      <div className="mb-6 bg-[#EBE3D5] border border-[#D8CEBE] p-3 shadow-xs">
         <div className="grid grid-cols-2 sm:grid-cols-6 gap-1">
           {stepsList.map((step) => {
             const isCompleted = step.num < currentStep;
@@ -411,10 +411,10 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                 key={step.num}
                 className={`p-2.5 border transition-all text-center flex flex-col items-center justify-center ${
                   isCurrent
-                    ? 'border-2 border-[#8b5cf6] bg-[#0f172a]'
+                    ? 'border-2 border-[#D97706] bg-[#EBE3D5]'
                     : isCompleted
-                    ? 'border-[#1e293b] bg-[#FAF6EE] text-[#4A3B2C]'
-                    : 'border-[#0f172a] bg-[#0f172a] text-[#A89885]'
+                    ? 'border-[#D8CEBE] bg-[#FAF6EE] text-[#4A3B2C]'
+                    : 'border-[#EBE3D5] bg-[#EBE3D5] text-[#A89885]'
                 }`}
               >
                 <div className="flex items-center gap-1.5 mb-1">
@@ -423,8 +423,8 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                       isCurrent
                         ? 'bg-[#382B20] text-[#FBBF24]'
                         : isCompleted
-                        ? 'bg-[#855D1E] text-white'
-                        : 'bg-[#F5EFE6] text-[#A89885] border border-[#1e293b]'
+                        ? 'bg-[#855D1E] text-[#000000]'
+                        : 'bg-[#F5EFE6] text-[#A89885] border border-[#D8CEBE]'
                     }`}
                   >
                     {isCompleted ? <Check className="w-3.5 h-3.5" /> : step.num}
@@ -437,7 +437,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                 >
                   {step.title}
                 </span>
-                {isCurrent && <div className="h-0.5 w-full bg-[#8b5cf6] mt-1.5" />}
+                {isCurrent && <div className="h-0.5 w-full bg-[#D97706] mt-1.5" />}
               </div>
             );
           })}
@@ -456,15 +456,15 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
       )}
 
       {/* Card Body */}
-      <div className="bg-[#0f172a] border-2 border-[#1e293b] shadow-xs p-6 sm:p-8">
+      <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] shadow-xs p-6 sm:p-8">
         {/* STEP 1: Personal Information */}
         {currentStep === 1 && (
           <div className="space-y-6">
-            <div className="border-b border-[#0f172a] pb-3">
-              <h2 className="text-base sm:text-lg font-black text-[#f8fafc] uppercase tracking-wide">
+            <div className="border-b border-[#EBE3D5] pb-3">
+              <h2 className="text-base sm:text-lg font-black text-[#261F18] uppercase tracking-wide">
                 Stage 1: Applicant Demographics
               </h2>
-              <p className="text-xs text-[#94a3b8] mt-0.5">
+              <p className="text-xs text-[#7A6A59] mt-0.5">
                 Official legal identifiers as recorded on your government civil registrar certificate.
               </p>
             </div>
@@ -480,7 +480,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.firstName}
                   onChange={handleInputChange}
                   placeholder="e.g. Alexander"
-                  className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] placeholder-[#A89885] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
               <div>
@@ -493,7 +493,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.middleName}
                   onChange={handleInputChange}
                   placeholder="e.g. James (optional)"
-                  className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] placeholder-[#A89885] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
               <div>
@@ -506,7 +506,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.lastName}
                   onChange={handleInputChange}
                   placeholder="e.g. Reyes"
-                  className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] placeholder-[#A89885] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
             </div>
@@ -521,7 +521,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   name="dateOfBirth"
                   value={formData.dateOfBirth}
                   onChange={handleInputChange}
-                  className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
 
@@ -533,7 +533,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   name="sex"
                   value={formData.sex}
                   onChange={handleInputChange}
-                  className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 >
                   <option value="MALE">Male</option>
                   <option value="FEMALE">Female</option>
@@ -550,7 +550,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   name="civilStatus"
                   value={formData.civilStatus}
                   onChange={handleInputChange}
-                  className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 >
                   <option value="Single">Single</option>
                   <option value="Married">Married</option>
@@ -564,11 +564,11 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
         {/* STEP 2: Contact & Residence */}
         {currentStep === 2 && (
           <div className="space-y-6">
-            <div className="border-b border-[#0f172a] pb-3">
-              <h2 className="text-base sm:text-lg font-black text-[#f8fafc] uppercase tracking-wide">
+            <div className="border-b border-[#EBE3D5] pb-3">
+              <h2 className="text-base sm:text-lg font-black text-[#261F18] uppercase tracking-wide">
                 Stage 2: Official Contact & Domicile
               </h2>
-              <p className="text-xs text-[#94a3b8] mt-0.5">
+              <p className="text-xs text-[#7A6A59] mt-0.5">
                 Primary channels for admissions notices, authentication codes, and status updates.
               </p>
             </div>
@@ -584,7 +584,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="student@example.com"
-                  className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] placeholder-[#A89885] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
               <div>
@@ -597,7 +597,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.mobileNumber}
                   onChange={handleInputChange}
                   placeholder="+1 (555) 012-3456"
-                  className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] placeholder-[#A89885] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
             </div>
@@ -613,7 +613,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.addressStreet}
                   onChange={handleInputChange}
                   placeholder="e.g. 142 Emerald Boulevard, Apt 4B"
-                  className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] placeholder-[#A89885] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
 
@@ -628,7 +628,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                     value={formData.addressCity}
                     onChange={handleInputChange}
                     placeholder="e.g. Highland Park"
-                    className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] placeholder-[#A89885] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                    className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                   />
                 </div>
                 <div>
@@ -641,7 +641,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                     value={formData.addressProvince}
                     onChange={handleInputChange}
                     placeholder="e.g. Metro State"
-                    className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] placeholder-[#A89885] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                    className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                   />
                 </div>
                 <div>
@@ -654,7 +654,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                     value={formData.addressPostalCode}
                     onChange={handleInputChange}
                     placeholder="e.g. 90042"
-                    className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] placeholder-[#A89885] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                    className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                   />
                 </div>
               </div>
@@ -665,11 +665,11 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
         {/* STEP 3: Academic Program */}
         {currentStep === 3 && (
           <div className="space-y-6">
-            <div className="border-b border-[#0f172a] pb-3">
-              <h2 className="text-base sm:text-lg font-black text-[#f8fafc] uppercase tracking-wide">
+            <div className="border-b border-[#EBE3D5] pb-3">
+              <h2 className="text-base sm:text-lg font-black text-[#261F18] uppercase tracking-wide">
                 Stage 3: Academic Classification & Curriculum
               </h2>
-              <p className="text-xs text-[#94a3b8] mt-0.5">
+              <p className="text-xs text-[#7A6A59] mt-0.5">
                 Designate applicant classification and target academic degree or senior high strand.
               </p>
             </div>
@@ -683,7 +683,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   name="applicantType"
                   value={formData.applicantType}
                   onChange={handleInputChange}
-                  className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 >
                   <option value="FRESHMAN">New Incoming Freshman</option>
                   <option value="TRANSFEREE">Transferee from Other Institution</option>
@@ -724,8 +724,8 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                 Target Academic Degree / Strand Curriculum <span className="text-[#B45309]">*</span>
               </label>
               {loading ? (
-                <div className="p-8 text-center text-[#94a3b8] flex items-center justify-center gap-2">
-                  <Loader2 className="w-5 h-5 animate-spin text-[#8b5cf6]" />
+                <div className="p-8 text-center text-[#7A6A59] flex items-center justify-center gap-2">
+                  <Loader2 className="w-5 h-5 animate-spin text-[#D97706]" />
                   <span className="text-xs uppercase font-bold">Synchronizing academic catalog...</span>
                 </div>
               ) : (
@@ -738,19 +738,19 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                         onClick={() => setFormData((prev) => ({ ...prev, programId: program.id }))}
                         className={`p-4 border-2 cursor-pointer transition-all ${
                           isSelected
-                            ? 'border-[#8b5cf6] bg-[#0f172a] shadow-xs'
-                            : 'border-[#1e293b] bg-[#0f172a] hover:border-[#334155] hover:bg-[#020617]'
+                            ? 'border-[#D97706] bg-[#EBE3D5] shadow-xs'
+                            : 'border-[#D8CEBE] bg-[#EBE3D5] hover:border-[#B8A183] hover:bg-[#FAF8F5]'
                         }`}
                       >
                         <div className="flex items-start justify-between">
                           <span className="text-xs font-mono font-black uppercase tracking-wider px-2 py-0.5 bg-[#FAF4EA] text-[#855D1E] border border-[#E5D7BE]">
                             {program.code}
                           </span>
-                          <span className="text-[11px] font-bold text-[#64748b] uppercase">
+                          <span className="text-[11px] font-bold text-[#8A7968] uppercase">
                             {program.academicLevel === 'K12_SHS' ? 'Senior High' : 'Undergraduate'}
                           </span>
                         </div>
-                        <h4 className="font-bold text-[#f8fafc] text-sm mt-2">{program.name}</h4>
+                        <h4 className="font-bold text-[#261F18] text-sm mt-2">{program.name}</h4>
                         <p className="text-xs text-[#665646] mt-1 line-clamp-2 leading-relaxed">{program.description}</p>
                       </div>
                     );
@@ -760,8 +760,8 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
             </div>
 
             {/* Previous School Info */}
-            <div className="pt-4 border-t border-[#0f172a]">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-[#94a3b8] mb-3">
+            <div className="pt-4 border-t border-[#EBE3D5]">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-[#7A6A59] mb-3">
                 Pre-Requisite Academic Background
               </h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -775,7 +775,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                     value={formData.previousSchool}
                     onChange={handleInputChange}
                     placeholder="e.g. North Valley Science High School"
-                    className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] placeholder-[#A89885] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                    className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                   />
                 </div>
                 <div>
@@ -788,7 +788,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                     value={formData.previousGpa}
                     onChange={handleInputChange}
                     placeholder="e.g. 92.5 or 3.8"
-                    className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] placeholder-[#A89885] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                    className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                   />
                 </div>
               </div>
@@ -799,11 +799,11 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
         {/* STEP 4: Emergency Contact */}
         {currentStep === 4 && (
           <div className="space-y-6">
-            <div className="border-b border-[#0f172a] pb-3">
-              <h2 className="text-base sm:text-lg font-black text-[#f8fafc] uppercase tracking-wide">
+            <div className="border-b border-[#EBE3D5] pb-3">
+              <h2 className="text-base sm:text-lg font-black text-[#261F18] uppercase tracking-wide">
                 Stage 4: Primary Guardian & Emergency Contact
               </h2>
-              <p className="text-xs text-[#94a3b8] mt-0.5">
+              <p className="text-xs text-[#7A6A59] mt-0.5">
                 Designated family contact for medical urgencies and official institutional correspondences.
               </p>
             </div>
@@ -819,7 +819,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.emergencyContactName}
                   onChange={handleInputChange}
                   placeholder="e.g. Maria Teresa Reyes"
-                  className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] placeholder-[#A89885] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
 
@@ -833,7 +833,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.emergencyContactRelationship}
                   onChange={handleInputChange}
                   placeholder="e.g. Mother, Father, Guardian"
-                  className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] placeholder-[#A89885] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
 
@@ -847,7 +847,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.emergencyContactPhone}
                   onChange={handleInputChange}
                   placeholder="+1 (555) 987-6543"
-                  className="w-full px-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] placeholder-[#A89885] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
             </div>
@@ -857,11 +857,11 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
         {/* STEP 5: Document Uploads */}
         {currentStep === 5 && (
           <div className="space-y-6">
-            <div className="border-b border-[#0f172a] pb-3">
-              <h2 className="text-base sm:text-lg font-black text-[#f8fafc] uppercase tracking-wide">
+            <div className="border-b border-[#EBE3D5] pb-3">
+              <h2 className="text-base sm:text-lg font-black text-[#261F18] uppercase tracking-wide">
                 Stage 5: Credentials & Document Repository
               </h2>
-              <p className="text-xs text-[#94a3b8] mt-0.5">
+              <p className="text-xs text-[#7A6A59] mt-0.5">
                 Upload authenticated PDF scans or clean digital images. Maximum 5MB per requirement.
               </p>
             </div>
@@ -876,49 +876,49 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                       uploaded
                         ? 'border-[#86EFAC] bg-[#F0FDF4]'
                         : req.isMandatory
-                        ? 'border-[#1e293b] bg-[#0f172a]'
-                        : 'border-[#0f172a] bg-[#020617]'
+                        ? 'border-[#D8CEBE] bg-[#EBE3D5]'
+                        : 'border-[#EBE3D5] bg-[#FAF8F5]'
                     }`}
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                       <div>
                         <div className="flex items-center gap-2">
-                          <h4 className="font-bold text-[#f8fafc] text-sm">{req.title}</h4>
+                          <h4 className="font-bold text-[#261F18] text-sm">{req.title}</h4>
                           {req.isMandatory ? (
                             <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-[#FAF4EA] text-[#855D1E] border border-[#E5D7BE] uppercase">
                               Mandatory
                             </span>
                           ) : (
-                            <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-[#F5EFE6] text-[#94a3b8] border border-[#1e293b] uppercase">
+                            <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-[#F5EFE6] text-[#7A6A59] border border-[#D8CEBE] uppercase">
                               Optional
                             </span>
                           )}
                         </div>
                         <p className="text-xs text-[#665646] mt-1 leading-relaxed">{req.description}</p>
-                        <p className="text-[11px] font-mono text-[#64748b] mt-1">
+                        <p className="text-[11px] font-mono text-[#8A7968] mt-1">
                           Allowed: PDF, JPG, PNG (Max {(req.maxFileSizeBytes / (1024 * 1024)).toFixed(0)}MB)
                         </p>
                       </div>
 
                       {uploaded ? (
                         <div className="flex items-center gap-2">
-                          <div className="flex items-center gap-2 text-xs font-semibold text-[#166534] bg-[#0f172a] px-3 py-1.5 border border-[#86EFAC]">
+                          <div className="flex items-center gap-2 text-xs font-semibold text-[#166534] bg-[#EBE3D5] px-3 py-1.5 border border-[#86EFAC]">
                             <CheckCircle className="w-4 h-4 text-[#15803D]" />
                             <span className="max-w-[140px] truncate">{uploaded.filename}</span>
-                            <span className="text-[#64748b] font-mono">({(uploaded.sizeBytes / 1024).toFixed(0)} KB)</span>
+                            <span className="text-[#8A7968] font-mono">({(uploaded.sizeBytes / 1024).toFixed(0)} KB)</span>
                           </div>
                           <button
                             type="button"
                             onClick={() => removeFile(req.id)}
-                            className="p-1.5 text-[#64748b] hover:text-[#991B1B] hover:bg-[#FEE2E2] border border-transparent hover:border-[#FCA5A5] transition-colors"
+                            className="p-1.5 text-[#8A7968] hover:text-[#991B1B] hover:bg-[#FEE2E2] border border-transparent hover:border-[#FCA5A5] transition-colors"
                             title="Remove document"
                           >
                             <X className="w-4 h-4" />
                           </button>
                         </div>
                       ) : (
-                        <label className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 border-2 border-[#1e293b] hover:border-[#8b5cf6] bg-[#0f172a] hover:bg-[#FAF6EE] text-xs font-bold text-[#382B20] uppercase tracking-wider transition-colors shrink-0">
-                          <Upload className="w-4 h-4 text-[#8b5cf6]" />
+                        <label className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 border-2 border-[#D8CEBE] hover:border-[#D97706] bg-[#EBE3D5] hover:bg-[#FAF6EE] text-xs font-bold text-[#382B20] uppercase tracking-wider transition-colors shrink-0">
+                          <Upload className="w-4 h-4 text-[#D97706]" />
                           <span>Attach File</span>
                           <input
                             type="file"
@@ -942,45 +942,45 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
         {/* STEP 6: Review & Submit */}
         {currentStep === 6 && (
           <div className="space-y-6">
-            <div className="border-b border-[#0f172a] pb-3">
-              <h2 className="text-base sm:text-lg font-black text-[#f8fafc] uppercase tracking-wide">
+            <div className="border-b border-[#EBE3D5] pb-3">
+              <h2 className="text-base sm:text-lg font-black text-[#261F18] uppercase tracking-wide">
                 Stage 6: Final Audit & Official Submission
               </h2>
-              <p className="text-xs text-[#94a3b8] mt-0.5">
+              <p className="text-xs text-[#7A6A59] mt-0.5">
                 Verify application details prior to committing to the university registrar ledger.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Profile Card */}
-              <div className="p-4 bg-[#020617] border border-[#1e293b] text-xs space-y-2">
-                <h4 className="font-bold text-[#f8fafc] text-xs uppercase tracking-wider flex items-center gap-1.5 border-b border-[#E5D7BE] pb-2">
-                  <FileText className="w-4 h-4 text-[#8b5cf6]" />
+              <div className="p-4 bg-[#FAF8F5] border border-[#D8CEBE] text-xs space-y-2">
+                <h4 className="font-bold text-[#261F18] text-xs uppercase tracking-wider flex items-center gap-1.5 border-b border-[#E5D7BE] pb-2">
+                  <FileText className="w-4 h-4 text-[#D97706]" />
                   <span>Applicant Demographics</span>
                 </h4>
                 <div className="grid grid-cols-3 gap-1">
-                  <span className="text-[#94a3b8]">Full Name:</span>
-                  <span className="col-span-2 font-bold text-[#f8fafc]">
+                  <span className="text-[#7A6A59]">Full Name:</span>
+                  <span className="col-span-2 font-bold text-[#261F18]">
                     {formData.firstName} {formData.middleName} {formData.lastName}
                   </span>
                 </div>
                 <div className="grid grid-cols-3 gap-1">
-                  <span className="text-[#94a3b8]">Birth / Sex:</span>
-                  <span className="col-span-2 font-semibold text-[#f8fafc]">
+                  <span className="text-[#7A6A59]">Birth / Sex:</span>
+                  <span className="col-span-2 font-semibold text-[#261F18]">
                     {formData.dateOfBirth} ({formData.sex})
                   </span>
                 </div>
                 <div className="grid grid-cols-3 gap-1">
-                  <span className="text-[#94a3b8]">Email:</span>
-                  <span className="col-span-2 font-mono text-[#f8fafc]">{formData.email}</span>
+                  <span className="text-[#7A6A59]">Email:</span>
+                  <span className="col-span-2 font-mono text-[#261F18]">{formData.email}</span>
                 </div>
                 <div className="grid grid-cols-3 gap-1">
-                  <span className="text-[#94a3b8]">Phone:</span>
-                  <span className="col-span-2 font-mono text-[#f8fafc]">{formData.mobileNumber}</span>
+                  <span className="text-[#7A6A59]">Phone:</span>
+                  <span className="col-span-2 font-mono text-[#261F18]">{formData.mobileNumber}</span>
                 </div>
                 <div className="grid grid-cols-3 gap-1">
-                  <span className="text-[#94a3b8]">Residence:</span>
-                  <span className="col-span-2 text-[#f8fafc]">
+                  <span className="text-[#7A6A59]">Residence:</span>
+                  <span className="col-span-2 text-[#261F18]">
                     {formData.addressStreet}, {formData.addressCity}, {formData.addressProvince}{' '}
                     {formData.addressPostalCode}
                   </span>
@@ -988,36 +988,36 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
               </div>
 
               {/* Academic & Emergency Card */}
-              <div className="p-4 bg-[#020617] border border-[#1e293b] text-xs space-y-2">
-                <h4 className="font-bold text-[#f8fafc] text-xs uppercase tracking-wider flex items-center gap-1.5 border-b border-[#E5D7BE] pb-2">
-                  <Shield className="w-4 h-4 text-[#8b5cf6]" />
+              <div className="p-4 bg-[#FAF8F5] border border-[#D8CEBE] text-xs space-y-2">
+                <h4 className="font-bold text-[#261F18] text-xs uppercase tracking-wider flex items-center gap-1.5 border-b border-[#E5D7BE] pb-2">
+                  <Shield className="w-4 h-4 text-[#D97706]" />
                   <span>Academic Choice & Guardian</span>
                 </h4>
                 <div className="grid grid-cols-3 gap-1">
-                  <span className="text-[#94a3b8]">Program:</span>
+                  <span className="text-[#7A6A59]">Program:</span>
                   <span className="col-span-2 font-bold text-[#855D1E]">{selectedProgram?.name}</span>
                 </div>
                 <div className="grid grid-cols-3 gap-1">
-                  <span className="text-[#94a3b8]">Classification:</span>
-                  <span className="col-span-2 font-semibold text-[#f8fafc]">{formData.applicantType}</span>
+                  <span className="text-[#7A6A59]">Classification:</span>
+                  <span className="col-span-2 font-semibold text-[#261F18]">{formData.applicantType}</span>
                 </div>
                 <div className="grid grid-cols-3 gap-1">
-                  <span className="text-[#94a3b8]">Term:</span>
-                  <span className="col-span-2 font-semibold text-[#f8fafc]">
+                  <span className="text-[#7A6A59]">Term:</span>
+                  <span className="col-span-2 font-semibold text-[#261F18]">
                     AY {formData.academicYear} ({formData.semesterTerm})
                   </span>
                 </div>
                 {formData.previousSchool && (
                   <div className="grid grid-cols-3 gap-1">
-                    <span className="text-[#94a3b8]">Prior School:</span>
-                    <span className="col-span-2 text-[#f8fafc]">
+                    <span className="text-[#7A6A59]">Prior School:</span>
+                    <span className="col-span-2 text-[#261F18]">
                       {formData.previousSchool} {formData.previousGpa && `(GPA: ${formData.previousGpa})`}
                     </span>
                   </div>
                 )}
                 <div className="pt-2 border-t border-[#E5D7BE] grid grid-cols-3 gap-1">
-                  <span className="text-[#94a3b8]">Emergency:</span>
-                  <span className="col-span-2 font-bold text-[#f8fafc]">
+                  <span className="text-[#7A6A59]">Emergency:</span>
+                  <span className="col-span-2 font-bold text-[#261F18]">
                     {formData.emergencyContactName} ({formData.emergencyContactRelationship}) · {formData.emergencyContactPhone}
                   </span>
                 </div>
@@ -1025,8 +1025,8 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
             </div>
 
             {/* Uploaded Documents List */}
-            <div className="p-4 bg-[#0f172a] border border-[#1e293b]">
-              <h4 className="font-bold text-[#f8fafc] text-xs uppercase tracking-wider mb-2">
+            <div className="p-4 bg-[#EBE3D5] border border-[#D8CEBE]">
+              <h4 className="font-bold text-[#261F18] text-xs uppercase tracking-wider mb-2">
                 Attached Credentials ({uploadedFiles.size} Verified Files)
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -1035,12 +1035,12 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   return (
                     <div
                       key={file.requirementId}
-                      className="flex items-center gap-2 p-2 bg-[#020617] border border-[#1e293b] text-xs"
+                      className="flex items-center gap-2 p-2 bg-[#FAF8F5] border border-[#D8CEBE] text-xs"
                     >
                       <CheckCircle className="w-4 h-4 text-[#15803D] shrink-0" />
                       <div className="truncate">
-                        <p className="font-bold text-[#f8fafc] truncate">{req?.title || file.filename}</p>
-                        <p className="text-[11px] font-mono text-[#94a3b8]">{file.filename}</p>
+                        <p className="font-bold text-[#261F18] truncate">{req?.title || file.filename}</p>
+                        <p className="text-[11px] font-mono text-[#7A6A59]">{file.filename}</p>
                       </div>
                     </div>
                   );
@@ -1056,10 +1056,10 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   name="privacyAccepted"
                   checked={formData.privacyAccepted}
                   onChange={handleInputChange}
-                  className="mt-0.5 w-4 h-4 accent-[#8b5cf6] text-[#8b5cf6] border-[#1e293b] focus:ring-0 cursor-pointer"
+                  className="mt-0.5 w-4 h-4 accent-[#D97706] text-[#D97706] border-[#D8CEBE] focus:ring-0 cursor-pointer"
                 />
                 <div className="text-xs text-[#523F2D] leading-relaxed">
-                  <span className="font-black text-[#f8fafc] uppercase">Institutional Privacy Declaration:</span>{' '}
+                  <span className="font-black text-[#261F18] uppercase">Institutional Privacy Declaration:</span>{' '}
                   I certify under oath that all demographic and academic information submitted is accurate and true.
                   I authorize St. Francis College to authenticate documents and maintain this admissions record in accordance with university policies.
                 </div>
@@ -1069,13 +1069,13 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
         )}
 
         {/* Wizard Footer Controls */}
-        <div className="mt-8 pt-6 border-t-2 border-[#0f172a] flex items-center justify-between">
+        <div className="mt-8 pt-6 border-t-2 border-[#EBE3D5] flex items-center justify-between">
           {currentStep > 1 ? (
             <button
               type="button"
               onClick={handleBack}
               disabled={submitting}
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#0f172a] border border-[#1e293b] text-[#382B20] text-xs font-bold uppercase tracking-wider hover:bg-[#FAF6EE] transition-colors disabled:opacity-50 cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#382B20] text-xs font-bold uppercase tracking-wider hover:bg-[#FAF6EE] transition-colors disabled:opacity-50 cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Previous Stage</span>
@@ -1088,17 +1088,17 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
             <button
               type="button"
               onClick={handleNext}
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#382B20] text-[#FFFBEB] hover:bg-[#231A12] border border-[#a855f7] text-xs font-bold uppercase tracking-wider shadow-xs transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#382B20] text-[#FFFBEB] hover:bg-[#231A12] border border-[#F59E0B] text-xs font-bold uppercase tracking-wider shadow-xs transition-all cursor-pointer"
             >
               <span>Next Stage</span>
-              <ArrowRight className="w-4 h-4 text-[#a855f7]" />
+              <ArrowRight className="w-4 h-4 text-[#F59E0B]" />
             </button>
           ) : (
             <button
               type="button"
               onClick={handleSubmitApplication}
               disabled={submitting || !formData.privacyAccepted}
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#8b5cf6] text-white hover:bg-[#B45309] border border-[#FBBF24] text-xs font-black uppercase tracking-wider shadow-xs transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#D97706] text-[#000000] hover:bg-[#B45309] border border-[#FBBF24] text-xs font-black uppercase tracking-wider shadow-xs transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               {submitting ? (
                 <>

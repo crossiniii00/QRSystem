@@ -43,18 +43,18 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
 
   return (
     <div className="max-w-md mx-auto py-12 px-4">
-      <div className="bg-[#0f172a] border-2 border-[#1e293b] shadow-xs p-6 sm:p-8">
+      <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] shadow-xs p-6 sm:p-8">
         {/* Top Gold Accent Line */}
-        <div className="w-12 h-1 bg-[#8b5cf6] mx-auto mb-5" />
+        <div className="w-12 h-1 bg-[#D97706] mx-auto mb-5" />
 
         <div className="text-center mb-6">
           <div className="w-12 h-12 bg-[#382B20] text-[#FBBF24] border border-[#231A12] flex items-center justify-center mx-auto mb-3 shadow-xs">
-            <Lock className="w-6 h-6 text-[#a855f7]" />
+            <Lock className="w-6 h-6 text-[#F59E0B]" />
           </div>
-          <h2 className="text-lg font-black text-[#f8fafc] uppercase tracking-tight">
+          <h2 className="text-lg font-black text-[#261F18] uppercase tracking-tight">
             Admissions Management Console
           </h2>
-          <p className="text-xs text-[#94a3b8] mt-1">
+          <p className="text-xs text-[#7A6A59] mt-1">
             Restricted access for registrar officials and admissions evaluation staff at {APP_CONFIG.school.name}.
           </p>
         </div>
@@ -78,13 +78,13 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
               Official Institutional Email
             </label>
             <div className="relative">
-              <Mail className="w-4 h-4 text-[#64748b] absolute left-3 top-3" />
+              <Mail className="w-4 h-4 text-[#8A7968] absolute left-3 top-3" />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="staff@stfrancis.edu"
-                className="w-full pl-9 pr-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] font-mono placeholder-[#A89885] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                className="w-full pl-9 pr-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] font-mono placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
               />
             </div>
           </div>
@@ -94,13 +94,13 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
               Account Password
             </label>
             <div className="relative">
-              <KeyRound className="w-4 h-4 text-[#64748b] absolute left-3 top-3" />
+              <KeyRound className="w-4 h-4 text-[#8A7968] absolute left-3 top-3" />
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••••••"
-                className="w-full pl-9 pr-3.5 py-2.5 bg-[#0f172a] border border-[#1e293b] text-sm text-[#f8fafc] font-mono placeholder-[#A89885] focus:outline-none focus:border-[#8b5cf6] focus:ring-1 focus:ring-[#8b5cf6]"
+                className="w-full pl-9 pr-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] font-mono placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
               />
             </div>
           </div>
@@ -108,16 +108,16 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 px-4 bg-[#382B20] text-[#FFFBEB] hover:bg-[#231A12] border border-[#a855f7] font-bold text-xs uppercase tracking-wider shadow-xs transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
+            className="w-full py-2.5 px-4 bg-[#382B20] text-[#FFFBEB] hover:bg-[#231A12] border border-[#F59E0B] font-bold text-xs uppercase tracking-wider shadow-xs transition-all flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer"
           >
-            {loading ? <Loader2 className="w-4 h-4 animate-spin text-[#a855f7]" /> : <ShieldCheck className="w-4 h-4 text-[#a855f7]" />}
+            {loading ? <Loader2 className="w-4 h-4 animate-spin text-[#F59E0B]" /> : <ShieldCheck className="w-4 h-4 text-[#F59E0B]" />}
             <span>Authenticate Session</span>
           </button>
         </form>
 
         {/* Quick Demo Login Preset Buttons */}
-        <div className="mt-8 pt-6 border-t border-[#0f172a]">
-          <p className="text-[11px] font-bold uppercase tracking-wider text-[#94a3b8] text-center mb-3">
+        <div className="mt-8 pt-6 border-t border-[#EBE3D5]">
+          <p className="text-[11px] font-bold uppercase tracking-wider text-[#7A6A59] text-center mb-3">
             Evaluation Credentials (Quick Fill)
           </p>
           <div className="grid grid-cols-2 gap-2">
@@ -128,10 +128,10 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
                 setPassword('AdminPass2026!');
                 handleLogin('admin@stfrancis.edu', 'AdminPass2026!');
               }}
-              className="p-3 border-2 border-[#E5D7BE] bg-[#FAF6EE] hover:border-[#8b5cf6] hover:bg-[#FDFBF7] text-[#f8fafc] text-xs font-bold transition-all text-center flex flex-col items-center cursor-pointer"
+              className="p-3 border-2 border-[#E5D7BE] bg-[#FAF6EE] hover:border-[#D97706] hover:bg-[#FDFBF7] text-[#261F18] text-xs font-bold transition-all text-center flex flex-col items-center cursor-pointer"
             >
               <span className="font-bold uppercase text-[11px] text-[#855D1E]">Admin Account</span>
-              <span className="text-[10px] text-[#94a3b8] font-normal mt-0.5">Dean Eleanor Vance</span>
+              <span className="text-[10px] text-[#7A6A59] font-normal mt-0.5">Dean Eleanor Vance</span>
             </button>
 
             <button
@@ -141,10 +141,10 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
                 setPassword('StaffPass2026!');
                 handleLogin('staff@stfrancis.edu', 'StaffPass2026!');
               }}
-              className="p-3 border-2 border-[#1e293b] bg-[#0f172a] hover:border-[#8b5cf6] hover:bg-[#FDFBF7] text-[#f8fafc] text-xs font-bold transition-all text-center flex flex-col items-center cursor-pointer"
+              className="p-3 border-2 border-[#D8CEBE] bg-[#EBE3D5] hover:border-[#D97706] hover:bg-[#FDFBF7] text-[#261F18] text-xs font-bold transition-all text-center flex flex-col items-center cursor-pointer"
             >
               <span className="font-bold uppercase text-[11px] text-[#4A3B2C]">Staff Account</span>
-              <span className="text-[10px] text-[#94a3b8] font-normal mt-0.5">Officer Marcus Aurel</span>
+              <span className="text-[10px] text-[#7A6A59] font-normal mt-0.5">Officer Marcus Aurel</span>
             </button>
           </div>
         </div>

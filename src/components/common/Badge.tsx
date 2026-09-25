@@ -20,7 +20,7 @@ export const StatusBadge: React.FC<BadgeProps> = ({ status, size = 'md' }) => {
     },
     blue: {
       container: 'bg-[#FDF8EE] text-[#785412] border-[#E8D4A2]',
-      indicator: 'bg-[#8b5cf6]', // Yellow/gold accent
+      indicator: 'bg-[#D97706]', // Yellow/gold accent
     },
     amber: {
       container: 'bg-[#FEF9C3] text-[#713F12] border-[#FDE047]',
