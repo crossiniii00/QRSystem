@@ -108,7 +108,15 @@ export default function Page() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] flex flex-col text-[#261F18] font-sans selection:bg-[#F59E0B] selection:text-[#261F18]">
+    <div className="min-h-screen relative flex flex-col text-[#261F18] font-sans selection:bg-[#F59E0B] selection:text-[#261F18]">
+      {/* Blurred Background Image */}
+      <div 
+        className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: 'url(/school-bg.jpg)' }}
+      >
+        <div className="absolute inset-0 bg-[#FAF8F5]/85 backdrop-blur-md" />
+      </div>
+
       {/* Universal Navigation Header */}
       <Header
         activeTab={activeTab}
