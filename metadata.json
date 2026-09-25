@@ -1,0 +1,6 @@
+{
+  "name": "QR School Enrollment System",
+  "description": "Production-grade QR-based student enrollment web application with clean architecture, student application wizard, document management, and administrative review dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

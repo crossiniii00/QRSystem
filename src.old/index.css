@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  /* Microsoft-style zero rounded corners across all components */
+  *,
+  *::before,
+  *::after {
+    border-radius: 0.75rem !important; transition: all 0.3s ease;
+  }
+
+  :root {
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: radial-gradient(circle at top left, #0f172a, #020617 70%);
+    background-attachment: fixed;
+    color: #f8fafc;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Microsoft Fluent-style crisp focus outlines */
+  :focus-visible {
+    outline: 2px solid #8b5cf6; box-shadow: 0 0 10px #8b5cf6;
+    outline-offset: 1px;
+  }
+
+  /* Custom scrollbar matching enterprise light brown palette */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0f172a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #334155;
+    border: 1px solid #020617;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+  }
+}
