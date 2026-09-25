@@ -334,7 +334,7 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
                     <button
                       onClick={handleResubmit}
                       disabled={resubmitting}
-                      className="px-4 py-2 bg-[#D97706] hover:bg-[#B45309] text-[#000000] font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-colors disabled:opacity-50 cursor-pointer shadow-xs"
+                      className="px-4 py-2 bg-[#D97706] hover:bg-[#B45309] text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-colors disabled:opacity-50 cursor-pointer shadow-xs"
                     >
                       {resubmitting ? (
                         <Loader2 className="w-4 h-4 animate-spin" />
@@ -368,7 +368,7 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
                         setActivePaymentType('MATRICULATION_DEPOSIT');
                         setShowCheckout(true);
                       }}
-                      className="px-5 py-2.5 bg-[#15803D] hover:bg-[#166534] text-[#000000] font-bold text-xs uppercase tracking-wider border border-[#86EFAC] shadow-xs flex items-center gap-2 shrink-0 cursor-pointer transition-colors"
+                      className="px-5 py-2.5 bg-[#15803D] hover:bg-[#166534] text-white font-bold text-xs uppercase tracking-wider border border-[#86EFAC] shadow-xs flex items-center gap-2 shrink-0 cursor-pointer transition-colors"
                     >
                       <CreditCard className="w-4 h-4" />
                       <span>Settle Matriculation (₱3,500)</span>

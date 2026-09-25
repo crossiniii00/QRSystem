@@ -423,7 +423,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                       isCurrent
                         ? 'bg-[#382B20] text-[#FBBF24]'
                         : isCompleted
-                        ? 'bg-[#855D1E] text-[#000000]'
+                        ? 'bg-[#855D1E] text-white'
                         : 'bg-[#F5EFE6] text-[#A89885] border border-[#D8CEBE]'
                     }`}
                   >
@@ -1098,7 +1098,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
               type="button"
               onClick={handleSubmitApplication}
               disabled={submitting || !formData.privacyAccepted}
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#D97706] text-[#000000] hover:bg-[#B45309] border border-[#FBBF24] text-xs font-black uppercase tracking-wider shadow-xs transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#D97706] text-white hover:bg-[#B45309] border border-[#FBBF24] text-xs font-black uppercase tracking-wider shadow-xs transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               {submitting ? (
                 <>

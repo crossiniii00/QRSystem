@@ -53,8 +53,8 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setActiveTab('apply')}
               className={`h-14 px-3 sm:px-4 text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors flex items-center gap-2 border-b-2 cursor-pointer ${
                 activeTab === 'apply'
-                  ? 'border-[#F59E0B] text-[#000000] bg-[#422F22]'
-                  : 'border-transparent text-[#C9B9A6] hover:text-[#000000] hover:bg-[#3D2B1E]'
+                  ? 'border-[#F59E0B] text-white bg-[#422F22]'
+                  : 'border-transparent text-[#C9B9A6] hover:text-white hover:bg-[#3D2B1E]'
               }`}
             >
               <QrCode className={`w-4 h-4 ${activeTab === 'apply' ? 'text-[#F59E0B]' : 'text-[#A89885]'}`} />
@@ -65,8 +65,8 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setActiveTab('status')}
               className={`h-14 px-3 sm:px-4 text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors flex items-center gap-2 border-b-2 cursor-pointer ${
                 activeTab === 'status'
-                  ? 'border-[#F59E0B] text-[#000000] bg-[#422F22]'
-                  : 'border-transparent text-[#C9B9A6] hover:text-[#000000] hover:bg-[#3D2B1E]'
+                  ? 'border-[#F59E0B] text-white bg-[#422F22]'
+                  : 'border-transparent text-[#C9B9A6] hover:text-white hover:bg-[#3D2B1E]'
               }`}
             >
               <Search className={`w-4 h-4 ${activeTab === 'status' ? 'text-[#F59E0B]' : 'text-[#A89885]'}`} />

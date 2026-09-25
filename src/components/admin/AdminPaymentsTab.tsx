@@ -242,7 +242,7 @@ export const AdminPaymentsTab: React.FC<AdminPaymentsTabProps> = ({
                             type="button"
                             disabled={verifyingId === tx.id}
                             onClick={() => handleVerify(tx.id)}
-                            className="px-2.5 py-1 bg-[#15803D] hover:bg-[#166534] text-[#000000] text-[11px] font-bold uppercase tracking-wider border border-[#86EFAC] flex items-center gap-1 cursor-pointer transition-colors"
+                            className="px-2.5 py-1 bg-[#15803D] hover:bg-[#166534] text-white text-[11px] font-bold uppercase tracking-wider border border-[#86EFAC] flex items-center gap-1 cursor-pointer transition-colors"
                           >
                             {verifyingId === tx.id ? (
                               <Loader2 className="w-3 h-3 animate-spin" />

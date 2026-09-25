@@ -307,7 +307,7 @@ export const ApplicationDetailModal: React.FC<ApplicationDetailModalProps> = ({
                                   type="button"
                                   disabled={actionLoading}
                                   onClick={() => handleVerifyDocument(uploadedDocument.id, 'VERIFY')}
-                                  className="px-3 py-1.5 bg-[#15803D] hover:bg-[#166534] text-[#000000] text-xs font-bold uppercase tracking-wider border border-[#86EFAC] transition-colors flex items-center gap-1 cursor-pointer disabled:opacity-50"
+                                  className="px-3 py-1.5 bg-[#15803D] hover:bg-[#166534] text-white text-xs font-bold uppercase tracking-wider border border-[#86EFAC] transition-colors flex items-center gap-1 cursor-pointer disabled:opacity-50"
                                 >
                                   <Check className="w-3.5 h-3.5" />
                                   <span>Verify</span>
@@ -358,7 +358,7 @@ export const ApplicationDetailModal: React.FC<ApplicationDetailModalProps> = ({
                           type="button"
                           disabled={actionLoading || !docRejectionReason.trim()}
                           onClick={() => handleVerifyDocument(rejectingDocId, 'REJECT', docRejectionReason)}
-                          className="px-3 py-1.5 bg-[#DC2626] hover:bg-[#B91C1C] text-[#000000] text-xs font-bold uppercase tracking-wider disabled:opacity-50"
+                          className="px-3 py-1.5 bg-[#DC2626] hover:bg-[#B91C1C] text-white text-xs font-bold uppercase tracking-wider disabled:opacity-50"
                         >
                           Confirm Rejection
                         </button>
@@ -577,7 +577,7 @@ export const ApplicationDetailModal: React.FC<ApplicationDetailModalProps> = ({
                       notesLabel: 'Optional admission remarks',
                     })
                   }
-                  className="px-3.5 py-2 bg-[#D97706] hover:bg-[#B45309] text-[#000000] border border-[#FBBF24] font-bold text-xs uppercase tracking-wider shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer"
+                  className="px-3.5 py-2 bg-[#D97706] hover:bg-[#B45309] text-white border border-[#FBBF24] font-bold text-xs uppercase tracking-wider shadow-xs transition-colors flex items-center gap-1.5 cursor-pointer"
                 >
                   <CheckCircle className="w-3.5 h-3.5" />
                   <span>Approve Application</span>
@@ -668,7 +668,7 @@ export const ApplicationDetailModal: React.FC<ApplicationDetailModalProps> = ({
                   type="button"
                   disabled={actionLoading || (transitionPrompt.requiresNotes && !transitionNotes.trim())}
                   onClick={handleExecuteTransition}
-                  className="px-4 py-2 bg-[#D97706] hover:bg-[#B45309] text-[#000000] text-xs font-bold uppercase tracking-wider disabled:opacity-50"
+                  className="px-4 py-2 bg-[#D97706] hover:bg-[#B45309] text-white text-xs font-bold uppercase tracking-wider disabled:opacity-50"
                 >
                   {actionLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Confirm Transition'}
                 </button>

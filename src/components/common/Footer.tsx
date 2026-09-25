@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="h-2.5 w-2.5 bg-[#F59E0B]" />
-              <h4 className="text-[#000000] font-bold text-sm tracking-wide uppercase">{APP_CONFIG.school.name}</h4>
+              <h4 className="text-white font-bold text-sm tracking-wide uppercase">{APP_CONFIG.school.name}</h4>
             </div>
             <p className="text-[#A89885] mb-3 text-xs leading-relaxed">{APP_CONFIG.school.tagline}</p>
             <div className="flex items-center gap-2 text-[#C2B29F] text-xs">
@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-[#000000] font-bold text-xs tracking-wider uppercase mb-2 border-b border-[#3D3024] pb-1">
+            <h4 className="text-white font-bold text-xs tracking-wider uppercase mb-2 border-b border-[#3D3024] pb-1">
               Admissions Office
             </h4>
             <div className="space-y-1.5 text-xs text-[#C2B29F]">
@@ -42,7 +42,7 @@ export const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-[#000000] font-bold text-xs tracking-wider uppercase mb-2 border-b border-[#3D3024] pb-1">
+            <h4 className="text-white font-bold text-xs tracking-wider uppercase mb-2 border-b border-[#3D3024] pb-1">
               Data Privacy & Security
             </h4>
             <p className="text-[#A89885] leading-relaxed text-[11px]">

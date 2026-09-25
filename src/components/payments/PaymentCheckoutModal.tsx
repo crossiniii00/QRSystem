@@ -124,7 +124,7 @@ export const PaymentCheckoutModal: React.FC<PaymentCheckoutModalProps> = ({
         <div className="h-1 bg-gradient-to-r from-[#D97706] via-[#F59E0B] to-[#CA8A04] w-full" />
 
         {/* Modal Header */}
-        <div className="px-6 py-4 bg-[#2E2016] text-[#000000] flex items-center justify-between border-b border-[#4A3525]">
+        <div className="px-6 py-4 bg-[#2E2016] text-white flex items-center justify-between border-b border-[#4A3525]">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 bg-[#3D2B1E] border border-[#6B4F37] flex items-center justify-center text-[#F59E0B]">
               <Receipt className="w-4 h-4 text-[#F59E0B]" />
@@ -145,7 +145,7 @@ export const PaymentCheckoutModal: React.FC<PaymentCheckoutModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 text-[#C9B9A6] hover:text-[#000000] hover:bg-[#3D2B1E] border border-transparent hover:border-[#6B4F37] transition-colors cursor-pointer"
+            className="p-1.5 text-[#C9B9A6] hover:text-white hover:bg-[#3D2B1E] border border-transparent hover:border-[#6B4F37] transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -211,7 +211,7 @@ export const PaymentCheckoutModal: React.FC<PaymentCheckoutModalProps> = ({
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-6 py-2.5 bg-[#2E2016] hover:bg-[#3D2B1E] text-[#000000] border border-[#D97706] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer shadow-xs"
+                  className="px-6 py-2.5 bg-[#2E2016] hover:bg-[#3D2B1E] text-white border border-[#D97706] text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer shadow-xs"
                 >
                   Return to Application Status
                 </button>
@@ -481,7 +481,7 @@ export const PaymentCheckoutModal: React.FC<PaymentCheckoutModalProps> = ({
                     type="button"
                     disabled={submitting}
                     onClick={handleProcessPayment}
-                    className="w-full sm:w-auto px-6 py-2.5 bg-[#2E2016] hover:bg-[#3D2B1E] text-[#000000] border border-[#D97706] text-xs font-bold uppercase tracking-wider shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    className="w-full sm:w-auto px-6 py-2.5 bg-[#2E2016] hover:bg-[#3D2B1E] text-white border border-[#D97706] text-xs font-bold uppercase tracking-wider shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
                     {submitting ? (
                       <Loader2 className="w-4 h-4 animate-spin text-[#F59E0B]" />

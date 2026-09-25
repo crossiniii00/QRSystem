@@ -569,12 +569,12 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                             {typeMeta.label}
                           </span>
                           {acc.isDefault && (
-                            <span className="text-[10px] font-mono px-1.5 py-0.5 bg-[#D97706] text-[#000000] font-bold uppercase">
+                            <span className="text-[10px] font-mono px-1.5 py-0.5 bg-[#D97706] text-white font-bold uppercase">
                               Default Depository
                             </span>
                           )}
                           {isPrimary && (
-                            <span className="text-[10px] font-mono px-1.5 py-0.5 bg-[#166534] text-[#000000] font-bold uppercase">
+                            <span className="text-[10px] font-mono px-1.5 py-0.5 bg-[#166534] text-white font-bold uppercase">
                               Settlement Target
                             </span>
                           )}

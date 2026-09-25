@@ -224,7 +224,7 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
                 <button
                   type="button"
                   onClick={downloadQrPng}
-                  className="w-full py-2.5 px-4 bg-[#D97706] hover:bg-[#B45309] text-[#000000] font-bold text-xs uppercase tracking-wider shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full py-2.5 px-4 bg-[#D97706] hover:bg-[#B45309] text-white font-bold text-xs uppercase tracking-wider shadow-xs transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Download className="w-4 h-4" />
                   <span>Download Print-Ready PNG</span>
