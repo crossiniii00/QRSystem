@@ -122,7 +122,7 @@ export const AdminPaymentsTab: React.FC<AdminPaymentsTabProps> = ({
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search reference, gateway DRP-xxxx, payer name..."
-              className="w-full pl-9 pr-3.5 py-2 bg-[#EBE3D5] border border-[#D8CEBE] text-xs text-[#261F18] placeholder-[#A89885] font-mono focus:outline-none focus:border-[#D97706]"
+              className="w-full pl-9 pr-3.5 py-2 bg-white border border-[#D8CEBE] text-xs text-[#261F18] placeholder-[#A89885] font-mono focus:outline-none focus:border-[#D97706]"
             />
           </div>
 
@@ -130,7 +130,7 @@ export const AdminPaymentsTab: React.FC<AdminPaymentsTabProps> = ({
             <select
               value={filterChannel}
               onChange={(e) => setFilterChannel(e.target.value)}
-              className="px-3 py-2 bg-[#EBE3D5] border border-[#D8CEBE] text-xs text-[#382B20] focus:outline-none focus:border-[#D97706]"
+              className="px-3 py-2 bg-white border border-[#D8CEBE] text-xs text-[#382B20] focus:outline-none focus:border-[#D97706]"
             >
               <option value="">All Channels</option>
               <option value="GCASH">GCash / QR Ph</option>

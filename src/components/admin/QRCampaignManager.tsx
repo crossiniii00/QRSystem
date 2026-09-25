@@ -288,7 +288,7 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
                     value={code}
                     onChange={(e) => setCode(e.target.value)}
                     placeholder="e.g. spring-expo-2026"
-                    className="w-full px-3 py-2 bg-[#EBE3D5] border border-[#D8CEBE] text-xs font-mono text-[#261F18] focus:outline-none focus:border-[#D97706]"
+                    className="w-full px-3 py-2 bg-white border border-[#D8CEBE] text-xs font-mono text-[#261F18] focus:outline-none focus:border-[#D97706]"
                   />
                 </div>
               </div>
@@ -303,7 +303,7 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Regional Science Fair 2026"
-                  className="w-full px-3 py-2 bg-[#EBE3D5] border border-[#D8CEBE] text-xs text-[#261F18] focus:outline-none focus:border-[#D97706]"
+                  className="w-full px-3 py-2 bg-white border border-[#D8CEBE] text-xs text-[#261F18] focus:outline-none focus:border-[#D97706]"
                 />
               </div>
 
@@ -316,7 +316,7 @@ export const QRCampaignManager: React.FC<QRCampaignManagerProps> = ({
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="e.g. Printed banners at booth B4, brochures, poster displays."
-                  className="w-full px-3 py-2 bg-[#EBE3D5] border border-[#D8CEBE] text-xs text-[#261F18] focus:outline-none focus:border-[#D97706]"
+                  className="w-full px-3 py-2 bg-white border border-[#D8CEBE] text-xs text-[#261F18] focus:outline-none focus:border-[#D97706]"
                 />
               </div>
 

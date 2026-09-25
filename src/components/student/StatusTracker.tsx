@@ -174,7 +174,7 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
               value={reference}
               onChange={(e) => setReference(e.target.value)}
               placeholder="e.g. ENR-2026-000101"
-              className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] font-mono focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+              className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] font-mono focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
             />
           </div>
 
@@ -187,7 +187,7 @@ export const StatusTracker: React.FC<StatusTrackerProps> = ({
               value={token}
               onChange={(e) => setToken(e.target.value)}
               placeholder="Paste your 64-character token"
-              className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] font-mono focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+              className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] font-mono focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
             />
           </div>
 

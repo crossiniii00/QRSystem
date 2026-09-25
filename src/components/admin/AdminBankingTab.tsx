@@ -714,7 +714,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                 <select
                   value={formData.bankName}
                   onChange={(e) => setFormData({ ...formData, bankName: e.target.value })}
-                  className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
+                  className="w-full p-2.5 bg-white border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                   required
                 >
                   {COMMON_PH_BANKS.map((b) => (
@@ -735,7 +735,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                     value={formData.customBankName}
                     onChange={(e) => setFormData({ ...formData, customBankName: e.target.value })}
                     placeholder="e.g., Union Bank of the Philippines"
-                    className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
+                    className="w-full p-2.5 bg-white border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                     required
                   />
                 </div>
@@ -751,7 +751,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                     value={formData.accountName}
                     onChange={(e) => setFormData({ ...formData, accountName: e.target.value })}
                     placeholder="St. Francis College, Inc."
-                    className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
+                    className="w-full p-2.5 bg-white border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                     required
                   />
                 </div>
@@ -765,7 +765,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                     value={formData.accountNumber}
                     onChange={(e) => setFormData({ ...formData, accountNumber: e.target.value })}
                     placeholder="0045-8812-9901"
-                    className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] font-mono font-bold focus:border-[#D97706] focus:outline-none"
+                    className="w-full p-2.5 bg-white border border-[#D8CEBE] text-[#261F18] font-mono font-bold focus:border-[#D97706] focus:outline-none"
                     required
                   />
                 </div>
@@ -778,7 +778,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                 <select
                   value={formData.accountType}
                   onChange={(e) => setFormData({ ...formData, accountType: e.target.value as BankAccountType })}
-                  className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
+                  className="w-full p-2.5 bg-white border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                   required
                 >
                   <option value="TUITION_MATRICULATION">Tuition & Matriculation (Downpayment & Semestral Fees)</option>
@@ -801,7 +801,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                     value={formData.branchName}
                     onChange={(e) => setFormData({ ...formData, branchName: e.target.value })}
                     placeholder="Academic Heights Branch"
-                    className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
+                    className="w-full p-2.5 bg-white border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                   />
                 </div>
 
@@ -814,7 +814,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                     value={formData.swiftCode}
                     onChange={(e) => setFormData({ ...formData, swiftCode: e.target.value })}
                     placeholder="e.g. BNORPHMM"
-                    className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] font-mono focus:border-[#D97706] focus:outline-none"
+                    className="w-full p-2.5 bg-white border border-[#D8CEBE] text-[#261F18] font-mono focus:border-[#D97706] focus:outline-none"
                   />
                 </div>
               </div>
@@ -828,7 +828,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                   onChange={(e) => setFormData({ ...formData, depositInstructions: e.target.value })}
                   rows={2}
                   placeholder="e.g. Write student reference number in the deposit slip remarks."
-                  className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
+                  className="w-full p-2.5 bg-white border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                 />
               </div>
 
@@ -897,7 +897,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                   value={gatewayForm.merchantId || ''}
                   onChange={(e) => setGatewayForm({ ...gatewayForm, merchantId: e.target.value })}
                   placeholder="SFC_DRAGONPAY_LIVE_092"
-                  className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] font-mono focus:border-[#D97706] focus:outline-none"
+                  className="w-full p-2.5 bg-white border border-[#D8CEBE] text-[#261F18] font-mono focus:border-[#D97706] focus:outline-none"
                   required
                 />
               </div>
@@ -909,7 +909,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                 <select
                   value={gatewayForm.primarySettlementBankId || ''}
                   onChange={(e) => setGatewayForm({ ...gatewayForm, primarySettlementBankId: e.target.value })}
-                  className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
+                  className="w-full p-2.5 bg-white border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                   required
                 >
                   {accounts.map((a) => (
@@ -936,7 +936,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                         autoSettlementFrequency: e.target.value as 'DAILY' | 'WEEKLY' | 'BI_WEEKLY' | 'MONTHLY',
                       })
                     }
-                    className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
+                    className="w-full p-2.5 bg-white border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                   >
                     <option value="DAILY">Daily (End of Day 18:00)</option>
                     <option value="WEEKLY">Weekly (Every Friday)</option>
@@ -955,7 +955,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                     onChange={(e) =>
                       setGatewayForm({ ...gatewayForm, minimumPayoutThreshold: Number(e.target.value) })
                     }
-                    className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] font-mono focus:border-[#D97706] focus:outline-none"
+                    className="w-full p-2.5 bg-white border border-[#D8CEBE] text-[#261F18] font-mono focus:border-[#D97706] focus:outline-none"
                   />
                 </div>
               </div>
@@ -969,7 +969,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                   value={gatewayForm.notifyFinanceEmail || 'finance@stfrancis.edu'}
                   onChange={(e) => setGatewayForm({ ...gatewayForm, notifyFinanceEmail: e.target.value })}
                   placeholder="finance@stfrancis.edu"
-                  className="w-full p-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
+                  className="w-full p-2.5 bg-white border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
                 />
               </div>
 

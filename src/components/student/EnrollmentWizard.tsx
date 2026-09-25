@@ -480,7 +480,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.firstName}
                   onChange={handleInputChange}
                   placeholder="e.g. Alexander"
-                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
               <div>
@@ -493,7 +493,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.middleName}
                   onChange={handleInputChange}
                   placeholder="e.g. James (optional)"
-                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
               <div>
@@ -506,7 +506,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.lastName}
                   onChange={handleInputChange}
                   placeholder="e.g. Reyes"
-                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
             </div>
@@ -521,7 +521,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   name="dateOfBirth"
                   value={formData.dateOfBirth}
                   onChange={handleInputChange}
-                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
 
@@ -533,7 +533,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   name="sex"
                   value={formData.sex}
                   onChange={handleInputChange}
-                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 >
                   <option value="MALE">Male</option>
                   <option value="FEMALE">Female</option>
@@ -550,7 +550,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   name="civilStatus"
                   value={formData.civilStatus}
                   onChange={handleInputChange}
-                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 >
                   <option value="Single">Single</option>
                   <option value="Married">Married</option>
@@ -584,7 +584,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="student@example.com"
-                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
               <div>
@@ -597,7 +597,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.mobileNumber}
                   onChange={handleInputChange}
                   placeholder="+1 (555) 012-3456"
-                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
             </div>
@@ -613,7 +613,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.addressStreet}
                   onChange={handleInputChange}
                   placeholder="e.g. 142 Emerald Boulevard, Apt 4B"
-                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
 
@@ -628,7 +628,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                     value={formData.addressCity}
                     onChange={handleInputChange}
                     placeholder="e.g. Highland Park"
-                    className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                    className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                   />
                 </div>
                 <div>
@@ -641,7 +641,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                     value={formData.addressProvince}
                     onChange={handleInputChange}
                     placeholder="e.g. Metro State"
-                    className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                    className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                   />
                 </div>
                 <div>
@@ -654,7 +654,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                     value={formData.addressPostalCode}
                     onChange={handleInputChange}
                     placeholder="e.g. 90042"
-                    className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                    className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                   />
                 </div>
               </div>
@@ -683,7 +683,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   name="applicantType"
                   value={formData.applicantType}
                   onChange={handleInputChange}
-                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 >
                   <option value="FRESHMAN">New Incoming Freshman</option>
                   <option value="TRANSFEREE">Transferee from Other Institution</option>
@@ -775,7 +775,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                     value={formData.previousSchool}
                     onChange={handleInputChange}
                     placeholder="e.g. North Valley Science High School"
-                    className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                    className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                   />
                 </div>
                 <div>
@@ -788,7 +788,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                     value={formData.previousGpa}
                     onChange={handleInputChange}
                     placeholder="e.g. 92.5 or 3.8"
-                    className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                    className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                   />
                 </div>
               </div>
@@ -819,7 +819,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.emergencyContactName}
                   onChange={handleInputChange}
                   placeholder="e.g. Maria Teresa Reyes"
-                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
 
@@ -833,7 +833,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.emergencyContactRelationship}
                   onChange={handleInputChange}
                   placeholder="e.g. Mother, Father, Guardian"
-                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
 
@@ -847,7 +847,7 @@ export const EnrollmentWizard: React.FC<EnrollmentWizardProps> = ({
                   value={formData.emergencyContactPhone}
                   onChange={handleInputChange}
                   placeholder="+1 (555) 987-6543"
-                  className="w-full px-3.5 py-2.5 bg-[#EBE3D5] border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
+                  className="w-full px-3.5 py-2.5 bg-white border border-[#D8CEBE] text-sm text-[#261F18] placeholder-[#A89885] focus:outline-none focus:border-[#D97706] focus:ring-1 focus:ring-[#D97706]"
                 />
               </div>
             </div>

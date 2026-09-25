@@ -435,7 +435,7 @@ export const PaymentCheckoutModal: React.FC<PaymentCheckoutModalProps> = ({
                     type="text"
                     value={payerName}
                     onChange={(e) => setPayerName(e.target.value)}
-                    className="w-full px-3 py-2 bg-[#EBE3D5] border border-[#D8CEBE] text-xs text-[#261F18] focus:outline-none focus:border-[#D97706]"
+                    className="w-full px-3 py-2 bg-white border border-[#D8CEBE] text-xs text-[#261F18] focus:outline-none focus:border-[#D97706]"
                   />
                 </div>
                 <div>
@@ -446,7 +446,7 @@ export const PaymentCheckoutModal: React.FC<PaymentCheckoutModalProps> = ({
                     type="email"
                     value={payerEmail}
                     onChange={(e) => setPayerEmail(e.target.value)}
-                    className="w-full px-3 py-2 bg-[#EBE3D5] border border-[#D8CEBE] text-xs text-[#261F18] focus:outline-none focus:border-[#D97706]"
+                    className="w-full px-3 py-2 bg-white border border-[#D8CEBE] text-xs text-[#261F18] focus:outline-none focus:border-[#D97706]"
                   />
                 </div>
                 <div>
@@ -458,7 +458,7 @@ export const PaymentCheckoutModal: React.FC<PaymentCheckoutModalProps> = ({
                     value={payerMobile}
                     onChange={(e) => setPayerMobile(e.target.value)}
                     placeholder="+63 917 000 0000"
-                    className="w-full px-3 py-2 bg-[#EBE3D5] border border-[#D8CEBE] text-xs text-[#261F18] focus:outline-none focus:border-[#D97706]"
+                    className="w-full px-3 py-2 bg-white border border-[#D8CEBE] text-xs text-[#261F18] focus:outline-none focus:border-[#D97706]"
                   />
                 </div>
               </div>
