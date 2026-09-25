@@ -36,6 +36,7 @@
     "tests",
     "vite.config.ts",
     "server.ts",
-    "theme-update.js"
+    "theme-update.js",
+    "prisma"
   ]
 }
