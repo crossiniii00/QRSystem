@@ -30,5 +30,12 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "src.old",
+    "tests",
+    "vite.config.ts",
+    "server.ts",
+    "theme-update.js"
+  ]
 }
