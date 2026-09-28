@@ -87,7 +87,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const counts = stats?.counts || {};
 
   return (
-    <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 space-y-6">
+    <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 space-y-6 animate-slide-up">
       {/* Top Banner */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#EBE3D5] p-6 border-2 border-[#D8CEBE] shadow-xs">
         <div>
@@ -112,82 +112,6 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             <Mail className="w-4 h-4 text-[#D97706]" />
             <span>Outbound Logs</span>
           </button>
-
-          <button
-            onClick={loadData}
-            className="px-3.5 py-2 bg-[#382B20] hover:bg-[#231A12] text-[#FFFBEB] border border-[#F59E0B] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-xs transition-colors cursor-pointer"
-          >
-            <RefreshCw className="w-3.5 h-3.5 text-[#F59E0B]" />
-            <span>Synchronize</span>
-          </button>
-        </div>
-      </div>
-
-      {/* KPI Metric Overview Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
-        <div className="bg-[#EBE3D5] p-4 border border-[#D8CEBE] shadow-xs">
-          <div className="flex items-center justify-between text-[#8A7968] mb-1">
-            <span className="text-[11px] font-bold uppercase tracking-wider">Total</span>
-            <Users className="w-4 h-4 text-[#8A7968]" />
-          </div>
-          <div className="text-2xl font-black text-[#261F18] font-mono tabular-nums">{stats?.totalApplications || 0}</div>
-          <p className="text-[10px] text-[#A89885] mt-0.5 uppercase">Registered</p>
-        </div>
-
-        <div className="bg-[#EBE3D5] p-4 border border-[#D8CEBE] shadow-xs">
-          <div className="flex items-center justify-between text-[#855D1E] mb-1">
-            <span className="text-[11px] font-bold uppercase tracking-wider">Submitted</span>
-            <Clock className="w-4 h-4 text-[#D97706]" />
-          </div>
-          <div className="text-2xl font-black text-[#855D1E] font-mono tabular-nums">{counts.SUBMITTED || 0}</div>
-          <p className="text-[10px] text-[#855D1E] mt-0.5 uppercase">Pending Intake</p>
-        </div>
-
-        <div className="bg-[#EBE3D5] p-4 border border-[#E8D4A2] bg-[#EBE3D5] shadow-xs">
-          <div className="flex items-center justify-between text-[#B45309] mb-1">
-            <span className="text-[11px] font-bold uppercase tracking-wider">In Review</span>
-            <FileText className="w-4 h-4 text-[#D97706]" />
-          </div>
-          <div className="text-2xl font-black text-[#B45309] font-mono tabular-nums">{counts.UNDER_REVIEW || 0}</div>
-          <p className="text-[10px] text-[#B45309] mt-0.5 uppercase">Under Audit</p>
-        </div>
-
-        <div className="bg-[#EBE3D5] p-4 border border-[#FED7AA] bg-[#FFFBF5] shadow-xs">
-          <div className="flex items-center justify-between text-[#C2410C] mb-1">
-            <span className="text-[11px] font-bold uppercase tracking-wider">Needs Rev.</span>
-            <AlertTriangle className="w-4 h-4 text-[#EA580C]" />
-          </div>
-          <div className="text-2xl font-black text-[#C2410C] font-mono tabular-nums">{counts.NEEDS_REVISION || 0}</div>
-          <p className="text-[10px] text-[#C2410C] mt-0.5 uppercase">Student Action</p>
-        </div>
-
-        <div className="bg-[#EBE3D5] p-4 border border-[#86EFAC] bg-[#F0FDF4] shadow-xs">
-          <div className="flex items-center justify-between text-[#166534] mb-1">
-            <span className="text-[11px] font-bold uppercase tracking-wider">Approved</span>
-            <CheckCircle className="w-4 h-4 text-[#15803D]" />
-          </div>
-          <div className="text-2xl font-black text-[#166534] font-mono tabular-nums">{counts.APPROVED || 0}</div>
-          <p className="text-[10px] text-[#15803D] mt-0.5 uppercase">Admitted</p>
-        </div>
-
-        <div className="bg-[#EBE3D5] p-4 border border-[#FCA5A5] bg-[#FEF2F2] shadow-xs">
-          <div className="flex items-center justify-between text-[#991B1B] mb-1">
-            <span className="text-[11px] font-bold uppercase tracking-wider">Rejected</span>
-            <XCircle className="w-4 h-4 text-[#DC2626]" />
-          </div>
-          <div className="text-2xl font-black text-[#991B1B] font-mono tabular-nums">{counts.REJECTED || 0}</div>
-          <p className="text-[10px] text-[#991B1B] mt-0.5 uppercase">Ineligible</p>
-        </div>
-
-        <div className="bg-[#EBE3D5] p-4 border border-[#D8CEBE] shadow-xs col-span-2 sm:col-span-1">
-          <div className="flex items-center justify-between text-[#382B20] mb-1">
-            <span className="text-[11px] font-bold uppercase tracking-wider">QR Scans</span>
-            <QrCode className="w-4 h-4 text-[#D97706]" />
-          </div>
-          <div className="text-2xl font-black text-[#382B20] font-mono tabular-nums">{stats?.totalScans || 0}</div>
-          <p className="text-[10px] text-[#7A6A59] mt-0.5 uppercase">
-            {stats?.activeCampaignsCount || 0} Campaigns
-          </p>
         </div>
       </div>
 
@@ -214,7 +138,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
           }`}
         >
           <CreditCard className={`w-4 h-4 ${activeSubTab === 'payments' ? 'text-[#D97706]' : 'text-[#8A7968]'}`} />
-          <span>Dragonpay & Collections</span>
+          <span>PayMongo & Collections</span>
         </button>
 
         <button
@@ -256,7 +180,47 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
       {/* SUBTAB 1: Applications Data Table */}
       {activeSubTab === 'applications' && (
-        <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] shadow-xs space-y-4 p-5">
+        <div className="space-y-4">
+          {/* KPI Metric Overview Cards */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div className="bg-[#EBE3D5] p-4 border border-[#D8CEBE] shadow-xs">
+              <div className="flex items-center justify-between text-[#8A7968] mb-1">
+                <span className="text-[11px] font-bold uppercase tracking-wider">Total</span>
+                <Users className="w-4 h-4 text-[#8A7968]" />
+              </div>
+              <div className="text-2xl font-black text-[#261F18] font-mono tabular-nums">{stats?.totalApplications || 0}</div>
+              <p className="text-[10px] text-[#A89885] mt-0.5 uppercase">All Apps</p>
+            </div>
+
+            <div className="bg-[#EBE3D5] p-4 border border-[#D8CEBE] shadow-xs">
+              <div className="flex items-center justify-between text-[#855D1E] mb-1">
+                <span className="text-[11px] font-bold uppercase tracking-wider">New</span>
+                <Clock className="w-4 h-4 text-[#D97706]" />
+              </div>
+              <div className="text-2xl font-black text-[#855D1E] font-mono tabular-nums">{counts.SUBMITTED || 0}</div>
+              <p className="text-[10px] text-[#855D1E] mt-0.5 uppercase">To Review</p>
+            </div>
+
+            <div className="bg-[#EBE3D5] p-4 border border-[#FED7AA] bg-[#FFFBF5] shadow-xs">
+              <div className="flex items-center justify-between text-[#C2410C] mb-1">
+                <span className="text-[11px] font-bold uppercase tracking-wider">Incomplete</span>
+                <AlertTriangle className="w-4 h-4 text-[#EA580C]" />
+              </div>
+              <div className="text-2xl font-black text-[#C2410C] font-mono tabular-nums">{counts.NEEDS_REVISION || 0}</div>
+              <p className="text-[10px] text-[#C2410C] mt-0.5 uppercase">Needs Fix</p>
+            </div>
+
+            <div className="bg-[#EBE3D5] p-4 border border-[#86EFAC] bg-[#F0FDF4] shadow-xs">
+              <div className="flex items-center justify-between text-[#166534] mb-1">
+                <span className="text-[11px] font-bold uppercase tracking-wider">Accepted</span>
+                <CheckCircle className="w-4 h-4 text-[#15803D]" />
+              </div>
+              <div className="text-2xl font-black text-[#166534] font-mono tabular-nums">{counts.APPROVED || 0}</div>
+              <p className="text-[10px] text-[#15803D] mt-0.5 uppercase">Admitted</p>
+            </div>
+          </div>
+
+          <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] shadow-xs space-y-4 p-5">
           {/* Table Filters & Search */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="relative flex-1 max-w-md">
@@ -350,6 +314,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
             </table>
           </div>
         </div>
+        </div>
       )}
 
       {/* SUBTAB 2: Dragonpay & Fee Collections */}
@@ -357,7 +322,12 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         <AdminPaymentsTab adminToken={token} adminRole={user.role} />
       )}
 
-      {/* SUBTAB 3: QR Campaigns Manager */}
+      {/* SUBTAB 3: Banking & Depository */}
+      {activeSubTab === 'banking' && (
+        <AdminBankingTab sessionToken={token} />
+      )}
+
+      {/* SUBTAB 4: QR Campaigns Manager */}
       {activeSubTab === 'campaigns' && (
         <QRCampaignManager adminToken={token} adminRole={user.role} />
       )}

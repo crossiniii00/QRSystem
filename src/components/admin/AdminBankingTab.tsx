@@ -63,6 +63,20 @@ const ACCOUNT_TYPE_LABELS: Record<BankAccountType, { label: string; color: strin
   },
 };
 
+const BANK_BRANDING: Record<string, { icon: React.ReactNode; bg: string; text: string; label: string }> = {
+  'BDO Unibank, Inc.': { icon: <Building2 className="w-5 h-5" />, bg: 'bg-[#0033A0]', text: 'text-white', label: 'BDO' },
+  'Bank of the Philippine Islands (BPI)': { icon: <Landmark className="w-5 h-5" />, bg: 'bg-[#B11116]', text: 'text-white', label: 'BPI' },
+  'Land Bank of the Philippines': { icon: <Landmark className="w-5 h-5" />, bg: 'bg-[#005A32]', text: 'text-[#F5A623]', label: 'LBP' },
+  'Metropolitan Bank & Trust Company (Metrobank)': { icon: <Building2 className="w-5 h-5" />, bg: 'bg-[#0038A8]', text: 'text-white', label: 'MBTC' },
+  'Security Bank Corporation': { icon: <ShieldCheck className="w-5 h-5" />, bg: 'bg-[#00529C]', text: 'text-white', label: 'SBC' },
+  'Rizal Commercial Banking Corporation (RCBC)': { icon: <Building2 className="w-5 h-5" />, bg: 'bg-[#003E7E]', text: 'text-white', label: 'RCBC' },
+  'Philippine National Bank (PNB)': { icon: <Building2 className="w-5 h-5" />, bg: 'bg-[#0038A8]', text: 'text-[#F5A623]', label: 'PNB' },
+  'Union Bank of the Philippines': { icon: <Building2 className="w-5 h-5" />, bg: 'bg-[#ED6A22]', text: 'text-white', label: 'UBP' },
+  'GCash Enterprise Merchant QR': { icon: <Zap className="w-5 h-5" />, bg: 'bg-[#00529B]', text: 'text-white', label: 'GCASH' },
+  'Maya Business': { icon: <Zap className="w-5 h-5" />, bg: 'bg-[#111111]', text: 'text-[#C1FF00]', label: 'MAYA' },
+  'Other / Custom Bank': { icon: <CreditCard className="w-5 h-5" />, bg: 'bg-[#EBE3D5]', text: 'text-[#855D1E]', label: 'BNK' },
+};
+
 export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }) => {
   const [accounts, setAccounts] = useState<BankAccount[]>([]);
   const [gatewayConfig, setGatewayConfig] = useState<SettlementGatewayConfig | null>(null);
@@ -378,11 +392,11 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
           <div className="flex items-center gap-2">
             <Landmark className="w-5 h-5 text-[#855D1E]" />
             <h2 className="text-base font-bold text-[#261F18] uppercase tracking-wide">
-              Institutional Depository Accounts & Settlement Routing
+              School Bank Accounts & Payments
             </h2>
           </div>
           <p className="text-xs text-[#7A6A59] mt-1 max-w-2xl leading-relaxed">
-            Manage official school bank accounts where student payments, tuition, downpayments, and Dragonpay automated settlement sweeps are credited.
+            Manage the bank accounts where student payments and Dragonpay transfers are sent.
           </p>
         </div>
 
@@ -402,7 +416,7 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
             className="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-[#EBE3D5] border border-[#D8CEBE] text-[#261F18] hover:bg-[#FAF6EE] hover:border-[#D97706] transition-colors flex items-center gap-1.5 cursor-pointer"
           >
             <Settings className="w-3.5 h-3.5 text-[#D97706]" />
-            <span>Settlement Config</span>
+            <span>Payment Settings</span>
           </button>
 
           <button
@@ -420,19 +434,19 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
         {/* KPI 1 */}
         <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] p-4 shadow-xs">
           <div className="flex items-center justify-between text-[#7A6A59] text-xs font-bold uppercase tracking-wider">
-            <span>Active Accounts</span>
+            <span>Active Banks</span>
             <Building2 className="w-4 h-4 text-[#855D1E]" />
           </div>
           <div className="mt-2 text-2xl font-black font-mono text-[#261F18]">
             {accounts.filter((a) => a.status === 'ACTIVE').length} / {accounts.length}
           </div>
-          <p className="text-[11px] text-[#8A7968] mt-1">Verified depository endpoints</p>
+          <p className="text-[11px] text-[#8A7968] mt-1">Accounts receiving money</p>
         </div>
 
         {/* KPI 2 */}
         <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] p-4 shadow-xs">
           <div className="flex items-center justify-between text-[#7A6A59] text-xs font-bold uppercase tracking-wider">
-            <span>Primary Payout Target</span>
+            <span>Main Bank Account</span>
             <ShieldCheck className="w-4 h-4 text-[#16A34A]" />
           </div>
           <div className="mt-2 text-sm font-bold text-[#261F18] truncate">
@@ -443,22 +457,10 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
           </p>
         </div>
 
-        {/* KPI 3 */}
-        <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] p-4 shadow-xs">
-          <div className="flex items-center justify-between text-[#7A6A59] text-xs font-bold uppercase tracking-wider">
-            <span>Gateway Sweep Cadence</span>
-            <Zap className="w-4 h-4 text-[#D97706]" />
-          </div>
-          <div className="mt-2 text-sm font-black font-mono text-[#261F18] uppercase">
-            {gatewayConfig?.autoSettlementFrequency || 'DAILY'} (18:00 PHT)
-          </div>
-          <p className="text-[11px] text-[#8A7968] mt-1">Dragonpay automated merchant payout</p>
-        </div>
-
         {/* KPI 4 */}
         <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] p-4 shadow-xs">
           <div className="flex items-center justify-between text-[#7A6A59] text-xs font-bold uppercase tracking-wider">
-            <span>Merchant Gateway ID</span>
+            <span>Dragonpay Account ID</span>
             <CreditCard className="w-4 h-4 text-[#3B82F6]" />
           </div>
           <div className="mt-2 text-xs font-mono font-bold text-[#261F18] truncate">
@@ -470,49 +472,17 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
         </div>
       </div>
 
-      {/* Settlement Sweep Trigger Card */}
-      <div className="bg-[#FAF6EE] border-2 border-[#E5D7BE] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div className="flex items-start gap-3">
-          <div className="p-2 bg-[#EBE3D5] border border-[#D8CEBE] text-[#855D1E] shrink-0">
-            <Zap className="w-5 h-5 text-[#D97706]" />
-          </div>
-          <div>
-            <h4 className="text-xs font-bold uppercase text-[#261F18] tracking-wider">
-              Automated Dragonpay Settlement & Depository Sweeper
-            </h4>
-            <p className="text-xs text-[#7A6A59] mt-0.5">
-              Online fees collected through Dragonpay are credited to the primary depository account (
-              <strong>{primarySettlementAccount?.bankName}</strong>).
-              {gatewayConfig?.lastSettlementAt && (
-                <span className="ml-1 text-[11px] font-mono text-[#855D1E]">
-                  Last swept: {new Date(gatewayConfig.lastSettlementAt).toLocaleString()}
-                </span>
-              )}
-            </p>
-          </div>
-        </div>
-
-        <button
-          onClick={handleSimulateSettlement}
-          disabled={isSaving}
-          className="px-4 py-2 text-xs font-bold uppercase tracking-wider bg-[#EBE3D5] border-2 border-[#D8CEBE] text-[#261F18] hover:border-[#D97706] hover:bg-[#FAF4EA] transition-colors flex items-center gap-1.5 shrink-0 cursor-pointer disabled:opacity-50"
-        >
-          {isSaving ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RefreshCw className="w-3.5 h-3.5 text-[#D97706]" />}
-          <span>Run Immediate Settlement Sweep</span>
-        </button>
-      </div>
-
       {/* Main Depository Accounts Cards */}
       <div className="space-y-4">
         <div className="flex items-center justify-between border-b border-[#D8CEBE] pb-2">
           <h3 className="text-xs font-bold uppercase tracking-wider text-[#261F18] flex items-center gap-2">
-            <span>Configured Depository Bank Accounts</span>
+            <span>Bank Accounts</span>
             <span className="px-2 py-0.5 bg-[#FAF4EA] text-[#855D1E] border border-[#E5D7BE] font-mono text-[11px]">
               {accounts.length} Total
             </span>
           </h3>
           <span className="text-xs text-[#7A6A59]">
-            Active accounts automatically populate student payment instructions
+            These accounts are shown to students when they pay.
           </span>
         </div>
 
@@ -559,9 +529,15 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                   {/* Card Header */}
                   <div className="p-4 border-b border-[#EBE3D5] bg-[#FAF8F5] flex items-start justify-between gap-3">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-9 h-9 bg-[#EBE3D5] border border-[#D8CEBE] flex items-center justify-center text-[#855D1E] shrink-0 font-black text-sm">
-                        {acc.bankName.slice(0, 3).toUpperCase()}
-                      </div>
+                      {(() => {
+                        const brand = BANK_BRANDING[acc.bankName] || BANK_BRANDING['Other / Custom Bank'];
+                        return (
+                          <div className={`w-11 h-11 border border-[#D8CEBE] flex flex-col items-center justify-center shrink-0 shadow-xs ${brand.bg} ${brand.text}`}>
+                            {brand.icon}
+                            <span className="text-[8px] font-black mt-0.5 tracking-tighter">{brand.label}</span>
+                          </div>
+                        );
+                      })()}
                       <div>
                         <h4 className="font-bold text-sm text-[#261F18] leading-snug">{acc.bankName}</h4>
                         <div className="flex items-center gap-1.5 mt-0.5">
@@ -711,18 +687,50 @@ export const AdminBankingTab: React.FC<AdminBankingTabProps> = ({ sessionToken }
                 <label className="block font-bold text-[#261F18] uppercase tracking-wider mb-1">
                   Bank / E-Wallet Institution <span className="text-red-500">*</span>
                 </label>
-                <select
-                  value={formData.bankName}
-                  onChange={(e) => setFormData({ ...formData, bankName: e.target.value })}
-                  className="w-full p-2.5 bg-white border border-[#D8CEBE] text-[#261F18] focus:border-[#D97706] focus:outline-none"
-                  required
-                >
-                  {COMMON_PH_BANKS.map((b) => (
-                    <option key={b} value={b}>
-                      {b}
-                    </option>
-                  ))}
-                </select>
+                <div className="relative">
+                  <div
+                    className="w-full p-2.5 bg-white border border-[#D8CEBE] text-[#261F18] flex items-center justify-between cursor-pointer focus-within:border-[#D97706]"
+                    onClick={() => {
+                      const dropdown = document.getElementById('bank-dropdown');
+                      if (dropdown) dropdown.classList.toggle('hidden');
+                    }}
+                  >
+                    <div className="flex items-center gap-2">
+                      {(() => {
+                        const brand = BANK_BRANDING[formData.bankName] || BANK_BRANDING['Other / Custom Bank'];
+                        return (
+                          <div className={`w-6 h-6 flex items-center justify-center shrink-0 ${brand.bg} ${brand.text}`}>
+                            <div className="scale-75">{brand.icon}</div>
+                          </div>
+                        );
+                      })()}
+                      <span>{formData.bankName}</span>
+                    </div>
+                    <span className="text-[10px]">▼</span>
+                  </div>
+                  
+                  {/* Custom Dropdown List */}
+                  <div id="bank-dropdown" className="hidden absolute z-50 w-full mt-1 bg-white border border-[#D8CEBE] shadow-xl max-h-60 overflow-y-auto">
+                    {COMMON_PH_BANKS.map((b) => {
+                      const brand = BANK_BRANDING[b] || BANK_BRANDING['Other / Custom Bank'];
+                      return (
+                        <div
+                          key={b}
+                          className="flex items-center gap-3 p-2 hover:bg-[#FAF6EE] cursor-pointer"
+                          onClick={() => {
+                            setFormData({ ...formData, bankName: b });
+                            document.getElementById('bank-dropdown')?.classList.add('hidden');
+                          }}
+                        >
+                          <div className={`w-6 h-6 flex items-center justify-center shrink-0 ${brand.bg} ${brand.text}`}>
+                            <div className="scale-75">{brand.icon}</div>
+                          </div>
+                          <span className="text-sm text-[#261F18] font-medium">{b}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
 
               {formData.bankName === 'Other / Custom Bank' && (

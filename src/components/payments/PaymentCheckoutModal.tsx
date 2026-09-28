@@ -104,15 +104,15 @@ export const PaymentCheckoutModal: React.FC<PaymentCheckoutModalProps> = ({
       });
 
       const json = await res.json();
-      if (!json.success) {
+      if (!json.success || !json.data.paymentUrl) {
         throw new Error(json.error?.message || 'Payment initiation failed.');
       }
 
-      setCompletedTx(json.data);
-      onPaymentSuccess(json.data);
+      // Redirect to real Dragonpay gateway
+      window.location.href = json.data.paymentUrl;
+      
     } catch (err: any) {
       setError(err.message || 'Payment failed. Please retry.');
-    } finally {
       setSubmitting(false);
     }
   };
@@ -194,10 +194,6 @@ export const PaymentCheckoutModal: React.FC<PaymentCheckoutModalProps> = ({
                   <span className="font-semibold text-[#261F18]">{completedTx.description}</span>
                 </div>
                 <div className="flex justify-between border-b border-[#E5D7BE] pb-2">
-                  <span className="text-[#7A6A59] uppercase font-bold text-[10px]">Payment Channel</span>
-                  <span className="font-bold text-[#2E2016] uppercase">{completedTx.channel.replace(/_/g, ' ')}</span>
-                </div>
-                <div className="flex justify-between border-b border-[#E5D7BE] pb-2">
                   <span className="text-[#7A6A59] uppercase font-bold text-[10px]">Payer</span>
                   <span className="text-[#261F18]">{completedTx.payerName} ({completedTx.payerEmail})</span>
                 </div>
@@ -219,7 +215,7 @@ export const PaymentCheckoutModal: React.FC<PaymentCheckoutModalProps> = ({
             </div>
           ) : (
             /* CHECKOUT FORM VIEW */
-            <>
+            <div className="space-y-6">
               {/* Order Assessment Summary Card */}
               <div className="p-4 bg-[#FAF6EE] border-2 border-[#E5D7BE] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
@@ -240,193 +236,15 @@ export const PaymentCheckoutModal: React.FC<PaymentCheckoutModalProps> = ({
                 </div>
               </div>
 
-              {/* Step 1: Channel Selector */}
-              <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-[#382B20] mb-2">
-                  Select Payment Option (Dragonpay Verified)
-                </label>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                  {/* GCash */}
-                  <div
-                    onClick={() => setChannel('GCASH')}
-                    className={`p-3 border-2 cursor-pointer transition-all flex items-center gap-3 ${
-                      channel === 'GCASH'
-                        ? 'border-[#D97706] bg-[#EBE3D5] shadow-xs'
-                        : 'border-[#D8CEBE] bg-[#EBE3D5] hover:border-[#B8A183] hover:bg-[#FAF8F5]'
-                    }`}
-                  >
-                    <Smartphone className="w-5 h-5 text-[#007DFE] shrink-0" />
-                    <div>
-                      <div className="text-xs font-bold text-[#261F18] uppercase">GCash / QR Ph</div>
-                      <div className="text-[10px] text-[#7A6A59]">Instant mobile e-wallet</div>
-                    </div>
-                  </div>
-
-                  {/* Maya */}
-                  <div
-                    onClick={() => setChannel('MAYA')}
-                    className={`p-3 border-2 cursor-pointer transition-all flex items-center gap-3 ${
-                      channel === 'MAYA'
-                        ? 'border-[#D97706] bg-[#EBE3D5] shadow-xs'
-                        : 'border-[#D8CEBE] bg-[#EBE3D5] hover:border-[#B8A183] hover:bg-[#FAF8F5]'
-                    }`}
-                  >
-                    <Smartphone className="w-5 h-5 text-[#00D632] shrink-0" />
-                    <div>
-                      <div className="text-xs font-bold text-[#261F18] uppercase">Maya Wallet</div>
-                      <div className="text-[10px] text-[#7A6A59]">Instant mobile e-wallet</div>
-                    </div>
-                  </div>
-
-                  {/* Online Banking */}
-                  <div
-                    onClick={() => setChannel('DRAGONPAY_ONLINE_BANKING')}
-                    className={`p-3 border-2 cursor-pointer transition-all flex items-center gap-3 ${
-                      channel === 'DRAGONPAY_ONLINE_BANKING'
-                        ? 'border-[#D97706] bg-[#EBE3D5] shadow-xs'
-                        : 'border-[#D8CEBE] bg-[#EBE3D5] hover:border-[#B8A183] hover:bg-[#FAF8F5]'
-                    }`}
-                  >
-                    <Building2 className="w-5 h-5 text-[#B45309] shrink-0" />
-                    <div>
-                      <div className="text-xs font-bold text-[#261F18] uppercase">Online Banking</div>
-                      <div className="text-[10px] text-[#7A6A59]">BDO, BPI, UnionBank, Metrobank</div>
-                    </div>
-                  </div>
-
-                  {/* 7-Eleven OTC */}
-                  <div
-                    onClick={() => setChannel('DRAGONPAY_7ELEVEN')}
-                    className={`p-3 border-2 cursor-pointer transition-all flex items-center gap-3 ${
-                      channel === 'DRAGONPAY_7ELEVEN'
-                        ? 'border-[#D97706] bg-[#EBE3D5] shadow-xs'
-                        : 'border-[#D8CEBE] bg-[#EBE3D5] hover:border-[#B8A183] hover:bg-[#FAF8F5]'
-                    }`}
-                  >
-                    <Store className="w-5 h-5 text-[#EA580C] shrink-0" />
-                    <div>
-                      <div className="text-xs font-bold text-[#261F18] uppercase">7-Eleven CLiQQ</div>
-                      <div className="text-[10px] text-[#7A6A59]">Cash payment barcode</div>
-                    </div>
-                  </div>
-
-                  {/* Over the Counter Bayad / Cebuana */}
-                  <div
-                    onClick={() => setChannel('DRAGONPAY_OTC_NON_BANK')}
-                    className={`p-3 border-2 cursor-pointer transition-all flex items-center gap-3 ${
-                      channel === 'DRAGONPAY_OTC_NON_BANK'
-                        ? 'border-[#D97706] bg-[#EBE3D5] shadow-xs'
-                        : 'border-[#D8CEBE] bg-[#EBE3D5] hover:border-[#B8A183] hover:bg-[#FAF8F5]'
-                    }`}
-                  >
-                    <Store className="w-5 h-5 text-[#CA8A04] shrink-0" />
-                    <div>
-                      <div className="text-xs font-bold text-[#261F18] uppercase">Bayad / Cebuana</div>
-                      <div className="text-[10px] text-[#7A6A59]">MLhuillier, SM Bills</div>
-                    </div>
-                  </div>
-
-                  {/* Bank Deposit Slip Upload */}
-                  <div
-                    onClick={() => setChannel('BANK_TRANSFER_MANUAL')}
-                    className={`p-3 border-2 cursor-pointer transition-all flex items-center gap-3 ${
-                      channel === 'BANK_TRANSFER_MANUAL'
-                        ? 'border-[#D97706] bg-[#EBE3D5] shadow-xs'
-                        : 'border-[#D8CEBE] bg-[#EBE3D5] hover:border-[#B8A183] hover:bg-[#FAF8F5]'
-                    }`}
-                  >
-                    <Upload className="w-5 h-5 text-[#855D1E] shrink-0" />
-                    <div>
-                      <div className="text-xs font-bold text-[#261F18] uppercase">Bank Slip Upload</div>
-                      <div className="text-[10px] text-[#7A6A59]">Teller deposit / wire receipt</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Dynamic Instructions per Channel */}
-              <div className="p-4 border border-[#D8CEBE] bg-[#FAF8F5] space-y-3">
-                {(channel === 'GCASH' || channel === 'MAYA') && (
-                  <div className="flex flex-col sm:flex-row items-center gap-4 text-left">
-                    {qrPhDataUrl && (
-                      <div className="p-2 border border-[#D8CEBE] bg-[#EBE3D5] shrink-0">
-                        <img src={qrPhDataUrl} alt="QR Ph" className="w-32 h-32" />
-                        <div className="text-[10px] font-mono font-bold text-center text-[#855D1E] mt-1">QR Ph Verified</div>
-                      </div>
-                    )}
-                    <div className="space-y-1 text-xs">
-                      <h4 className="font-bold text-[#261F18] uppercase">Instant E-Wallet Checkout</h4>
-                      <p className="text-[#665646]">
-                        Scan the National Standard <strong>QR Ph code</strong> with your {channel} application, or click the simulated instant settlement button below.
-                      </p>
-                      <p className="text-[11px] text-[#8A7968] font-mono">
-                        Merchant: St. Francis College Admissions · Fee: ₱{amount}.00
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {channel === 'DRAGONPAY_ONLINE_BANKING' && (
-                  <div className="text-xs space-y-1.5 text-left text-[#5C4D3E]">
-                    <h4 className="font-bold text-[#261F18] uppercase">Online Banking Instructions</h4>
-                    <p>Dragonpay supports direct debit with BDO, BPI Express Online, Metrobank Direct, UnionBank, RCBC, and Landbank.</p>
-                    <p className="font-mono text-[11px] bg-[#EBE3D5] p-2 border border-[#D8CEBE]">
-                      School Biller Name: <strong>ST. FRANCIS COLLEGE ADMISSIONS</strong><br />
-                      Reference Code: <strong>{referenceNumber}</strong>
-                    </p>
-                  </div>
-                )}
-
-                {channel === 'DRAGONPAY_7ELEVEN' && (
-                  <div className="text-xs space-y-1.5 text-left text-[#5C4D3E]">
-                    <h4 className="font-bold text-[#261F18] uppercase">7-Eleven CLiQQ Machine / App</h4>
-                    <p>1. Go to any 7-Eleven CLiQQ kiosk or open your CLiQQ app.</p>
-                    <p>2. Select Bills Payment → Dragonpay → Enter your student reference: <strong>{referenceNumber}</strong>.</p>
-                    <p>3. Present barcode slip to cashier and settle exactly <strong>₱{amount}.00</strong>.</p>
-                  </div>
-                )}
-
-                {channel === 'DRAGONPAY_OTC_NON_BANK' && (
-                  <div className="text-xs space-y-1.5 text-left text-[#5C4D3E]">
-                    <h4 className="font-bold text-[#261F18] uppercase">Over-the-Counter Remittance & Bills Centers</h4>
-                    <p>Settle payment at any Bayad Center, Cebuana Lhuillier, M Lhuillier, SM Department Store Bills Counter, or Robinsons Department Store.</p>
-                    <p className="font-mono text-[11px] bg-[#EBE3D5] p-2 border border-[#D8CEBE]">
-                      Partner: DRAGONPAY / ST. FRANCIS COLLEGE · Ref: <strong>{referenceNumber}</strong>
-                    </p>
-                  </div>
-                )}
-
-                {channel === 'BANK_TRANSFER_MANUAL' && (
-                  <div className="text-xs space-y-3 text-left">
-                    <div className="p-3 bg-[#EBE3D5] border border-[#D8CEBE] space-y-1 text-[#5C4D3E]">
-                      <h4 className="font-bold text-[#261F18] uppercase">Institutional Depository Account</h4>
-                      <p><strong>Bank:</strong> Bank of the Philippine Islands (BPI)</p>
-                      <p><strong>Account Name:</strong> St. Francis College Inc.</p>
-                      <p><strong>Account Number:</strong> 0042-8921-55</p>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-bold uppercase tracking-wider text-[#382B20] mb-1">
-                        Attach Proof of Deposit (JPG, PNG, or PDF) <span className="text-[#B45309]">*</span>
-                      </label>
-                      <input
-                        type="file"
-                        accept="image/*,application/pdf"
-                        onChange={handleDepositFileChange}
-                        className="text-xs text-[#261F18] border border-[#D8CEBE] p-2 w-full bg-[#EBE3D5] cursor-pointer"
-                      />
-                      {depositSlipFile && (
-                        <p className="text-[11px] text-[#166534] font-bold mt-1">
-                          ✓ File selected: {depositSlipFile.name} ({(depositSlipFile.size / 1024).toFixed(0)} KB)
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                )}
+              <div className="p-4 border border-[#D8CEBE] bg-[#FAF8F5]">
+                <h4 className="font-bold text-[#261F18] uppercase text-sm mb-2">PayMongo Secure Checkout</h4>
+                <p className="text-xs text-[#665646]">
+                  You will be redirected to the secure PayMongo gateway where you can choose to pay via <strong>GCash, Maya, GrabPay, Credit/Debit Card, or InstaPay (QR Ph)</strong>.
+                </p>
               </div>
 
               {/* Payer Information Form */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-left">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-[#382B20] mb-1">
                     Payer Name <span className="text-[#B45309]">*</span>
@@ -449,24 +267,12 @@ export const PaymentCheckoutModal: React.FC<PaymentCheckoutModalProps> = ({
                     className="w-full px-3 py-2 bg-white border border-[#D8CEBE] text-xs text-[#261F18] focus:outline-none focus:border-[#D97706]"
                   />
                 </div>
-                <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-[#382B20] mb-1">
-                    Contact Mobile
-                  </label>
-                  <input
-                    type="tel"
-                    value={payerMobile}
-                    onChange={(e) => setPayerMobile(e.target.value)}
-                    placeholder="+63 917 000 0000"
-                    className="w-full px-3 py-2 bg-white border border-[#D8CEBE] text-xs text-[#261F18] focus:outline-none focus:border-[#D97706]"
-                  />
-                </div>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-[#EBE3D5]">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-[#EBE3D5]">
                 <div className="text-[11px] text-[#7A6A59] text-left">
-                  Secured by 256-bit encryption · Dragonpay Partner Institution
+                  Secured by PayMongo Checkout
                 </div>
 
                 <div className="flex items-center gap-2 w-full sm:w-auto">
@@ -481,18 +287,18 @@ export const PaymentCheckoutModal: React.FC<PaymentCheckoutModalProps> = ({
                     type="button"
                     disabled={submitting}
                     onClick={handleProcessPayment}
-                    className="w-full sm:w-auto px-6 py-2.5 bg-[#2E2016] hover:bg-[#3D2B1E] text-white border border-[#D97706] text-xs font-bold uppercase tracking-wider shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                    className="w-full sm:w-auto px-6 py-2.5 bg-[#17C172] hover:bg-[#139E5C] text-white border border-[#0F804B] text-xs font-bold uppercase tracking-wider shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
                     {submitting ? (
-                      <Loader2 className="w-4 h-4 animate-spin text-[#F59E0B]" />
+                      <Loader2 className="w-4 h-4 animate-spin" />
                     ) : (
-                      <CreditCard className="w-4 h-4 text-[#F59E0B]" />
+                      <ExternalLink className="w-4 h-4" />
                     )}
-                    <span>Authorize ₱{amount.toLocaleString()}.00</span>
+                    <span>Proceed to PayMongo (₱{amount.toLocaleString()}.00)</span>
                   </button>
                 </div>
               </div>
-            </>
+            </div>
           )}
         </div>
       </div>

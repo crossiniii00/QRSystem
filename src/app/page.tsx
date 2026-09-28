@@ -7,6 +7,8 @@ import { Footer } from '@/components/common/Footer';
 import { Header } from '@/components/common/Header';
 import { ConfirmationScreen } from '@/components/student/ConfirmationScreen';
 import { EnrollmentWizard } from '@/components/student/EnrollmentWizard';
+import { LandingPage } from '@/components/student/LandingPage';
+import { LibraryPage } from '@/components/student/LibraryPage';
 import { StatusTracker } from '@/components/student/StatusTracker';
 
 interface SubmissionResult {
@@ -19,7 +21,7 @@ interface SubmissionResult {
 }
 
 export default function Page() {
-  const [activeTab, setActiveTab] = useState<'apply' | 'status' | 'admin'>('apply');
+  const [activeTab, setActiveTab] = useState<'home' | 'apply' | 'status' | 'admin' | 'library' | 'about' | 'academics'>('home');
   const [submissionResult, setSubmissionResult] = useState<SubmissionResult | null>(null);
 
   // Status tracker pre-population from URL or submission
@@ -39,15 +41,19 @@ export default function Page() {
     role: string;
   } | null>(null);
 
+  // Hydration state to avoid rendering issues
+  const [isClient, setIsClient] = useState(false);
+
   // Run localStorage access after initial render to avoid SSR hydration mismatch
   useEffect(() => {
+    setIsClient(true);
     const token = localStorage.getItem('school_admin_token');
     const userStr = localStorage.getItem('school_admin_user');
     if (token) setAdminToken(token);
     if (userStr) {
       try {
         setAdminUser(JSON.parse(userStr));
-      } catch (e) {}
+      } catch (e) { }
     }
   }, []);
 
@@ -61,8 +67,11 @@ export default function Page() {
 
     if (camp) {
       setDetectedCampaignCode(camp);
-      // Backend is not fully migrated to Next.js API routes yet, this will fail gracefully
-      fetch(`/api/campaigns/resolve?code=${encodeURIComponent(camp)}`)
+      fetch('/api/campaigns/track', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: camp }),
+      })
         .then((res) => res.json())
         .then((json) => {
           if (json.success) {
@@ -82,6 +91,10 @@ export default function Page() {
       setActiveTab('admin');
     }
   }, []);
+
+  const handleApplyNowClick = () => {
+    setActiveTab('apply');
+  };
 
   const handleAdminLoginSuccess = (
     token: string,
@@ -107,10 +120,12 @@ export default function Page() {
     setTrackerToken(result.accessToken);
   };
 
+  if (!isClient) return null;
+
   return (
     <div className="min-h-screen relative flex flex-col text-[#261F18] font-sans selection:bg-[#F59E0B] selection:text-[#261F18]">
       {/* Blurred Background Image */}
-      <div 
+      <div
         className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: 'url(/school-bg.jpg)' }}
       >
@@ -131,6 +146,14 @@ export default function Page() {
 
       {/* Main Content Viewport */}
       <main className="flex-1">
+        {/* PUBLIC TAB: Home Landing Page */}
+        {activeTab === 'home' && (
+          <LandingPage onBegin={handleApplyNowClick} />
+        )}
+
+        {/* PUBLIC TAB: Library */}
+        {activeTab === 'library' && <LibraryPage />}
+
         {/* PUBLIC TAB: Enrollment Wizard / Confirmation */}
         {activeTab === 'apply' && (
           <>
@@ -174,7 +197,6 @@ export default function Page() {
         )}
       </main>
 
-      {/* Institutional Footer */}
       <Footer />
     </div>
   );

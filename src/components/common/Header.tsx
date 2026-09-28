@@ -1,10 +1,12 @@
-import { GraduationCap, Lock, QrCode, Search, ShieldCheck } from 'lucide-react';
-import React from 'react';
+"use client";
+
+import { GraduationCap, Lock, Search, ShieldCheck, BookOpen, Library, ChevronRight } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
 import { APP_CONFIG } from '../../config/app.config';
 
 interface HeaderProps {
-  activeTab: 'apply' | 'status' | 'admin';
-  setActiveTab: (tab: 'apply' | 'status' | 'admin') => void;
+  activeTab: 'home' | 'apply' | 'status' | 'admin' | 'library' | 'about' | 'academics';
+  setActiveTab: (tab: 'home' | 'apply' | 'status' | 'admin' | 'library' | 'about' | 'academics') => void;
   adminUser: { fullName: string; role: string } | null;
   onLogout: () => void;
   activeCampaignName?: string;
@@ -17,115 +19,161 @@ export const Header: React.FC<HeaderProps> = ({
   onLogout,
   activeCampaignName,
 }) => {
-  return (
-    <header className="sticky top-0 z-40 bg-[#2E2016] border-b border-[#4A3525] shadow-md select-none">
-      {/* Top Office Gold Accent Bar */}
-      <div className="h-1 bg-gradient-to-r from-[#D97706] via-[#F59E0B] to-[#CA8A04] w-full" />
+  const [isPortalOpen, setIsPortalOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14">
-          {/* Brand Wordmark & Crest */}
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsPortalOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleNavClick = (sectionId: string) => {
+    setActiveTab('home');
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
+
+  return (
+    <header className="sticky top-0 z-40 bg-[#17100B] shadow-2xl select-none border-b-2 border-[#D97706]">
+      {/* Top micro-bar for alerts or campaigns */}
+      {activeCampaignName && (
+        <div className="bg-[#D97706] text-[#2E2016] text-[10px] font-black uppercase tracking-widest text-center py-1.5 flex items-center justify-center gap-2">
+          <span>Priority Admissions Enabled</span>
+          <span className="hidden sm:inline-block">— via {activeCampaignName}</span>
+        </div>
+      )}
+
+      {/* Main Header Tier */}
+      <div className="w-full">
+        <div className="max-w-6xl mx-auto flex items-center justify-between h-14 px-4 sm:px-6">
+          
+          {/* Brand Logo */}
           <div
-            className="flex items-center gap-3 cursor-pointer"
-            onClick={() => setActiveTab('apply')}
+            className="flex items-center gap-3 cursor-pointer group"
+            onClick={() => setActiveTab('home')}
           >
-            <div className="w-8 h-8 bg-[#3D2B1E] flex items-center justify-center text-[#FBBF24] border border-[#543E2C] shadow-xs">
-              <GraduationCap className="w-5 h-5 text-[#F59E0B]" />
+            <div className="w-8 h-8 bg-[#2E2016] flex items-center justify-center text-[#F59E0B] border border-[#543E2C] group-hover:bg-[#3D2B1E] transition-colors">
+              <GraduationCap className="w-5 h-5 text-[#D97706]" />
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-2">
-                <span className="font-black text-[#FAF6EE] tracking-tight text-sm sm:text-base uppercase">
+                <span className="font-serif font-black text-[#F8F6F2] tracking-wide text-lg uppercase group-hover:text-white transition-colors" style={{ fontFamily: 'var(--font-serif)' }}>
                   {APP_CONFIG.school.name}
                 </span>
-                <span className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-bold font-mono uppercase bg-[#453224] text-[#FDE047] border border-[#6B4F37]">
-                  AY {APP_CONFIG.school.academicYear}
-                </span>
               </div>
-              <span className="text-[11px] text-[#C9B9A6] hidden md:block">
-                Admissions & Enrollment Portal
-              </span>
             </div>
           </div>
 
-          {/* Microsoft-Style Tab Navigation in Brown Palette */}
-          <nav className="flex items-center h-full">
-            <button
-              onClick={() => setActiveTab('apply')}
-              className={`h-14 px-3 sm:px-4 text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors flex items-center gap-2 border-b-2 cursor-pointer ${
-                activeTab === 'apply'
-                  ? 'border-[#F59E0B] text-white bg-[#422F22]'
-                  : 'border-transparent text-[#C9B9A6] hover:text-white hover:bg-[#3D2B1E]'
-              }`}
+          {/* Nav Links */}
+          <nav className="hidden xl:flex items-center h-full text-[10px] font-bold uppercase tracking-widest text-[#F8F6F2] ml-8 mr-auto">
+            <button 
+              onClick={() => handleNavClick('about')} 
+              className="h-full px-5 flex items-center hover:bg-[#332318] border-b-2 border-transparent hover:border-[#D97706] transition-all"
             >
-              <QrCode className={`w-4 h-4 ${activeTab === 'apply' ? 'text-[#F59E0B]' : 'text-[#A89885]'}`} />
-              <span>Apply</span>
+              Overview
             </button>
-
-            <button
-              onClick={() => setActiveTab('status')}
-              className={`h-14 px-3 sm:px-4 text-xs sm:text-sm font-bold uppercase tracking-wider transition-colors flex items-center gap-2 border-b-2 cursor-pointer ${
-                activeTab === 'status'
-                  ? 'border-[#F59E0B] text-white bg-[#422F22]'
-                  : 'border-transparent text-[#C9B9A6] hover:text-white hover:bg-[#3D2B1E]'
-              }`}
+            <button 
+              onClick={() => handleNavClick('academics')} 
+              className="h-full px-5 flex items-center hover:bg-[#332318] border-b-2 border-transparent hover:border-[#D97706] transition-all"
             >
-              <Search className={`w-4 h-4 ${activeTab === 'status' ? 'text-[#F59E0B]' : 'text-[#A89885]'}`} />
-              <span>Check Status</span>
+              Academics
             </button>
-
-            <div className="h-6 w-px bg-[#543E2C] mx-2" />
-
-            {adminUser ? (
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setActiveTab('admin')}
-                  className={`h-9 px-3 text-xs font-semibold flex items-center gap-2 border transition-colors cursor-pointer ${
-                    activeTab === 'admin'
-                      ? 'bg-[#F59E0B] text-[#2E2016] border-[#F59E0B]'
-                      : 'bg-[#3D2B1E] text-[#FAF6EE] border-[#6B4F37] hover:bg-[#4E3726]'
-                  }`}
-                >
-                  <ShieldCheck className="w-4 h-4 text-[#F59E0B]" />
-                  <span className="hidden sm:inline">{adminUser.fullName.split(' ')[0]}</span>
-                  <span className="text-[10px] uppercase font-bold tracking-wider px-1 py-0.2 bg-[#F59E0B] text-[#2E2016]">
-                    {adminUser.role}
-                  </span>
-                </button>
-                <button
-                  onClick={onLogout}
-                  className="text-xs text-[#C9B9A6] hover:text-[#F87171] px-2 py-1 transition-colors cursor-pointer"
-                >
-                  Sign Out
-                </button>
-              </div>
-            ) : (
-              <button
-                onClick={() => setActiveTab('admin')}
-                className={`h-9 px-3 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border transition-colors cursor-pointer ${
-                  activeTab === 'admin'
-                    ? 'bg-[#F59E0B] text-[#2E2016] border-[#F59E0B]'
-                    : 'bg-[#3D2B1E] text-[#FDE047] border-[#6B4F37] hover:bg-[#4E3726] hover:border-[#F59E0B]'
-                }`}
-              >
-                <Lock className="w-3.5 h-3.5 text-[#F59E0B]" />
-                <span>Staff Portal</span>
-              </button>
-            )}
+            <button 
+              onClick={() => handleNavClick('campus-life')} 
+              className="h-full px-5 flex items-center hover:bg-[#332318] border-b-2 border-transparent hover:border-[#D97706] transition-all"
+            >
+              Campus Life
+            </button>
+            <button 
+              onClick={() => setActiveTab('library')} 
+              className="h-full px-5 flex items-center hover:bg-[#332318] border-b-2 border-transparent hover:border-[#D97706] transition-all"
+            >
+              Library
+            </button>
           </nav>
-        </div>
 
-        {/* QR Campaign Info Ribbon */}
-        {activeCampaignName && (
-          <div className="bg-[#FEF9C3] border-t border-b border-[#FDE047] px-4 py-1.5 text-xs text-[#713F12] flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-[#D97706]" />
-              <span>
-                Enrolling via QR Campaign: <strong>{activeCampaignName}</strong>
-              </span>
-            </div>
-            <span className="text-[11px] font-mono text-[#854D0E] uppercase">Campaign Tracking Active</span>
+          {/* Action Dropdown Button */}
+          <div className="relative h-full flex items-center" ref={dropdownRef}>
+            <button
+              onClick={() => setIsPortalOpen(!isPortalOpen)}
+              className="bg-[#D97706] hover:bg-[#F59E0B] text-[#17100B] h-9 px-6 font-black uppercase tracking-widest text-[10px] flex items-center gap-2 transition-all shadow-md"
+            >
+              Portals & Admissions
+            </button>
+            
+            {/* Dropdown Menu */}
+            {isPortalOpen && (
+              <div className="absolute top-14 right-0 w-64 bg-white border border-[#EBE7E0] shadow-2xl flex flex-col py-2 animate-in slide-in-from-top-2 duration-200">
+                <button
+                  onClick={() => { setActiveTab('apply'); setIsPortalOpen(false); }}
+                  className="px-6 py-4 flex items-center justify-between text-left hover:bg-[#FAF6EE] group transition-colors"
+                >
+                  <div className="flex flex-col">
+                    <span className="font-bold text-[#2E2016] uppercase text-xs tracking-wider">Enroll Now</span>
+                    <span className="text-[10px] text-[#8C7A68]">New student application</span>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-[#D97706] group-hover:translate-x-1 transition-transform" />
+                </button>
+                <button
+                  onClick={() => { setActiveTab('status'); setIsPortalOpen(false); }}
+                  className="px-6 py-4 flex items-center justify-between text-left hover:bg-[#FAF6EE] group transition-colors border-t border-[#F8F6F2]"
+                >
+                  <div className="flex flex-col">
+                    <span className="font-bold text-[#2E2016] uppercase text-xs tracking-wider">Check Status</span>
+                    <span className="text-[10px] text-[#8C7A68]">Track your application</span>
+                  </div>
+                  <Search className="w-4 h-4 text-[#D97706] group-hover:translate-x-1 transition-transform" />
+                </button>
+                
+                <div className="border-t-4 border-[#F8F6F2] my-1" />
+                
+                {adminUser ? (
+                  <div className="px-6 py-4 flex flex-col gap-3 bg-[#FAF6EE]">
+                    <div className="flex items-center gap-2 text-[#2E2016]">
+                      <ShieldCheck className="w-4 h-4 text-[#D97706]" />
+                      <span className="text-xs font-bold uppercase tracking-wider">{adminUser.fullName.split(' ')[0]}</span>
+                      <span className="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.5 bg-[#D97706] text-white rounded-sm">
+                        {adminUser.role}
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => { setActiveTab('admin'); setIsPortalOpen(false); }}
+                      className="text-left text-xs font-bold text-[#2E2016] hover:text-[#D97706] uppercase tracking-wider"
+                    >
+                      Dashboard
+                    </button>
+                    <button
+                      onClick={() => { onLogout(); setIsPortalOpen(false); }}
+                      className="text-left text-[10px] font-bold text-[#DC2626] hover:text-[#B91C1C] uppercase tracking-wider mt-1"
+                    >
+                      Sign Out
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => { setActiveTab('admin'); setIsPortalOpen(false); }}
+                    className="px-6 py-4 flex items-center justify-between text-left hover:bg-[#FAF6EE] group transition-colors"
+                  >
+                    <div className="flex flex-col">
+                      <span className="font-bold text-[#2E2016] uppercase text-xs tracking-wider">Staff Portal</span>
+                      <span className="text-[10px] text-[#8C7A68]">Admin & Faculty login</span>
+                    </div>
+                    <Lock className="w-4 h-4 text-[#D97706] group-hover:translate-x-1 transition-transform" />
+                  </button>
+                )}
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
     </header>
   );
