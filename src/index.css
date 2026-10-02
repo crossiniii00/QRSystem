@@ -1,6 +1,10 @@
 @import "tailwindcss";
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@theme {
+  --font-sans: var(--font-serif);
+  --font-serif: var(--font-serif);
+  --font-display: var(--font-display);
+}
 
 @layer base {
   /* Microsoft-style zero rounded corners across all components */
@@ -10,13 +14,9 @@
     border-radius: 0px !important;
   }
 
-  :root {
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
-    --font-serif: 'Cinzel', serif;
-  }
 
   body {
-    font-family: var(--font-sans);
+    font-family: var(--font-serif);
     background: radial-gradient(circle at top left, #EBE3D5, #FAF8F5 70%);
     background-attachment: fixed;
     color: #261F18;
@@ -24,8 +24,12 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+
   .font-collegiate-display {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
   }
 
   .font-collegiate-serif {
@@ -34,6 +38,10 @@
 
   .font-collegiate-sans {
     font-family: var(--font-sans);
+  }
+
+  .small-caps {
+    font-variant: small-caps;
   }
 
   /* Microsoft Fluent-style crisp focus outlines */

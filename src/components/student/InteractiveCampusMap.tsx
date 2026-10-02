@@ -3,20 +3,20 @@
 import React, { useState, useMemo, useRef } from 'react';
 import { CampusBuilding, CampusBuildingCategory, PageTab } from '../../types';
 import { CAMPUS_BUILDINGS } from '../../data/mockData';
-import { 
-  MapPin, 
-  Layers, 
-  Search, 
-  ZoomIn, 
-  ZoomOut, 
-  RotateCcw, 
-  Navigation, 
-  Clock, 
-  CheckCircle2, 
-  Building2, 
-  Compass, 
-  X, 
-  ChevronRight, 
+import {
+  MapPin,
+  Layers,
+  Search,
+  ZoomIn,
+  ZoomOut,
+  RotateCcw,
+  Navigation,
+  Clock,
+  CheckCircle2,
+  Building2,
+  Compass,
+  X,
+  ChevronRight,
   ExternalLink,
   Footprints,
   Eye,
@@ -40,8 +40,8 @@ const CATEGORY_COLORS: Record<CampusBuildingCategory, { bg: string; text: string
   Sacred: { bg: 'bg-stone-200', text: 'text-[#23120B]', border: 'border-stone-400', pinBg: 'bg-[#23120B]', hex: '#23120B' }
 };
 
-export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({ 
-  onSelectTab, 
+export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({
+  onSelectTab,
   className = '',
   defaultBuildingId
 }) => {
@@ -181,7 +181,7 @@ export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({
     return CAMPUS_BUILDINGS.filter(bldg => {
       const isCatVisible = visibleCategories[bldg.category];
       const q = searchQuery.toLowerCase().trim();
-      const matchesSearch = !q || 
+      const matchesSearch = !q ||
         bldg.name.toLowerCase().includes(q) ||
         bldg.code.toLowerCase().includes(q) ||
         bldg.description.toLowerCase().includes(q) ||
@@ -240,14 +240,14 @@ export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({
           <div className="flex items-center gap-2">
             <Compass className="w-4 h-4 text-[#E5A910]" />
             <span className="text-[11px] font-bold uppercase tracking-widest text-[#E5A910]">
-              240-Acre Franciscan Heights Blueprint
+              St. Francis College Campus Map
             </span>
           </div>
           <h2 className="font-collegiate-display text-2xl sm:text-3xl font-bold tracking-tight text-white">
-            Interactive Campus Architectural Map
+            Interactive Campus Architecture
           </h2>
           <p className="font-collegiate-serif text-xs sm:text-sm text-stone-300 max-w-2xl leading-relaxed">
-            Explore collegiate quads, Gothic sandstone halls, research pavilions, and the Charles River waterfront. Toggle categories or select landmarks to inspect blueprints.
+            Navigate through our historical and modern facilities, from the Pax et Bonum Chapel to the Laudato Si' Sports Field. Toggle categories to explore the SFC campus.
           </p>
         </div>
 
@@ -273,11 +273,10 @@ export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({
             <button
               key={tab.value}
               onClick={() => handleTabChange(tab.value)}
-              className={`px-3.5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all border-b-2 whitespace-nowrap cursor-pointer ${
-                activeTab === tab.value
+              className={`px-3.5 py-2.5 text-xs font-bold uppercase tracking-wider transition-all border-b-2 whitespace-nowrap cursor-pointer ${activeTab === tab.value
                   ? 'border-[#E5A910] text-[#23120B] bg-[#FAF7F2]'
                   : 'border-transparent text-stone-600 hover:text-[#23120B] hover:bg-stone-50'
-              }`}
+                }`}
             >
               {tab.label}
             </button>
@@ -321,16 +320,15 @@ export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({
               <button
                 key={cat}
                 onClick={() => toggleCategory(cat)}
-                className={`px-2.5 py-1 text-xs font-semibold flex items-center gap-1.5 border transition-all cursor-pointer ${
-                  isVisible
+                className={`px-2.5 py-1 text-xs font-semibold flex items-center gap-1.5 border transition-all cursor-pointer ${isVisible
                     ? 'bg-white text-[#23120B] border-stone-400 shadow-2xs'
                     : 'bg-stone-100 text-stone-400 border-stone-200 line-through opacity-65'
-                }`}
+                  }`}
                 title={`Toggle ${cat} visibility`}
               >
-                <span 
-                  className="w-2.5 h-2.5 rounded-full shrink-0" 
-                  style={{ backgroundColor: isVisible ? meta.hex : '#A8A29E' }} 
+                <span
+                  className="w-2.5 h-2.5 rounded-full shrink-0"
+                  style={{ backgroundColor: isVisible ? meta.hex : '#A8A29E' }}
                 />
                 <span>{cat}</span>
                 {isVisible ? <Eye className="w-3 h-3 text-stone-400 ml-0.5" /> : <EyeOff className="w-3 h-3 text-stone-400 ml-0.5" />}
@@ -358,27 +356,27 @@ export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({
         {/* Auxiliary Map Layer Toggles */}
         <div className="flex items-center gap-3 text-[11px] text-stone-600">
           <label className="flex items-center gap-1 cursor-pointer select-none">
-            <input 
-              type="checkbox" 
-              checked={showPathways} 
+            <input
+              type="checkbox"
+              checked={showPathways}
               onChange={(e) => setShowPathways(e.target.checked)}
               className="accent-[#8B4513] rounded-xs"
             />
             <span>Cobblestone Paths</span>
           </label>
           <label className="flex items-center gap-1 cursor-pointer select-none">
-            <input 
-              type="checkbox" 
-              checked={showZoneLabels} 
+            <input
+              type="checkbox"
+              checked={showZoneLabels}
               onChange={(e) => setShowZoneLabels(e.target.checked)}
               className="accent-[#8B4513] rounded-xs"
             />
             <span>Quad Zones</span>
           </label>
           <label className="flex items-center gap-1 cursor-pointer select-none">
-            <input 
-              type="checkbox" 
-              checked={showTrees} 
+            <input
+              type="checkbox"
+              checked={showTrees}
               onChange={(e) => setShowTrees(e.target.checked)}
               className="accent-[#8B4513] rounded-xs"
             />
@@ -390,7 +388,7 @@ export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({
       {/* 4. MAIN MAP CANVAS & DETAIL DRAWER GRID */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 relative bg-[#EFECE6] min-h-[580px] overflow-hidden">
         {/* Left / Center Map Viewport (8 or 12 Cols depending on selection) */}
-        <div 
+        <div
           ref={mapContainerRef}
           onMouseDown={handleMouseDown}
           onMouseMove={handleMouseMove}
@@ -460,7 +458,7 @@ export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({
           )}
 
           {/* SVG ARCHITECTURAL MAP CONTAINER */}
-          <div 
+          <div
             className="w-full h-full transition-transform duration-100 ease-out origin-center"
             style={{
               transform: `translate(${panOffset.x}px, ${panOffset.y}px) scale(${zoomLevel})`
@@ -489,7 +487,7 @@ export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({
                 <filter id="bldgShadow" x="-10%" y="-10%" width="130%" height="130%">
                   <feDropShadow dx="3" dy="4" stdDeviation="4" floodColor="#23120B" floodOpacity="0.25" />
                 </filter>
-                
+
                 {/* Active Glow Filter */}
                 <filter id="goldGlow" x="-30%" y="-30%" width="160%" height="160%">
                   <feDropShadow dx="0" dy="0" stdDeviation="6" floodColor="#E5A910" floodOpacity="0.9" />
@@ -500,10 +498,10 @@ export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({
               <rect x="0" y="0" width="1000" height="650" fill="url(#lawnGrass)" />
 
               {/* 2. Charles River Waterfront on the East/Right Border */}
-              <path 
-                d="M840,0 C880,150 820,300 870,450 C900,530 960,600 1000,650 L1000,0 Z" 
-                fill="url(#waterPattern)" 
-                stroke="#8CB5C9" 
+              <path
+                d="M840,0 C880,150 820,300 870,450 C900,530 960,600 1000,650 L1000,0 Z"
+                fill="url(#waterPattern)"
+                stroke="#8CB5C9"
                 strokeWidth="2"
               />
               <text x="920" y="240" fill="#4B778D" fontSize="11" fontFamily="serif" fontStyle="italic" letterSpacing="2">
@@ -522,7 +520,7 @@ export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({
                 <g stroke="#D4C7B0" strokeWidth="9" strokeLinecap="round" strokeLinejoin="round" fill="none">
                   {/* Central Ring Path */}
                   <ellipse cx="500" cy="325" rx="270" ry="150" strokeWidth="7" />
-                  
+
                   {/* Cross Avenues */}
                   <line x1="140" y1="325" x2="840" y2="325" />
                   <line x1="500" y1="90" x2="500" y2="610" />
@@ -602,7 +600,7 @@ export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({
                 const by = bldg.y;
 
                 return (
-                  <g 
+                  <g
                     key={`bldg-footprint-${bldg.id}`}
                     onClick={() => focusOnBuilding(bldg)}
                     className="cursor-pointer transition-opacity duration-300"
@@ -621,14 +619,14 @@ export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({
                       strokeWidth={isSelected ? '3' : '1.5'}
                     />
                     {/* Roof Ridge Accents */}
-                    <line 
-                      x1={bx - 36} 
-                      y1={by} 
-                      x2={bx + 36} 
-                      y2={by} 
-                      stroke={isSelected ? '#E5A910' : '#BAA892'} 
-                      strokeWidth="1.2" 
-                      strokeDasharray="4,2" 
+                    <line
+                      x1={bx - 36}
+                      y1={by}
+                      x2={bx + 36}
+                      y2={by}
+                      stroke={isSelected ? '#E5A910' : '#BAA892'}
+                      strokeWidth="1.2"
+                      strokeDasharray="4,2"
                     />
                     <polygon
                       points={`${bx - 42},${by - 24} ${bx},${by - 34} ${bx + 42},${by - 24}`}
@@ -740,7 +738,7 @@ export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                
+
                 {/* Top Badge */}
                 <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5">
                   <span className={`px-2 py-0.5 text-[10px] font-bold uppercase font-mono tracking-wider border ${CATEGORY_COLORS[selectedBuilding.category].bg} ${CATEGORY_COLORS[selectedBuilding.category].text} ${CATEGORY_COLORS[selectedBuilding.category].border}`}>
@@ -869,19 +867,18 @@ export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({
               <button
                 key={bldg.id}
                 onClick={() => focusOnBuilding(bldg)}
-                className={`p-2.5 text-left border transition-all cursor-pointer flex flex-col justify-between ${
-                  isSelected
+                className={`p-2.5 text-left border transition-all cursor-pointer flex flex-col justify-between ${isSelected
                     ? 'bg-[#23120B] text-white border-[#E5A910] shadow-sm'
                     : 'bg-white hover:bg-[#FFFDF7] text-stone-800 border-[#E8DFC8] hover:border-stone-400'
-                }`}
+                  }`}
               >
                 <div>
                   <div className="flex items-center justify-between gap-1 mb-1">
-                    <span 
+                    <span
                       className="px-1.5 py-0.2 text-[9px] font-mono font-bold uppercase rounded-xs"
-                      style={{ 
+                      style={{
                         backgroundColor: isSelected ? '#E5A910' : meta.hex,
-                        color: isSelected ? '#1E0F08' : '#FFFFFF' 
+                        color: isSelected ? '#1E0F08' : '#FFFFFF'
                       }}
                     >
                       {bldg.code}
@@ -894,9 +891,8 @@ export const InteractiveCampusMap: React.FC<InteractiveCampusMapProps> = ({
                     {bldg.name}
                   </h4>
                 </div>
-                <div className={`text-[10px] mt-1.5 flex items-center justify-between ${
-                  isSelected ? 'text-[#E5A910]' : 'text-[#8B4513]'
-                }`}>
+                <div className={`text-[10px] mt-1.5 flex items-center justify-between ${isSelected ? 'text-[#E5A910]' : 'text-[#8B4513]'
+                  }`}>
                   <span className="truncate">{bldg.category}</span>
                   <ChevronRight className="w-3 h-3 shrink-0" />
                 </div>

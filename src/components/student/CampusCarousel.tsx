@@ -3,13 +3,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CAMPUS_GALLERY_PHOTOS } from '../../data/mockData';
 import { CampusPhotoSlide } from '../../types';
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  Pause, 
-  Play, 
-  MapPin, 
-  Maximize2, 
+import {
+  ChevronLeft,
+  ChevronRight,
+  Pause,
+  Play,
+  MapPin,
+  Maximize2,
   Calendar,
   Sparkles,
   Camera,
@@ -21,9 +21,9 @@ interface CampusCarouselProps {
   className?: string;
 }
 
-export const CampusCarousel: React.FC<CampusCarouselProps> = ({ 
+export const CampusCarousel: React.FC<CampusCarouselProps> = ({
   onExploreCampus,
-  className = '' 
+  className = ''
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -89,7 +89,7 @@ export const CampusCarousel: React.FC<CampusCarouselProps> = ({
       </div>
 
       {/* Main Viewport Stage */}
-      <div 
+      <div
         className="relative h-[320px] sm:h-[420px] lg:h-[480px] w-full overflow-hidden bg-black"
         onMouseEnter={() => setIsPlaying(false)}
         onMouseLeave={() => setIsPlaying(true)}
@@ -171,11 +171,10 @@ export const CampusCarousel: React.FC<CampusCarouselProps> = ({
           <button
             key={slide.id}
             onClick={() => setCurrentIndex(idx)}
-            className={`group relative h-14 sm:h-16 overflow-hidden border text-left transition-all ${
-              currentIndex === idx
+            className={`group relative h-14 sm:h-16 overflow-hidden border text-left transition-all ${currentIndex === idx
                 ? 'border-[#E5A910] ring-1 ring-[#E5A910] opacity-100'
                 : 'border-stone-800 opacity-60 hover:opacity-90'
-            }`}
+              }`}
           >
             <img
               src={slide.imageUrl}

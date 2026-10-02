@@ -10,6 +10,9 @@ import { EnrollmentWizard } from '@/components/student/EnrollmentWizard';
 import { LandingPage } from '@/components/student/LandingPage';
 import { LibraryPage } from '@/components/student/LibraryPage';
 import { StatusTracker } from '@/components/student/StatusTracker';
+import { CalendarPage } from '@/components/student/CalendarPage';
+import { AcademicsPage } from '@/components/student/AcademicsPage';
+import { FloatingBookmark } from '@/components/common/FloatingBookmark';
 
 interface SubmissionResult {
   referenceNumber: string;
@@ -21,7 +24,7 @@ interface SubmissionResult {
 }
 
 export default function Page() {
-  const [activeTab, setActiveTab] = useState<'home' | 'apply' | 'status' | 'admin' | 'library' | 'about' | 'academics'>('home');
+  const [activeTab, setActiveTab] = useState<'home' | 'apply' | 'status' | 'admin' | 'library' | 'about' | 'academics' | 'calendar'>('home');
   const [submissionResult, setSubmissionResult] = useState<SubmissionResult | null>(null);
 
   // Status tracker pre-population from URL or submission
@@ -127,10 +130,13 @@ export default function Page() {
       {/* Blurred Background Image */}
       <div
         className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(/school-bg.jpg)' }}
+        style={{ backgroundImage: 'url(/school-bg-2.jpg)' }}
       >
         <div className="absolute inset-0 bg-[#FAF8F5]/85 backdrop-blur-md" />
       </div>
+
+      {/* Floating Side Dashboard Bookmark */}
+      <FloatingBookmark />
 
       {/* Universal Navigation Header */}
       <Header
@@ -148,7 +154,21 @@ export default function Page() {
       <main className="flex-1">
         {/* PUBLIC TAB: Home Landing Page */}
         {activeTab === 'home' && (
-          <LandingPage onBegin={handleApplyNowClick} />
+          <LandingPage
+            onBegin={handleApplyNowClick}
+            onViewCalendar={() => setActiveTab('calendar')}
+            onViewAcademics={() => setActiveTab('academics')}
+          />
+        )}
+
+        {/* PUBLIC TAB: Calendar */}
+        {activeTab === 'calendar' && (
+          <CalendarPage onBack={() => setActiveTab('home')} />
+        )}
+
+        {/* PUBLIC TAB: Academics */}
+        {activeTab === 'academics' && (
+          <AcademicsPage onBack={() => setActiveTab('home')} />
         )}
 
         {/* PUBLIC TAB: Library */}

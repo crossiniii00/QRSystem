@@ -66,7 +66,7 @@ export interface CampusBuilding {
   imageUrl?: string;
   x?: number;
   y?: number;
-  zone?: 'North Quadrangle' | 'Central Mall' | 'West Residential' | 'East Sanctuary' | 'South Innovation' | 'Waterfront & Athletics';
+  zone?: string;
   architecturalStyle?: string;
   accessibilityNotes?: string;
 }
