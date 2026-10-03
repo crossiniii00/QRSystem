@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, BookOpen, CheckCircle2, Globe, GraduationCap, MapPin, Users, Compass, Library, Calendar, Award, ChevronRight, ChevronLeft, PlayCircle, Clock, ShieldCheck, Microscope, HeartPulse, Church, Cpu, X, Sparkles, Star, Hammer } from 'lucide-react';
+import { ArrowRight, BookOpen, CheckCircle2, Globe, GraduationCap, MapPin, Users, Compass, Library, Calendar, Award, ChevronRight, ChevronLeft, PlayCircle, Clock, ShieldCheck, Microscope, HeartPulse, Church, Cpu, X, Sparkles, Star, Hammer, Mail, Phone } from 'lucide-react';
 import React, { useEffect, useState, useRef } from 'react';
 import { APP_CONFIG } from '../../config/app.config';
 import { CAMPUS_GALLERY_PHOTOS } from '../../data/mockData';
@@ -175,9 +175,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onBegin, onViewCalenda
   ];
 
   const visionSlides = [
-    "/student-group-1.jpg",
-    "/student-group-2.jpg",
-    "/student-group-3.jpg"
+    "/st-francis-prayer.jpg"
   ];
 
   useEffect(() => {
@@ -440,20 +438,20 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onBegin, onViewCalenda
                 <div className="absolute top-0 left-0 w-1.5 h-16 bg-[#D97706]" />
                 
                 <h3 className="text-[10px] md:text-xs font-bold text-[#8C7A68] uppercase tracking-[0.3em] mb-4 flex items-center gap-3">
-                  <Compass className="w-4 h-4 text-[#D97706]" />
-                  Our Vision
+                  <Church className="w-4 h-4 text-[#D97706]" />
+                  Spiritual Reflection
                 </h3>
                 
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-[#2E2016] tracking-tight leading-[1.05] mb-8">
-                  Holistic and Integrative <br />Education.
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-black text-[#2E2016] tracking-tight leading-[1.05] mb-8">
+                  St. Francis's Prayer <br />Before the Crucifix
                 </h2>
                 
-                <p className="text-base text-[#54483C] leading-relaxed mb-6 font-medium">
-                  At {APP_CONFIG.school.name}, we believe in nurturing the whole person. Our holistic approach integrates world-class academics with ethical leadership and community service.
+                <p className="text-base text-[#54483C] leading-relaxed mb-6 font-medium italic">
+                  Most High and Glorious God, enlighten the darkness of my mind and inflame the inner recesses of my heart. Give me a right faith, a firm hope and a perfect charity.
                 </p>
                 
-                <p className="text-sm text-[#8C7A68] leading-relaxed mb-10">
-                  We empower our students to be critical thinkers and compassionate global citizens, prepared to tackle the challenges of a rapidly evolving world. Our heritage is rooted in tradition, yet our methods are continuously innovating for the future.
+                <p className="text-sm text-[#8C7A68] leading-relaxed mb-10 italic">
+                  Let me have the right feelings and knowledge for the task You give me in truth. Help me to know You, O Lord, in order that I may always and in all things act according to Your most holy and perfect Will. Amen.
                 </p>
                 
                 <div className="grid grid-cols-3 gap-6 pt-8 border-t border-[#E5D7BE]">
@@ -473,18 +471,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onBegin, onViewCalenda
               </div>
             </div>
 
-            {/* Right Images (Tall Portrait) */}
+            {/* Right Image */}
             <div className="w-full lg:w-7/12 relative z-10">
-              <div className="relative w-full aspect-[4/5] lg:aspect-[3/4] overflow-hidden border border-[#D5CFC4] bg-[#1C0E07]">
-                {visionSlides.map((slide, index) => (
-                  <img
-                    key={index}
-                    src={slide}
-                    alt={`Campus Life ${index + 1}`}
-                    className={`absolute inset-0 w-full h-full object-cover grayscale-[0.25] transition-all duration-[2s] ease-[cubic-bezier(0.25,1,0.5,1)] ${visionSlide === index ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 z-0'
-                      }`}
-                  />
-                ))}
+              <div className="relative w-full aspect-square lg:aspect-[3/2] overflow-hidden border border-[#D5CFC4] bg-[#1C0E07]">
+                <img
+                  src="/st-francis-prayer.jpg"
+                  alt="St. Francis's Prayer Before the Crucifix"
+                  className="absolute inset-0 w-full h-full object-cover grayscale-[0.15]"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2E2016]/50 via-transparent to-transparent z-20 pointer-events-none" />
               </div>
               
@@ -741,7 +735,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onBegin, onViewCalenda
 
 
       {/* Embedded Campus Map & Archive */}
-      <section className="bg-[#FAF6EE] pb-16">
+      <section id="campus-map" className="bg-[#FAF6EE] pb-16">
         <Reveal>
           <CampusMapAndArchive />
         </Reveal>
@@ -984,7 +978,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onBegin, onViewCalenda
       </section>
 
       {/* Campus Life / Facilities (Library) */}
-      <section id="campus-life" className="py-24 md:py-32 bg-white relative overflow-hidden">
+      <section id="library" className="py-24 md:py-32 bg-white relative overflow-hidden">
         <div className="absolute top-0 left-0 w-[40%] h-full bg-[#EBE7E0] z-0 hidden lg:block" />
         <Reveal>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center">
@@ -1047,7 +1041,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onBegin, onViewCalenda
 
 
       {/* Support Us / Giving Section */}
-      <section className="relative py-24 md:py-32 overflow-hidden bg-[#1C0E07]">
+      <section id="support" className="relative py-24 md:py-32 overflow-hidden bg-[#1C0E07]">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1600" 
@@ -1071,11 +1065,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onBegin, onViewCalenda
               Your generosity fuels our ongoing projects, provides vital scholarships, and ensures the continuation of our century-long legacy of holistic and integrative education. Partner with us to shape the leaders of tomorrow.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <button className="w-full sm:w-auto bg-[#D97706] hover:bg-[#F59E0B] text-white py-4 px-10 text-sm font-bold uppercase tracking-[0.2em] transition-all duration-300 shadow-[0_0_30px_rgba(217,119,6,0.4)] hover:shadow-[0_0_50px_rgba(245,158,11,0.6)] rounded-sm">
-                Make a Gift
-              </button>
-              <button className="w-full sm:w-auto bg-transparent border-2 border-[#C4B59D]/30 text-[#C4B59D] hover:bg-[#C4B59D]/10 hover:border-[#C4B59D] py-4 px-10 text-sm font-bold uppercase tracking-[0.2em] transition-all duration-300 rounded-sm">
-                Explore Endowments
+              <button 
+                onClick={() => window.open('/banking-details', '_blank')}
+                className="w-full sm:w-auto bg-[#D97706] hover:bg-[#F59E0B] text-white py-4 px-10 text-sm font-bold uppercase tracking-[0.2em] transition-all duration-300 shadow-[0_0_30px_rgba(217,119,6,0.4)] hover:shadow-[0_0_50px_rgba(245,158,11,0.6)] rounded-sm"
+              >
+                Donations
               </button>
             </div>
 
@@ -1275,61 +1269,119 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onBegin, onViewCalenda
 
       {/* Visit Us */}
       <section id="visit-us" className="py-24 md:py-32 bg-[#FAF9F6] relative border-b border-[#EBE7E0]">
+        <div className="absolute top-0 right-0 w-[40%] h-full bg-[#F5F2EB] hidden lg:block border-l border-[#EBE7E0]" />
+        
         <Reveal>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16 md:mb-20">
-              <h3 className="text-[10px] md:text-xs font-bold text-[#D97706] uppercase tracking-[0.3em] mb-4 flex items-center justify-center gap-4">
-                <span className="w-12 h-[1px] bg-[#D97706]" /> STAY CONNECTED <span className="w-12 h-[1px] bg-[#D97706]" />
-              </h3>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-[#2E2016] tracking-tight">Visit Us</h2>
-            </div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {[
-                { title: "Official School Page", url: "https://www.facebook.com/profile.php?id=61551047840314", username: "61551047840314", subtitle: "St. Francis School", coverImage: "/images/facebook/school-cover.png", profileImage: "/images/facebook/school-profile.png" },
-                { title: "Order of Friars Minor", url: "https://www.facebook.com/ofm.org/?rdid=2C8JcLGsIjel6WS0", username: "ofm.org", subtitle: "OFM Global", coverImage: "/images/facebook/ofm-cover.png", profileImage: "/images/facebook/ofm-profile.png" },
-                { title: "Franciscan Missions", url: "https://www.facebook.com/franciscanmissions/?rdid=3MCEEqIHE4iAnFyV", username: "franciscanmissions", subtitle: "Global Outreach", coverImage: "/images/facebook/african-kids.jpg", profileImage: "https://graph.facebook.com/franciscanmissions/picture?type=large" },
-                { title: "PEAC Official", url: "https://www.facebook.com/PEACOfficial/?rdid=3rAbsqJALjaGna46", username: "PEACOfficial", subtitle: "Private Education Assistance", coverImage: "/images/facebook/peac-group.jpg", profileImage: "https://graph.facebook.com/PEACOfficial/picture?type=large" },
-                { title: "OFM South Philippines", url: "https://www.facebook.com/ofmsouthphil/?rdid=LnpmwHERHYQtyJe9", username: "ofmsouthphil", subtitle: "San Pedro Bautista Province", coverImage: "/images/facebook/transitus.png", profileImage: "https://graph.facebook.com/ofmsouthphil/picture?type=large" },
-                { title: "CEAP Channel", url: "https://www.facebook.com/CEAPChannel/?rdid=2ogKfiW9dXmrfMbl", username: "CEAPChannel", subtitle: "Catholic Educational Association", coverImage: "/images/facebook/ceap-cover.png", profileImage: "https://graph.facebook.com/CEAPChannel/picture?type=large" }
-              ].map((page, idx) => (
-                <a key={idx} href={page.url} target="_blank" rel="noopener noreferrer" className="group relative overflow-hidden rounded-2xl h-[320px] md:h-[350px] shadow-lg hover:shadow-2xl transition-all duration-500">
-                  {/* Background Cover Photo */}
-                  <div className="absolute inset-0 z-0 bg-[#2E2016]">
-                    <img 
-                      src={page.coverImage}
-                      alt={`${page.title} Cover`} 
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out opacity-90 group-hover:opacity-100" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A120A]/95 via-[#1A120A]/40 to-[#1A120A]/20 transition-colors duration-500" />
+            <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+              
+              {/* Left Column: Contact & Location */}
+              <div className="flex-1 lg:py-10">
+                <h3 className="text-[10px] md:text-xs font-bold text-[#D97706] uppercase tracking-[0.3em] mb-4 flex items-center gap-4">
+                  <span className="w-8 h-[1px] bg-[#D97706]" /> GET IN TOUCH
+                </h3>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-[#2E2016] tracking-tight mb-10">
+                  Visit Us
+                </h2>
+                
+                <p className="text-[#8C7A68] text-lg leading-relaxed max-w-lg mb-12">
+                  We welcome you to visit our campus, connect with our community, and discover the St. Francis College difference in person.
+                </p>
+
+                <div className="space-y-8">
+                  <div className="flex items-start gap-5">
+                    <div className="w-12 h-12 rounded-full bg-[#EBE7E0] flex items-center justify-center flex-shrink-0 text-[#2E2016]">
+                      <MapPin className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#2E2016] uppercase tracking-widest text-[11px] mb-2">Campus Location</h4>
+                      <p className="text-[#54483C] text-sm md:text-base leading-relaxed">
+                        Campus Heights, Maharlika Highway<br />
+                        Allen, Northern Samar, 6405<br />
+                        Philippines
+                      </p>
+                    </div>
                   </div>
+
+                  <div className="flex items-start gap-5">
+                    <div className="w-12 h-12 rounded-full bg-[#EBE7E0] flex items-center justify-center flex-shrink-0 text-[#2E2016]">
+                      <Mail className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#2E2016] uppercase tracking-widest text-[11px] mb-2">General Inquiries</h4>
+                      <a href="mailto:info@stfrancisallen.edu.ph" className="text-[#D97706] hover:text-[#2E2016] font-medium transition-colors">
+                        info@stfrancisallen.edu.ph
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-5">
+                    <div className="w-12 h-12 rounded-full bg-[#EBE7E0] flex items-center justify-center flex-shrink-0 text-[#2E2016]">
+                      <Phone className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#2E2016] uppercase tracking-widest text-[11px] mb-2">Contact Numbers</h4>
+                      <p className="text-[#54483C] font-medium">+63 (055) 555-1234</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-12">
+                  <button 
+                    onClick={() => document.getElementById('campus-map')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="inline-flex items-center gap-3 bg-[#2E2016] hover:bg-[#D97706] text-white px-8 py-4 text-xs font-bold uppercase tracking-[0.2em] transition-colors rounded-sm"
+                  >
+                    View Campus Map
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Right Column: Affiliations & Socials */}
+              <div className="w-full lg:w-[45%] flex flex-col justify-center">
+                <div className="bg-white p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-[#EBE7E0] rounded-xl relative">
+                  <div className="absolute -top-6 -right-6 w-24 h-24 bg-[#FAF9F6] border border-[#EBE7E0] rounded-full z-0 pointer-events-none" />
                   
-                  {/* Content Layer */}
-                  <div className="relative z-10 p-6 md:p-8 flex flex-col h-full">
-                    {/* Profile Picture at Top */}
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full border-[3px] border-white/20 bg-white shadow-2xl overflow-hidden flex-shrink-0 mb-auto group-hover:border-white transition-colors duration-500">
-                      <img 
-                        src={page.profileImage}
-                        alt={`${page.title} Profile`} 
-                        className="w-full h-full object-cover" 
-                      />
-                    </div>
-                    
-                    {/* Text and Button Area at Bottom */}
-                    <div className="flex flex-row items-end justify-between gap-4 mt-8">
-                      <div className="flex-1 transform group-hover:-translate-y-1 transition-transform duration-500">
-                        <h4 className="text-xl md:text-2xl font-serif font-bold text-white leading-tight mb-2 group-hover:text-[#D97706] transition-colors">{page.title}</h4>
-                        <p className="text-white/80 text-[13px] md:text-sm font-medium tracking-wide uppercase">{page.subtitle}</p>
-                      </div>
-                      
-                      {/* Arrow Button */}
-                      <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-[#D97706] group-hover:border-[#D97706] group-hover:scale-110 transition-all duration-500 flex-shrink-0 shadow-[0_4px_12px_rgba(0,0,0,0.1)]">
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform duration-300" />
-                      </div>
-                    </div>
+                  <h3 className="relative z-10 text-2xl font-serif font-black text-[#2E2016] mb-8">
+                    Our Network & Affiliations
+                  </h3>
+
+                  <div className="relative z-10 flex flex-col gap-3">
+                    {[
+                      { title: "Official School Page", url: "https://www.facebook.com/profile.php?id=61551047840314", subtitle: "St. Francis School", profileImage: "/images/facebook/school-profile.png" },
+                      { title: "Order of Friars Minor", url: "https://www.facebook.com/ofm.org/?rdid=2C8JcLGsIjel6WS0", subtitle: "OFM Global", profileImage: "/images/facebook/ofm-profile.png" },
+                      { title: "Franciscan Missions", url: "https://www.facebook.com/franciscanmissions/?rdid=3MCEEqIHE4iAnFyV", subtitle: "Global Outreach", profileImage: "https://graph.facebook.com/franciscanmissions/picture?type=large" },
+                      { title: "PEAC Official", url: "https://www.facebook.com/PEACOfficial/?rdid=3rAbsqJALjaGna46", subtitle: "Private Education Assistance", profileImage: "https://graph.facebook.com/PEACOfficial/picture?type=large" },
+                      { title: "OFM South Philippines", url: "https://www.facebook.com/ofmsouthphil/?rdid=LnpmwHERHYQtyJe9", subtitle: "San Pedro Bautista Province", profileImage: "https://graph.facebook.com/ofmsouthphil/picture?type=large" },
+                      { title: "CEAP Channel", url: "https://www.facebook.com/CEAPChannel/?rdid=2ogKfiW9dXmrfMbl", subtitle: "Catholic Educational Association", profileImage: "https://graph.facebook.com/CEAPChannel/picture?type=large" }
+                    ].map((page, idx) => (
+                      <a 
+                        key={idx} 
+                        href={page.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="group flex items-center justify-between p-4 rounded-lg hover:bg-[#FAF9F6] border border-transparent hover:border-[#EBE7E0] transition-all duration-300"
+                      >
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#EBE7E0] group-hover:border-[#D97706] transition-colors flex-shrink-0 bg-white shadow-sm">
+                            <img src={page.profileImage} alt={page.title} className="w-full h-full object-cover" />
+                          </div>
+                          <div>
+                            <h4 className="font-bold text-[#2E2016] text-sm md:text-base group-hover:text-[#D97706] transition-colors">{page.title}</h4>
+                            <p className="text-[10px] md:text-xs text-[#8C7A68] uppercase tracking-wider font-bold mt-0.5">{page.subtitle}</p>
+                          </div>
+                        </div>
+                        <div className="w-8 h-8 rounded-full bg-[#EBE7E0] group-hover:bg-[#D97706] text-[#8C7A68] group-hover:text-white flex items-center justify-center transition-colors">
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                        </div>
+                      </a>
+                    ))}
                   </div>
-                </a>
-              ))}
+
+                </div>
+              </div>
+
             </div>
           </div>
         </Reveal>

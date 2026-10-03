@@ -37,7 +37,7 @@ export const Header: React.FC<HeaderProps> = ({
   const navItems = [
     { 
       id: 'about', 
-      label: 'Overview',
+      label: 'About Us',
       dropdown: [
         { id: 'about', label: 'Vision & Mission' },
         { id: 'spiritual-formation', label: 'Spiritual Formation' },
@@ -45,17 +45,18 @@ export const Header: React.FC<HeaderProps> = ({
         { id: 'leadership', label: 'Leadership' }
       ]
     },
-    { id: 'academics', label: 'Academics' },
+    { id: 'academics', label: 'Our Academic Life' },
     { 
       id: 'campus-life', 
-      label: 'Campus Life',
+      label: 'Our Campus Life',
       dropdown: [
         { id: 'campus-life', label: 'Events & Media' },
         { id: 'campus-map', label: 'Campus Map' },
         { id: 'projects', label: 'On Going Projects' }
       ]
     },
-    { id: 'library', label: 'Library' }
+    { id: 'library', label: 'Our Library' },
+    { id: 'spiritual-formation', label: 'Our Spiritual Life' }
   ];
 
   const handleNavClick = (sectionId: string) => {
@@ -89,8 +90,41 @@ export const Header: React.FC<HeaderProps> = ({
             </span>
           </div>
 
-          {/* Right: Empty for balanced layout */}
-          <div className="flex items-center gap-3.5 whitespace-nowrap">
+          {/* Right: Staff Portal / Admin Actions */}
+          <div className="flex items-center gap-4 whitespace-nowrap">
+            {adminUser ? (
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-[#D97706]" />
+                  <span className="font-bold uppercase tracking-wider text-[#C4B59D]">{adminUser.fullName.split(' ')[0]}</span>
+                  <span className="text-[8px] uppercase font-bold tracking-wider px-1.5 py-0.5 bg-[#D97706] text-[#1C0E07] rounded-sm">
+                    {adminUser.role}
+                  </span>
+                </div>
+                <span className="text-[#3A2216]">|</span>
+                <button
+                  onClick={() => setActiveTab('admin')}
+                  className="font-bold hover:text-[#FFFDF7] uppercase tracking-wider transition-colors text-[#C4B59D]"
+                >
+                  Dashboard
+                </button>
+                <span className="text-[#3A2216]">|</span>
+                <button
+                  onClick={onLogout}
+                  className="font-bold text-[#DC2626] hover:text-[#EF4444] uppercase tracking-wider transition-colors"
+                >
+                  Sign Out
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => setActiveTab('admin')}
+                className="flex items-center gap-1.5 font-bold hover:text-[#FFFDF7] uppercase tracking-wider transition-colors text-[#C4B59D]"
+              >
+                <Lock className="w-3 h-3 text-[#D97706]" />
+                Staff Portal
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -145,13 +179,20 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Action Dropdown Button & Mobile Menu */}
           <div className="flex items-center gap-2 sm:gap-4 shrink-0" ref={dropdownRef}>
+            <button
+              onClick={() => handleNavClick('support')}
+              className="hidden md:flex group relative overflow-hidden bg-[#D97706] text-[#1C0E07] hover:text-[#FFFDF7] px-6 py-2.5 font-bold text-[10px] tracking-[0.2em] uppercase transition-all duration-500 items-center gap-2"
+            >
+              <div className="absolute inset-0 w-full h-full bg-[#B45309] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+              <span className="relative z-10">Support Us</span>
+            </button>
             <div className="relative h-full hidden md:flex items-center">
               <button
               onClick={() => setIsPortalOpen(!isPortalOpen)}
               className="group relative overflow-hidden bg-transparent border border-[#D97706]/80 text-[#D97706] hover:text-[#1C0E07] px-6 py-2.5 font-bold text-[10px] tracking-[0.2em] uppercase transition-all duration-500 flex items-center gap-2"
             >
               <div className="absolute inset-0 w-full h-full bg-[#D97706] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-              <span className="relative z-10">Portals & Admissions</span>
+              <span className="relative z-10">Enroll Now</span>
             </button>
             
             {/* Dropdown Menu */}
@@ -177,43 +218,6 @@ export const Header: React.FC<HeaderProps> = ({
                   </div>
                   <Search className="w-4 h-4 text-[#D97706] group-hover:translate-x-1 transition-transform" />
                 </button>
-                
-                <div className="border-t-4 border-[#F8F6F2] my-1" />
-                
-                {adminUser ? (
-                  <div className="px-6 py-4 flex flex-col gap-3 bg-[#FAF6EE]">
-                    <div className="flex items-center gap-2 text-[#2E2016]">
-                      <ShieldCheck className="w-4 h-4 text-[#D97706]" />
-                      <span className="text-xs font-bold uppercase tracking-wider">{adminUser.fullName.split(' ')[0]}</span>
-                      <span className="text-[9px] uppercase font-bold tracking-wider px-1.5 py-0.5 bg-[#D97706] text-white rounded-sm">
-                        {adminUser.role}
-                      </span>
-                    </div>
-                    <button
-                      onClick={() => { setActiveTab('admin'); setIsPortalOpen(false); }}
-                      className="text-left text-xs font-bold text-[#2E2016] hover:text-[#D97706] uppercase tracking-wider"
-                    >
-                      Dashboard
-                    </button>
-                    <button
-                      onClick={() => { onLogout(); setIsPortalOpen(false); }}
-                      className="text-left text-[10px] font-bold text-[#DC2626] hover:text-[#B91C1C] uppercase tracking-wider mt-1"
-                    >
-                      Sign Out
-                    </button>
-                  </div>
-                ) : (
-                  <button
-                    onClick={() => { setActiveTab('admin'); setIsPortalOpen(false); }}
-                    className="px-6 py-4 flex items-center justify-between text-left hover:bg-[#FAF6EE] group transition-colors"
-                  >
-                    <div className="flex flex-col">
-                      <span className="font-bold text-[#2E2016] uppercase text-xs tracking-wider">Staff Portal</span>
-                      <span className="text-[10px] text-[#8C7A68]">Admin & Faculty login</span>
-                    </div>
-                    <Lock className="w-4 h-4 text-[#D97706] group-hover:translate-x-1 transition-transform" />
-                  </button>
-                )}
               </div>
             )}
             </div>
@@ -267,7 +271,7 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => { setActiveTab('apply'); setIsMobileMenuOpen(false); }}
             className="w-full bg-[#D97706] text-white py-4 font-bold text-sm tracking-[0.2em] uppercase rounded-sm"
           >
-            Portals & Admissions
+            Enroll Now
           </button>
         </div>
       </div>
