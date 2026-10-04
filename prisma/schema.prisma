@@ -13,6 +13,19 @@ enum UserRole {
   STAFF
 }
 
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum PaymentMethod {
+  PAYMONGO
+  BANK_DEPOSIT
+  CASH
+}
+
 enum AcademicLevel {
   K12_SHS
   COLLEGE
@@ -85,15 +98,15 @@ model Program {
 }
 
 model Requirement {
-  id                 String   @id @default(uuid())
-  code               String   @unique
-  title              String
-  description        String
-  allowedMimeTypes   String[] @map("allowed_mime_types")
-  maxFileSizeBytes   BigInt   @map("max_file_size_bytes")
-  isMandatory        Boolean  @default(true) @map("is_mandatory")
-  createdAt          DateTime @default(now()) @map("created_at")
-  updatedAt          DateTime @updatedAt @map("updated_at")
+  id               String   @id @default(uuid())
+  code             String   @unique
+  title            String
+  description      String
+  allowedMimeTypes String[] @map("allowed_mime_types")
+  maxFileSizeBytes BigInt   @map("max_file_size_bytes")
+  isMandatory      Boolean  @default(true) @map("is_mandatory")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
 
   documents Document[]
 
@@ -173,6 +186,7 @@ model Application {
   reviewedByUser User?       @relation(fields: [reviewedByUserId], references: [id])
 
   documents Document[]
+  payments  Payment[]
 
   @@index([status])
   @@index([referenceNumber])
@@ -220,4 +234,114 @@ model AuditLog {
   @@index([action])
   @@index([createdAt])
   @@map("audit_logs")
+}
+
+model Payment {
+  id              String        @id @default(uuid())
+  applicationId   String?       @map("application_id")
+  amount          Decimal       @db.Decimal(10, 2)
+  currency        String        @default("PHP")
+  status          PaymentStatus @default(PENDING)
+  method          PaymentMethod @map("payment_method")
+  referenceNumber String?       @unique @map("reference_number")
+  receiptUrl      String?       @map("receipt_url")
+  paidAt          DateTime?     @map("paid_at")
+  createdAt       DateTime      @default(now()) @map("created_at")
+  updatedAt       DateTime      @updatedAt @map("updated_at")
+
+  application Application? @relation(fields: [applicationId], references: [id])
+
+  @@map("payments")
+}
+
+enum BookStatus {
+  AVAILABLE
+  BORROWED
+  RESERVED
+  LOST
+  MAINTENANCE
+}
+
+model Book {
+  id              String     @id @default(uuid())
+  isbn            String?    @unique
+  title           String
+  author          String
+  publisher       String?
+  publicationYear Int?       @map("publication_year")
+  category        String?
+  status          BookStatus @default(AVAILABLE)
+  addedAt         DateTime   @default(now()) @map("added_at")
+  updatedAt       DateTime   @updatedAt @map("updated_at")
+
+  borrowRecords BorrowRecord[]
+  reservations  BookReservation[]
+
+  @@map("books")
+}
+
+model BorrowRecord {
+  id           String    @id @default(uuid())
+  bookId       String    @map("book_id")
+  borrowerName String    @map("borrower_name")
+  borrowedAt   DateTime  @default(now()) @map("borrowed_at")
+  dueDate      DateTime  @map("due_date")
+  returnedAt   DateTime? @map("returned_at")
+  fineAmount   Decimal?  @map("fine_amount") @db.Decimal(10, 2)
+
+  book Book @relation(fields: [bookId], references: [id])
+
+  @@map("borrow_records")
+}
+
+enum ReservationStatus {
+  PENDING
+  FULFILLED
+  CANCELLED
+  EXPIRED
+}
+
+model BookReservation {
+  id              String   @id @default(uuid())
+  bookId          String   @map("book_id")
+  reserverName    String   @map("reserver_name")
+  reserverEmail   String?  @map("reserver_email")
+  reservedAt      DateTime @default(now()) @map("reserved_at")
+  validUntil      DateTime @map("valid_until")
+  status          ReservationStatus @default(PENDING)
+
+  book Book @relation(fields: [bookId], references: [id])
+
+  @@map("book_reservations")
+}
+
+model Donor {
+  id          String   @id @default(uuid())
+  firstName   String   @map("first_name")
+  lastName    String   @map("last_name")
+  email       String   @unique
+  phoneNumber String?  @map("phone_number")
+  isAlumni    Boolean  @default(false) @map("is_alumni")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  donations Donation[]
+
+  @@map("donors")
+}
+
+model Donation {
+  id              String   @id @default(uuid())
+  donorId         String   @map("donor_id")
+  amount          Decimal  @db.Decimal(10, 2)
+  currency        String   @default("PHP")
+  campaignName    String?  @map("campaign_name")
+  message         String?
+  paymentMethod   String   @map("payment_method")
+  referenceNumber String?  @map("reference_number")
+  donatedAt       DateTime @default(now()) @map("donated_at")
+
+  donor Donor @relation(fields: [donorId], references: [id])
+
+  @@map("donations")
 }

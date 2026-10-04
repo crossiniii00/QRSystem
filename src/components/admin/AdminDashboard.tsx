@@ -1,10 +1,11 @@
-import { AlertTriangle, CheckCircle, Clock, CreditCard, Eye, FileText, Filter, History, Landmark, Mail, QrCode, RefreshCw, Search, ShieldCheck, UserCheck, Users, XCircle } from 'lucide-react';
+import { AlertTriangle, ArrowLeft, BookOpen, CheckCircle, Clock, CreditCard, Eye, FileText, Filter, Heart, History, Landmark, Mail, QrCode, RefreshCw, Search, ShieldCheck, UserCheck, Users, XCircle } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { AuditLog } from '../../modules/audit/domain/audit-log.entity';
 import { StatusBadge } from '../common/Badge';
 import { ApplicationDetailModal } from './ApplicationDetailModal';
 import { EmailPreviewModal } from './EmailPreviewModal';
 import { QRCampaignManager } from './QRCampaignManager';
+import { AdminLibraryTab } from './AdminLibraryTab';
 import { AdminPaymentsTab } from './AdminPaymentsTab';
 import { AdminBankingTab } from './AdminBankingTab';
 
@@ -29,13 +30,17 @@ interface AdminDashboardProps {
   token: string;
   user: { id: string; email: string; fullName: string; role: string };
   onLogout: () => void;
+  onReturnHome?: () => void;
 }
 
 export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   token,
   user,
+  onLogout,
+  onReturnHome,
 }) => {
-  const [activeSubTab, setActiveSubTab] = useState<'applications' | 'payments' | 'banking' | 'campaigns' | 'audit'>('applications');
+  const [activeSubTab, setActiveSubTab] = useState<'applications' | 'payments' | 'banking_campaigns' | 'audit' | 'library' | 'donations'>('applications');
+  const [innerBankingTab, setInnerBankingTab] = useState<'banking' | 'campaigns'>('banking');
   const [stats, setStats] = useState<any>(null);
   const [applications, setApplications] = useState<EnrichedApplication[]>([]);
   const [auditLogs, setAuditLogs] = useState<AuditLog[]>([]);
@@ -87,100 +92,165 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   const counts = stats?.counts || {};
 
   return (
-    <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 space-y-6 animate-slide-up">
-      {/* Top Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#EBE3D5] p-6 border-2 border-[#D8CEBE] shadow-xs">
-        <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-xl sm:text-2xl font-black text-[#261F18] uppercase tracking-tight">
-              Admissions Evaluation Console
-            </h1>
-            <span className="px-2 py-0.5 text-[11px] font-mono font-bold bg-[#FAF4EA] text-[#855D1E] border border-[#E5D7BE] uppercase">
-              {user.role} Authorization
-            </span>
-          </div>
-          <p className="text-xs text-[#665646] mt-1">
-            Logged in as <strong>{user.fullName}</strong> ({user.email}) · Academic Year 2026–2027 Admissions Operations
-          </p>
+    <div className="flex h-screen overflow-hidden animate-slide-up">
+      {/* Fixed Left Sidebar */}
+      <aside className="w-64 shrink-0 bg-[#1C0E07] border-r-2 border-[#D97706] flex flex-col h-full">
+        {/* Sidebar Header - Branding */}
+        <div className="p-5 border-b border-[#2C150B]">
+          <h1 className="font-display text-base font-bold tracking-widest text-[#FFFDF7] uppercase leading-tight">
+            Admissions Console
+          </h1>
+          <span className="text-[9px] font-bold tracking-[0.2em] text-[#D97706] uppercase mt-0.5 block">
+            Evaluation & Operations
+          </span>
         </div>
 
-        <div className="flex items-center gap-2">
+        {/* User Info */}
+        <div className="px-5 py-4 border-b border-[#2C150B]">
+          <div className="flex items-center gap-2 mb-1">
+            <ShieldCheck className="w-4 h-4 text-[#D97706]" />
+            <span className="text-xs font-bold text-[#FFFDF7] uppercase tracking-wider truncate">{user.fullName}</span>
+          </div>
+          <p className="text-[10px] text-[#8A7968] truncate">{user.email}</p>
+          <span className="inline-block mt-1.5 text-[8px] uppercase font-bold tracking-widest px-2 py-0.5 bg-[#D97706] text-[#1C0E07] rounded-sm">
+            {user.role}
+          </span>
+        </div>
+
+        {/* Navigation */}
+        <nav className="flex-1 overflow-y-auto py-3 px-2 space-y-0.5">
+          <p className="px-3 py-2 text-[9px] font-bold text-[#665646] uppercase tracking-[0.2em]">Navigation</p>
+          
+          <button
+            onClick={() => setActiveSubTab('applications')}
+            className={`w-full px-3 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider flex items-center justify-between transition-all cursor-pointer rounded-sm ${
+              activeSubTab === 'applications'
+                ? 'text-[#FFFDF7] bg-[#D97706]/15 border-l-3 border-[#D97706]'
+                : 'text-[#A89885] hover:text-[#FFFDF7] hover:bg-[#2C150B]'
+            }`}
+          >
+            <div className="flex items-center gap-3">
+              <UserCheck className={`w-4 h-4 ${activeSubTab === 'applications' ? 'text-[#D97706]' : 'text-[#665646]'}`} />
+              <span>Applications</span>
+            </div>
+            <span className={`px-1.5 py-0.5 rounded-sm text-[9px] font-mono ${activeSubTab === 'applications' ? 'bg-[#D97706] text-[#1C0E07]' : 'bg-[#2C150B] text-[#8A7968]'}`}>{applications.length}</span>
+          </button>
+
+          <button
+            onClick={() => setActiveSubTab('payments')}
+            className={`w-full px-3 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider flex items-center gap-3 transition-all cursor-pointer rounded-sm ${
+              activeSubTab === 'payments'
+                ? 'text-[#FFFDF7] bg-[#D97706]/15 border-l-3 border-[#D97706]'
+                : 'text-[#A89885] hover:text-[#FFFDF7] hover:bg-[#2C150B]'
+            }`}
+          >
+            <CreditCard className={`w-4 h-4 ${activeSubTab === 'payments' ? 'text-[#D97706]' : 'text-[#665646]'}`} />
+            <span>PayMongo & Collections</span>
+          </button>
+
+          <button
+            onClick={() => setActiveSubTab('banking_campaigns')}
+            className={`w-full px-3 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider flex items-center gap-3 transition-all cursor-pointer rounded-sm ${
+              activeSubTab === 'banking_campaigns'
+                ? 'text-[#FFFDF7] bg-[#D97706]/15 border-l-3 border-[#D97706]'
+                : 'text-[#A89885] hover:text-[#FFFDF7] hover:bg-[#2C150B]'
+            }`}
+          >
+            <Landmark className={`w-4 h-4 ${activeSubTab === 'banking_campaigns' ? 'text-[#D97706]' : 'text-[#665646]'}`} />
+            <span>Banking & QR Campaigns</span>
+          </button>
+
+          <button
+            onClick={() => setActiveSubTab('audit')}
+            className={`w-full px-3 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider flex items-center gap-3 transition-all cursor-pointer rounded-sm ${
+              activeSubTab === 'audit'
+                ? 'text-[#FFFDF7] bg-[#D97706]/15 border-l-3 border-[#D97706]'
+                : 'text-[#A89885] hover:text-[#FFFDF7] hover:bg-[#2C150B]'
+            }`}
+          >
+            <History className={`w-4 h-4 ${activeSubTab === 'audit' ? 'text-[#D97706]' : 'text-[#665646]'}`} />
+            <span>Audit Ledger</span>
+          </button>
+
+          <p className="px-3 py-2 mt-3 text-[9px] font-bold text-[#665646] uppercase tracking-[0.2em]">Management</p>
+
+          <button
+            onClick={() => setActiveSubTab('library')}
+            className={`w-full px-3 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider flex items-center gap-3 transition-all cursor-pointer rounded-sm ${
+              activeSubTab === 'library'
+                ? 'text-[#FFFDF7] bg-[#D97706]/15 border-l-3 border-[#D97706]'
+                : 'text-[#A89885] hover:text-[#FFFDF7] hover:bg-[#2C150B]'
+            }`}
+          >
+            <BookOpen className={`w-4 h-4 ${activeSubTab === 'library' ? 'text-[#D97706]' : 'text-[#665646]'}`} />
+            <span>Library Management</span>
+          </button>
+
+          <button
+            onClick={() => setActiveSubTab('donations')}
+            className={`w-full px-3 py-2.5 text-left text-[11px] font-bold uppercase tracking-wider flex items-center gap-3 transition-all cursor-pointer rounded-sm ${
+              activeSubTab === 'donations'
+                ? 'text-[#FFFDF7] bg-[#D97706]/15 border-l-3 border-[#D97706]'
+                : 'text-[#A89885] hover:text-[#FFFDF7] hover:bg-[#2C150B]'
+            }`}
+          >
+            <Heart className={`w-4 h-4 ${activeSubTab === 'donations' ? 'text-[#D97706]' : 'text-[#665646]'}`} />
+            <span>Donations & Support</span>
+          </button>
+        </nav>
+
+        {/* Sidebar Footer Actions */}
+        <div className="p-3 border-t border-[#2C150B] space-y-1.5">
           <button
             onClick={() => setShowEmailModal(true)}
-            className="px-3.5 py-2 border border-[#D8CEBE] bg-[#EBE3D5] hover:bg-[#FAF6EE] hover:border-[#B8A183] text-[#382B20] text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs"
+            className="w-full px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-[#A89885] hover:text-[#FFFDF7] hover:bg-[#2C150B] flex items-center gap-2.5 transition-colors cursor-pointer rounded-sm"
           >
-            <Mail className="w-4 h-4 text-[#D97706]" />
+            <Mail className="w-3.5 h-3.5 text-[#665646]" />
             <span>Outbound Logs</span>
           </button>
+          {onReturnHome && (
+            <button
+              onClick={onReturnHome}
+              className="w-full px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-[#A89885] hover:text-[#FFFDF7] hover:bg-[#2C150B] flex items-center gap-2.5 transition-colors cursor-pointer rounded-sm"
+            >
+              <ArrowLeft className="w-3.5 h-3.5 text-[#665646]" />
+              <span>Return to Site</span>
+            </button>
+          )}
+          <button
+            onClick={onLogout}
+            className="w-full px-3 py-2 text-[10px] font-bold uppercase tracking-wider text-[#DC2626] hover:text-[#EF4444] hover:bg-[#2C150B] flex items-center gap-2.5 transition-colors cursor-pointer rounded-sm"
+          >
+            <XCircle className="w-3.5 h-3.5" />
+            <span>Sign Out</span>
+          </button>
         </div>
-      </div>
+      </aside>
 
-      {/* Microsoft-Style Tab Navigation */}
-      <div className="flex items-center border-b-2 border-[#D8CEBE] bg-[#EBE3D5]">
-        <button
-          onClick={() => setActiveSubTab('applications')}
-          className={`px-5 py-3 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 transition-colors cursor-pointer ${
-            activeSubTab === 'applications'
-              ? 'border-[#D97706] text-[#261F18] bg-[#FAF6EE]'
-              : 'border-transparent text-[#7A6A59] hover:text-[#261F18] hover:bg-[#FAF8F5]'
-          }`}
-        >
-          <UserCheck className={`w-4 h-4 ${activeSubTab === 'applications' ? 'text-[#D97706]' : 'text-[#8A7968]'}`} />
-          <span>Applications Directory ({applications.length})</span>
-        </button>
+      {/* Main Content Area */}
+      <div className="flex-1 flex flex-col min-w-0 bg-[#FAF6EE] overflow-y-auto">
 
-        <button
-          onClick={() => setActiveSubTab('payments')}
-          className={`px-5 py-3 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 transition-colors cursor-pointer ${
-            activeSubTab === 'payments'
-              ? 'border-[#D97706] text-[#261F18] bg-[#FAF6EE]'
-              : 'border-transparent text-[#7A6A59] hover:text-[#261F18] hover:bg-[#FAF8F5]'
-          }`}
-        >
-          <CreditCard className={`w-4 h-4 ${activeSubTab === 'payments' ? 'text-[#D97706]' : 'text-[#8A7968]'}`} />
-          <span>PayMongo & Collections</span>
-        </button>
 
-        <button
-          onClick={() => setActiveSubTab('banking')}
-          className={`px-5 py-3 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 transition-colors cursor-pointer ${
-            activeSubTab === 'banking'
-              ? 'border-[#D97706] text-[#261F18] bg-[#FAF6EE]'
-              : 'border-transparent text-[#7A6A59] hover:text-[#261F18] hover:bg-[#FAF8F5]'
-          }`}
-        >
-          <Landmark className={`w-4 h-4 ${activeSubTab === 'banking' ? 'text-[#D97706]' : 'text-[#8A7968]'}`} />
-          <span>Banking & Depository</span>
-        </button>
-
-        <button
-          onClick={() => setActiveSubTab('campaigns')}
-          className={`px-5 py-3 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 transition-colors cursor-pointer ${
-            activeSubTab === 'campaigns'
-              ? 'border-[#D97706] text-[#261F18] bg-[#FAF6EE]'
-              : 'border-transparent text-[#7A6A59] hover:text-[#261F18] hover:bg-[#FAF8F5]'
-          }`}
-        >
-          <QrCode className={`w-4 h-4 ${activeSubTab === 'campaigns' ? 'text-[#D97706]' : 'text-[#8A7968]'}`} />
-          <span>QR Campaign Manager</span>
-        </button>
-
-        <button
-          onClick={() => setActiveSubTab('audit')}
-          className={`px-5 py-3 text-xs font-bold uppercase tracking-wider flex items-center gap-2 border-b-2 transition-colors cursor-pointer ${
-            activeSubTab === 'audit'
-              ? 'border-[#D97706] text-[#261F18] bg-[#FAF6EE]'
-              : 'border-transparent text-[#7A6A59] hover:text-[#261F18] hover:bg-[#FAF8F5]'
-          }`}
-        >
-          <History className={`w-4 h-4 ${activeSubTab === 'audit' ? 'text-[#D97706]' : 'text-[#8A7968]'}`} />
-          <span>System Audit Ledger</span>
-        </button>
-      </div>
+        {/* Scrollable Content */}
+        <div className="flex-1 overflow-y-auto p-6 space-y-5">
 
       {/* SUBTAB 1: Applications Data Table */}
       {activeSubTab === 'applications' && (
         <div className="space-y-4">
+          <div className="flex items-center justify-between pb-2 border-b border-[#D8CEBE]">
+            <div>
+              <h3 className="text-base font-black text-[#261F18] uppercase tracking-wide">
+                Applications Directory
+              </h3>
+              <p className="text-xs text-[#7A6A59]">
+                Review, manage, and process student applications.
+              </p>
+            </div>
+            <span className="text-xs font-mono font-bold px-2.5 py-1 bg-[#FAF4EA] text-[#855D1E] border border-[#E5D7BE]">
+              Academic Year 2026-2027
+            </span>
+          </div>
+
           {/* KPI Metric Overview Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <div className="bg-[#EBE3D5] p-4 border border-[#D8CEBE] shadow-xs">
@@ -322,32 +392,70 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
         <AdminPaymentsTab adminToken={token} adminRole={user.role} />
       )}
 
-      {/* SUBTAB 3: Banking & Depository */}
-      {activeSubTab === 'banking' && (
-        <AdminBankingTab sessionToken={token} />
-      )}
-
-      {/* SUBTAB 4: QR Campaigns Manager */}
-      {activeSubTab === 'campaigns' && (
-        <QRCampaignManager adminToken={token} adminRole={user.role} />
-      )}
-
-      {/* SUBTAB 4: System Audit Log */}
-      {activeSubTab === 'audit' && (
-        <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] shadow-xs p-6 space-y-4">
-          <div className="flex items-center justify-between border-b border-[#EBE3D5] pb-3">
+      {/* COMBINED TAB: Banking & Campaigns */}
+      {activeSubTab === 'banking_campaigns' && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between pb-2 border-b border-[#D8CEBE]">
             <div>
               <h3 className="text-base font-black text-[#261F18] uppercase tracking-wide">
-                Institutional Audit Ledger
+                Banking, Vault & Campaigns
               </h3>
               <p className="text-xs text-[#7A6A59]">
-                Immutable, tamper-evident audit records logging status transitions, evaluations, and uploads.
+                Manage offline collections and track marketing attribution.
+              </p>
+            </div>
+          </div>
+          <div className="flex border-b border-[#D8CEBE]">
+            <button
+              onClick={() => setInnerBankingTab('banking')}
+              className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 ${
+                innerBankingTab === 'banking'
+                  ? 'border-[#D97706] text-[#261F18]'
+                  : 'border-transparent text-[#8A7968] hover:text-[#261F18]'
+              }`}
+            >
+              Banking & Vault
+            </button>
+            <button
+              onClick={() => setInnerBankingTab('campaigns')}
+              className={`px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors border-b-2 ${
+                innerBankingTab === 'campaigns'
+                  ? 'border-[#D97706] text-[#261F18]'
+                  : 'border-transparent text-[#8A7968] hover:text-[#261F18]'
+              }`}
+            >
+              QR Campaigns
+            </button>
+          </div>
+
+          <div className="pt-2">
+            {innerBankingTab === 'banking' && (
+              <AdminBankingTab sessionToken={token} />
+            )}
+            {innerBankingTab === 'campaigns' && (
+              <QRCampaignManager adminToken={token} adminRole={user.role} />
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* SUBTAB 5: System Audit Log */}
+      {activeSubTab === 'audit' && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between pb-2 border-b border-[#D8CEBE]">
+            <div>
+              <h3 className="text-base font-black text-[#261F18] uppercase tracking-wide">
+                System Audit Ledger
+              </h3>
+              <p className="text-xs text-[#7A6A59]">
+                Immutable, tamper-evident records of status transitions, evaluations, and uploads.
               </p>
             </div>
             <span className="text-xs font-mono font-bold px-2.5 py-1 bg-[#FAF4EA] text-[#855D1E] border border-[#E5D7BE]">
               {auditLogs.length} Records
             </span>
           </div>
+          <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] shadow-xs">
 
           <div className="overflow-x-auto border border-[#D8CEBE]">
             <table className="w-full text-left text-xs">
@@ -393,8 +501,40 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
               </tbody>
             </table>
           </div>
+          </div>
         </div>
       )}
+
+      {/* SUBTAB 6: Library Management */}
+      {activeSubTab === 'library' && (
+        <AdminLibraryTab adminToken={token} adminRole={user.role} />
+      )}
+
+      {/* SUBTAB 7: Donations & Support */}
+      {activeSubTab === 'donations' && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between pb-2 border-b border-[#D8CEBE]">
+            <div>
+              <h3 className="text-base font-black text-[#261F18] uppercase tracking-wide">
+                Donations & Support Tracker
+              </h3>
+              <p className="text-xs text-[#7A6A59]">
+                Track donations, manage support campaigns, and generate contribution reports.
+              </p>
+            </div>
+          </div>
+          <div className="bg-[#EBE3D5] border-2 border-[#D8CEBE] shadow-xs p-6">
+            <div className="py-16 text-center text-[#8A7968]">
+              <Heart className="w-12 h-12 mx-auto mb-4 text-[#D8CEBE]" />
+              <p className="text-sm font-bold uppercase tracking-wider">Donations Module Coming Soon</p>
+              <p className="text-xs mt-1">Donation tracking, campaign management, and reporting tools will appear here.</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+        </div>
+      </div>
 
       {/* Application Detail Modal Drawer */}
       {selectedAppId && (

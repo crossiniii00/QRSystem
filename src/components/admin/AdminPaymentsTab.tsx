@@ -80,6 +80,25 @@ export const AdminPaymentsTab: React.FC<AdminPaymentsTabProps> = ({
 
   return (
     <div className="space-y-6">
+      <div className="flex items-center justify-between pb-2 border-b border-[#D8CEBE]">
+        <div>
+          <h3 className="text-base font-black text-[#261F18] uppercase tracking-wide">
+            PayMongo & Collections
+          </h3>
+          <p className="text-xs text-[#7A6A59]">
+            Monitor digital payments and verify settlement transactions.
+          </p>
+        </div>
+        <button
+          onClick={loadTransactions}
+          disabled={loading}
+          className="flex items-center gap-1.5 px-3 py-1.5 bg-[#FAF6EE] text-[#382B20] hover:bg-[#382B20] hover:text-[#FFFBEB] border border-[#D8CEBE] font-bold text-xs uppercase tracking-wider transition-colors disabled:opacity-50"
+        >
+          <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
+          <span>Refresh</span>
+        </button>
+      </div>
+
       {/* Overview Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
         <div className="bg-[#EBE3D5] p-4 border border-[#D8CEBE] shadow-xs">

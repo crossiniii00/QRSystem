@@ -5,6 +5,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { APP_CONFIG } from '../../config/app.config';
 import { CAMPUS_GALLERY_PHOTOS } from '../../data/mockData';
 import { CampusMapAndArchive } from './CampusMapAndArchive';
+import { AlumniShowcase } from './AlumniShowcase';
 
 // Reusable Scroll Reveal Component for section-wide animations
 const Reveal: React.FC<{ children: React.ReactNode, delay?: number }> = ({ children, delay = 0 }) => {
@@ -454,18 +455,17 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onBegin, onViewCalenda
                   Let me have the right feelings and knowledge for the task You give me in truth. Help me to know You, O Lord, in order that I may always and in all things act according to Your most holy and perfect Will. Amen.
                 </p>
                 
-                <div className="grid grid-cols-3 gap-6 pt-8 border-t border-[#E5D7BE]">
-                  <div>
-                    <span className="block text-3xl md:text-4xl font-serif font-medium text-[#2E2016] mb-1">40+</span>
-                    <span className="text-[9px] uppercase tracking-widest text-[#D97706] font-bold">Nationalities</span>
+                <div className="pt-8 border-t border-[#E5D7BE] flex items-center gap-6">
+                  <div className="w-20 h-20 rounded-full border border-[#D97706]/40 p-1.5 bg-white shadow-lg flex items-center justify-center shrink-0">
+                    <img src="/logo.jpg" alt="Saint Francis College Logo" className="w-full h-full object-cover rounded-full" />
                   </div>
                   <div>
-                    <span className="block text-3xl md:text-4xl font-serif font-medium text-[#2E2016] mb-1">100%</span>
-                    <span className="text-[9px] uppercase tracking-widest text-[#D97706] font-bold">Acceptance</span>
-                  </div>
-                  <div>
-                    <span className="block text-3xl md:text-4xl font-serif font-medium text-[#2E2016] mb-1">1:8</span>
-                    <span className="text-[9px] uppercase tracking-widest text-[#D97706] font-bold">Faculty Ratio</span>
+                    <h4 className="text-2xl md:text-3xl font-serif font-medium text-[#2E2016] leading-tight mb-1">
+                      Saint Francis College
+                    </h4>
+                    <span className="text-[10px] uppercase tracking-[0.3em] text-[#D97706] font-bold block">
+                      Pax Et Bonum
+                    </span>
                   </div>
                 </div>
               </div>
@@ -735,86 +735,238 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onBegin, onViewCalenda
 
 
       {/* Embedded Campus Map & Archive */}
-      <section id="campus-map" className="bg-[#FAF6EE] pb-16">
+      <section id="campus-map" className="bg-[#FAF6EE] pb-12"></section>
+
+      {/* Campus Life / Facilities (Library) */}
+      <section id="library" className="py-24 md:py-32 bg-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-[40%] h-full bg-[#EBE7E0] z-0 hidden lg:block" />
         <Reveal>
-          <CampusMapAndArchive />
-        </Reveal>
-      </section>
-
-      {/* Media & Events Section */}
-      <section id="campus-life" className="py-24 md:py-32 bg-[#1C0E07] relative overflow-hidden border-t border-[#332318]">
-        <div className="absolute top-0 left-0 w-[30%] h-full bg-[#2E2016] z-0 hidden lg:block border-r border-[#4A3525]" />
-        <Reveal>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center">
             
-            {/* Section Header */}
-            <div className="text-center mb-16 md:mb-20">
-              <h3 className="text-[10px] md:text-xs font-bold text-[#D97706] uppercase tracking-[0.3em] mb-4">Spotlight & Updates</h3>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-white tracking-tight">Campus Life</h2>
-            </div>
-
-            <div className="flex flex-col lg:flex-row items-center">
-            
-            {/* Main Video Area (Overlapping) */}
-            <div className="w-full lg:w-7/12 relative z-20 mt-[-5%] lg:mt-0 lg:pl-0 order-2 lg:order-1 mt-12 lg:mt-0">
-              <div className="relative w-full aspect-video bg-[#1C0E07] border border-[#D5CFC4] shadow-[0_30px_60px_rgba(0,0,0,0.15)] group cursor-pointer overflow-hidden lg:-ml-12">
-                <img
-                  src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1200&auto=format&fit=crop"
-                  alt="Campus Video Thumbnail"
-                  className="w-full h-full object-cover grayscale-[0.2] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-[2s] ease-out"
-                />
-                <div className="absolute inset-0 bg-[#2E2016]/40 group-hover:bg-[#2E2016]/20 transition-colors duration-500 flex items-center justify-center">
-                  <div className="w-20 h-20 bg-[#F59E0B]/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-[0_0_40px_rgba(245,158,11,0.6)]">
-                    <PlayCircle className="w-10 h-10 text-white ml-1" />
-                  </div>
-                </div>
-                {/* Architectural Decor */}
-                <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-white/30 pointer-events-none" />
-                <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-white/30 pointer-events-none" />
-              </div>
-            </div>
-
-            {/* Upcoming Events Sidebar (Split) */}
-            <div className="w-full lg:w-5/12 relative z-10 order-1 lg:order-2">
-              <div className="bg-[#FAF6EE] p-10 md:p-12 lg:p-16 border border-[#D5CFC4] shadow-[0_30px_60px_rgba(0,0,0,0.2)] lg:-ml-8 lg:mt-16">
+            {/* Right Content (Overlapping) - Swapped for variety */}
+            <div className="w-full lg:w-5/12 relative z-20 lg:pl-0 order-2 lg:order-2 mt-12 lg:mt-0">
+              <div className="bg-[#FAF6EE] p-10 md:p-14 border border-[#D5CFC4] shadow-[0_30px_60px_rgba(0,0,0,0.08)] relative lg:-ml-16">
+                <div className="absolute top-0 right-0 w-1.5 h-16 bg-[#D97706]" />
+                
                 <h3 className="text-[10px] md:text-xs font-bold text-[#8C7A68] uppercase tracking-[0.3em] mb-4 flex items-center gap-3">
-                  <Calendar className="w-4 h-4 text-[#D97706]" />
-                  Calendar
+                  <Library className="w-4 h-4 text-[#D97706]" />
+                  State-of-the-Art Facilities
                 </h3>
-                <h2 className="text-4xl md:text-5xl font-serif font-black text-[#2E2016] tracking-tight mb-10 leading-[1.1]">
-                  Upcoming Events
+                
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-[#2E2016] tracking-tight leading-[1.05] mb-8">
+                  Saint Francis <br />Library
                 </h2>
-
-                <div className="space-y-6">
-                  {[
-                    { date: "Oct 15", title: "Fall Open House & Campus Tour", time: "9:00 AM - 2:00 PM" },
-                    { date: "Oct 22", title: "Distinguished Alumni Lecture", time: "6:30 PM - 8:30 PM" },
-                    { date: "Nov 05", title: "International Student Mixer", time: "4:00 PM - 7:00 PM" },
-                  ].map((event, idx) => (
-                    <div key={idx} className="group flex gap-6 p-5 border border-[#EBE7E0] hover:border-[#D97706] hover:bg-[#FAF6EE] transition-colors cursor-pointer bg-white">
-                      <div className="flex flex-col items-center justify-center w-16 h-16 bg-[#2E2016] text-white shrink-0">
-                        <span className="text-[10px] font-bold uppercase tracking-widest">{event.date.split(' ')[0]}</span>
-                        <span className="text-2xl font-serif leading-none mt-1">{event.date.split(' ')[1]}</span>
-                      </div>
-                      <div className="flex flex-col justify-center">
-                        <h4 className="font-bold text-[#2E2016] leading-tight mb-2 group-hover:text-[#D97706] transition-colors">{event.title}</h4>
-                        <p className="text-[10px] uppercase tracking-widest text-[#8C7A68] flex items-center gap-2 font-bold">
-                          <Clock className="w-3 h-3 text-[#D97706]" /> {event.time}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
+                
+                <p className="text-base text-[#54483C] leading-relaxed mb-6 font-medium">
+                  Our newly renovated, multi-level library houses over 500,000 physical volumes and provides access to millions of digital journals worldwide.
+                </p>
+                
+                <p className="text-sm text-[#8C7A68] leading-relaxed mb-10">
+                  Featuring quiet study halls, collaborative tech-pods, and a rare manuscripts archive, it is the intellectual heart of the campus where students spend hours delving into research and group projects.
+                </p>
+                
                 <button
-                  onClick={onViewCalendar}
-                  className="mt-10 group flex items-center gap-3 text-[#2E2016] font-bold uppercase tracking-widest text-[10px] border-b-2 border-[#D97706] pb-2 hover:text-[#D97706] transition-colors"
+                  className="group flex items-center gap-3 text-[#2E2016] font-bold uppercase tracking-widest text-[10px] border-b-2 border-[#D97706] pb-2 hover:text-[#D97706] transition-colors"
+                  onClick={() => {
+                    const headerBtns = Array.from(document.querySelectorAll('button'));
+                    const headerBtn = headerBtns.find(el => el.textContent?.includes('Library'));
+                    if (headerBtn) (headerBtn as HTMLElement).click();
+                  }}
                 >
-                  View Full Calendar
+                  Explore The Library
                   <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
+
+            {/* Left Image (Tall Portrait) */}
+            <div className="w-full lg:w-7/12 relative z-10 order-1 lg:order-1">
+              <div className="relative w-full aspect-[4/5] lg:aspect-[3/4] overflow-hidden border-8 border-white shadow-[0_30px_60px_rgba(0,0,0,0.15)] bg-[#1C0E07]">
+                <img
+                  src="/modern_library.jpg"
+                  alt="Grand Library"
+                  className="absolute inset-0 w-full h-full object-cover grayscale-[0.25] transition-all duration-[2s] ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-105 hover:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2E2016]/50 via-transparent to-transparent z-20 pointer-events-none" />
+              </div>
+              
+              {/* Abstract Architectural Details */}
+              <div className="absolute -bottom-8 -left-8 w-48 h-48 border border-[#D97706]/40 hidden lg:block pointer-events-none" />
+              <div className="absolute -bottom-4 -left-4 w-48 h-48 border border-[#D97706]/40 hidden lg:block pointer-events-none" />
+            </div>
+
+          </div>
+        </Reveal>
+      </section>
+
+      {/* Unified Academics & Campus Life Section */}
+      <section id="academics-life" className="py-24 md:py-32 bg-[#1C120B] relative overflow-hidden border-y border-[#332318]">
+        <div className="absolute top-0 right-0 w-[50%] h-full bg-[#170E09] z-0 hidden lg:block border-l border-[#332318]" />
+        
+        <Reveal>
+          <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
+              
+              {/* Left Column: Academics */}
+              <div className="flex flex-col">
+                <div className="mb-12 border-b border-[#332318] pb-10">
+                  <h3 className="text-[10px] font-black text-[#D97706] uppercase tracking-[0.3em] mb-4 flex items-center gap-4">
+                    <span className="w-8 h-[2px] bg-[#D97706]"></span> Academic Excellence
+                  </h3>
+                  <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif font-black tracking-tight text-[#FFFDF7] leading-[0.9]">
+                    Strands &<br />Programs
+                  </h2>
+                </div>
+                
+                {/* Vertical Accordion for Academics */}
+                <div className="flex flex-col gap-4 flex-1">
+                  {[
+                    {
+                      icon: Compass,
+                      title: "Pre-School & Kindergarten",
+                      desc: "A nurturing environment that fosters early cognitive development, social skills, and foundational values through play-based and guided learning.",
+                      img: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600&auto=format&fit=crop",
+                      features: ["Play-based Learning", "Values Formation", "Early Literacy", "Motor Skills"]
+                    },
+                    {
+                      icon: Users,
+                      title: "Elementary",
+                      subtitle: "Grades 1–6",
+                      desc: "Building a strong academic core while emphasizing character formation, critical thinking, and collaborative discovery.",
+                      img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600&auto=format&fit=crop",
+                      features: ["Core Academics", "Character Education", "Basic Science", "Arts & Culture"]
+                    },
+                    {
+                      icon: Globe,
+                      title: "Junior High",
+                      subtitle: "Grades 7–10",
+                      desc: "A robust curriculum preparing students for complex challenges, developing holistic leaders with a global perspective.",
+                      img: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=600&auto=format&fit=crop",
+                      features: ["Advanced Math & Science", "Tech Livelihood", "Student Leadership", "Extracurriculars"]
+                    },
+                    {
+                      icon: GraduationCap,
+                      title: "Senior High",
+                      subtitle: "Grades 11–12",
+                      desc: "Rigorous preparation for university excellence and career readiness with specialized tracks.",
+                      img: "https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=600&auto=format&fit=crop",
+                      features: ["STEM (Science & Tech)", "HUMSS (Humanities)", "ABM (Business)", "GAS (General Academic)"]
+                    }
+                  ].map((program, idx) => (
+                    <div 
+                      key={idx} 
+                      onClick={onViewAcademics}
+                      className="group relative h-[140px] hover:h-[320px] overflow-hidden border border-[#332318] bg-[#120B07] transition-[height] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] cursor-pointer"
+                    >
+                      <img src={program.img} alt={program.title} className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 group-hover:opacity-60 transition-all duration-700" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-[#120B07] via-[#120B07]/80 to-transparent group-hover:via-[#120B07]/50 transition-colors duration-700" />
+                      
+                      <div className="absolute inset-0 p-6 lg:p-8 flex flex-col justify-between">
+                        <div className="flex justify-between items-center h-full group-hover:items-start group-hover:h-auto transition-all duration-700">
+                          <div className="flex items-center gap-6">
+                            
+                            <div>
+                               {program.subtitle && (
+                                 <div className="text-[9px] uppercase tracking-[0.3em] text-[#D97706] font-bold mb-1 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100 h-0 group-hover:h-auto overflow-hidden">{program.subtitle}</div>
+                               )}
+                               <h4 className="text-xl lg:text-3xl font-serif font-black tracking-tight text-[#FFFDF7] group-hover:text-[#D97706] transition-colors leading-[1.1]">{program.title}</h4>
+                            </div>
+                          </div>
+                          
+                          <div className="bg-[#120B07]/80 backdrop-blur-sm w-12 h-12 border border-[#332318] flex items-center justify-center group-hover:border-[#D97706] group-hover:bg-[#D97706] transition-colors shrink-0">
+                            <program.icon className="w-5 h-5 text-[#D97706] group-hover:text-white transition-colors" />
+                          </div>
+                        </div>
+                        
+                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200 mt-6 border-t border-[#332318] pt-6 flex-1 flex flex-col justify-end">
+                          <div className="grid grid-cols-2 gap-4">
+                            {program.features.map((feature, fIdx) => (
+                              <div key={fIdx} className="flex items-center gap-3 text-xs text-[#D5CFC4]">
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#D97706]" />
+                                {feature}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                <button
+                  onClick={onViewAcademics}
+                  className="mt-auto pt-12 group inline-flex items-center gap-3 text-[#D5CFC4] font-bold uppercase tracking-widest text-[10px] border-b-2 border-[#D97706] pb-2 hover:text-[#D97706] transition-colors self-start"
+                >
+                  View Full Curriculum
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+
+              {/* Right Column: Campus Life */}
+              <div className="flex flex-col pt-12 lg:pt-0">
+                <div className="mb-12 border-b border-[#332318] pb-10">
+                  <h3 className="text-[10px] font-black text-[#D97706] uppercase tracking-[0.3em] mb-4 flex items-center gap-4">
+                    <span className="w-8 h-[2px] bg-[#D97706]"></span> Spotlight & Updates
+                  </h3>
+                  <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif font-black tracking-tight text-[#FFFDF7] leading-[0.9]">
+                    Campus Life
+                  </h2>
+                </div>
+
+                <div className="flex flex-col flex-1 gap-8">
+                  <div className="relative w-full aspect-[21/9] lg:aspect-[16/9] bg-[#1C0E07] border border-[#332318] shadow-[0_30px_60px_rgba(0,0,0,0.3)] group cursor-pointer overflow-hidden shrink-0">
+                    <img
+                      src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1200&auto=format&fit=crop"
+                      alt="Campus Video Thumbnail"
+                      className="w-full h-full object-cover grayscale-[0.2] group-hover:scale-105 group-hover:grayscale-0 transition-all duration-[2s] ease-out opacity-80 group-hover:opacity-100"
+                    />
+                    <div className="absolute inset-0 bg-[#2E2016]/40 group-hover:bg-[#2E2016]/20 transition-colors duration-500 flex items-center justify-center">
+                      <div className="w-16 h-16 bg-[#D97706]/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-[0_0_40px_rgba(217,119,6,0.6)] backdrop-blur-sm">
+                        <PlayCircle className="w-8 h-8 text-white ml-1" />
+                      </div>
+                    </div>
+                    {/* Architectural Decor */}
+                    <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-white/30 pointer-events-none" />
+                    <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-white/30 pointer-events-none" />
+                  </div>
+
+                  <div className="bg-[#120B07] border border-[#332318] p-8 md:p-10 flex-1 flex flex-col">
+                    <h3 className="text-[10px] md:text-xs font-bold text-[#A89885] uppercase tracking-[0.3em] mb-8 flex items-center gap-3 border-b border-[#332318] pb-4">
+                      <Calendar className="w-4 h-4 text-[#D97706]" />
+                      Upcoming Events
+                    </h3>
+
+                    <div className="space-y-4 flex-1">
+                      {[
+                        { date: "Oct 15", title: "Fall Open House & Campus Tour", time: "9:00 AM - 2:00 PM" },
+                        { date: "Oct 22", title: "Distinguished Alumni Lecture", time: "6:30 PM - 8:30 PM" },
+                        { date: "Nov 05", title: "International Student Mixer", time: "4:00 PM - 7:00 PM" },
+                      ].map((event, idx) => (
+                        <div key={idx} className="group flex gap-5 p-4 border border-[#332318] hover:border-[#D97706] hover:bg-[#1C120B] transition-colors cursor-pointer bg-[#1C120B]/50">
+                          <div className="flex flex-col items-center justify-center w-14 h-14 bg-[#2E2016] text-[#FFFDF7] shrink-0 group-hover:bg-[#D97706] transition-colors">
+                            <span className="text-[9px] font-bold uppercase tracking-widest">{event.date.split(' ')[0]}</span>
+                            <span className="text-xl font-serif leading-none mt-1">{event.date.split(' ')[1]}</span>
+                          </div>
+                          <div className="flex flex-col justify-center">
+                            <h4 className="font-bold text-[#FFFDF7] text-sm md:text-base leading-tight mb-1 md:mb-2 group-hover:text-[#D97706] transition-colors">{event.title}</h4>
+                            <p className="text-[9px] uppercase tracking-widest text-[#8C7A68] flex items-center gap-2 font-bold">
+                              <Clock className="w-3 h-3 text-[#D97706]" /> {event.time}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    <button
+                      onClick={onViewCalendar}
+                      className="mt-8 group inline-flex items-center gap-3 text-[#D5CFC4] font-bold uppercase tracking-widest text-[10px] border-b-2 border-[#D97706] pb-2 hover:text-[#D97706] transition-colors self-start"
+                    >
+                      View Full Calendar
+                      <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  </div>
+                </div>
+              </div>
 
             </div>
           </div>
@@ -884,161 +1036,19 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onBegin, onViewCalenda
         </Reveal>
       </section>
 
-      {/* Academics & Programs */}
-      <section id="academics" className="py-24 md:py-32 px-4 bg-[#1C120B] text-white relative border-y border-[#332318]">
-        {/* Subtle grid pattern background removed as per user request */}
-        
-        <Reveal>
-          <div className="max-w-7xl mx-auto relative z-10">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16 border-b border-[#332318] pb-10">
-              <div>
-                <h3 className="text-[10px] font-black text-[#D97706] uppercase tracking-[0.3em] mb-4 flex items-center gap-4">
-                  <span className="w-8 h-[2px] bg-[#D97706]"></span> Academic Excellence
-                </h3>
-                <h2 className="text-4xl md:text-5xl lg:text-7xl font-serif font-black tracking-tight text-[#FFFDF7] leading-[0.9]">
-                  Strands &<br />Programs
-                </h2>
-              </div>
-              
-              <button
-                onClick={onViewAcademics}
-                className="mt-8 md:mt-0 group flex items-center gap-3 text-[#D5CFC4] font-bold uppercase tracking-widest text-[10px] border-b-2 border-[#D97706] pb-2 hover:text-[#D97706] transition-colors"
-              >
-                View Full Curriculum
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0 border border-[#332318] bg-[#120B07] shadow-[0_30px_60px_rgba(0,0,0,0.6)]">
-              {[
-                {
-                  icon: Compass,
-                  title: "Pre-School & Kindergarten",
-                  desc: "A nurturing environment that fosters early cognitive development, social skills, and foundational values through play-based and guided learning.",
-                  img: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=600&auto=format&fit=crop"
-                },
-                {
-                  icon: Users,
-                  title: "Elementary",
-                  subtitle: "Grades 1–6",
-                  desc: "Building a strong academic core while emphasizing character formation, critical thinking, and collaborative discovery.",
-                  img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600&auto=format&fit=crop"
-                },
-                {
-                  icon: Globe,
-                  title: "Junior High",
-                  subtitle: "Grades 7–10",
-                  desc: "A robust curriculum preparing students for complex challenges, developing holistic leaders with a global perspective.",
-                  img: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=600&auto=format&fit=crop"
-                },
-                {
-                  icon: GraduationCap,
-                  title: "Senior High",
-                  subtitle: "Grades 11–12",
-                  desc: "Rigorous preparation for university excellence and career readiness with specialized tracks.",
-                  img: "https://images.unsplash.com/photo-1532012197267-da84d127e765?q=80&w=600&auto=format&fit=crop"
-                }
-              ].map((program, idx) => (
-                <div 
-                  key={idx} 
-                  onClick={onViewAcademics}
-                  className={`group relative h-[450px] md:h-[550px] lg:h-[650px] overflow-hidden border-[#332318] cursor-pointer ${idx !== 3 ? 'border-b md:border-b-0 md:border-r' : ''}`}
-                >
-                  <img src={program.img} alt={program.title} className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all duration-[2s] ease-[cubic-bezier(0.25,1,0.5,1)]" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#120B07] via-[#120B07]/40 to-transparent" />
-                  
-                  <div className="absolute inset-0 p-8 flex flex-col justify-between">
-                    <div className="flex justify-between items-start">
-                      <span className="text-4xl font-serif text-white font-black group-hover:text-[#D97706]/30 transition-colors">0{idx + 1}</span>
-                      <div className="bg-[#120B07]/80 backdrop-blur-sm w-12 h-12 border border-[#332318] flex items-center justify-center group-hover:border-[#D97706] group-hover:bg-[#D97706] transition-colors">
-                        <program.icon className="w-5 h-5 text-[#D97706] group-hover:text-white transition-colors" />
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <h4 className="text-2xl lg:text-3xl font-serif font-black tracking-tight mb-2 text-[#FFFDF7] group-hover:text-[#D97706] transition-colors leading-[1.1]">{program.title}</h4>
-                      {program.subtitle && (
-                        <div className="text-[9px] uppercase tracking-[0.2em] text-[#D97706] font-bold mb-4">{program.subtitle}</div>
-                      )}
-                      
-                      <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                        <div className="overflow-hidden">
-                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-200 border-t border-[#332318] pt-4 mt-2">
-                            <p className="text-[#A89885] leading-relaxed font-sans text-xs">{program.desc}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+      {/* Logo Divider */}
+      <div className="w-full bg-[#FAF8F5] flex justify-center items-center py-12 relative z-20">
+        <div className="flex items-center gap-6 md:gap-8 opacity-80 transition-opacity duration-500 hover:opacity-100">
+          <div className="w-24 md:w-64 h-[1px] bg-gradient-to-r from-transparent to-[#D97706]" />
+          <div className="w-20 h-20 rounded-full border border-[#D97706]/40 p-1.5 bg-white shadow-xl flex items-center justify-center shrink-0 transform hover:scale-110 transition-transform duration-500">
+            <img src="/logo.jpg" alt="Saint Francis College Logo" className="w-full h-full object-cover rounded-full" />
           </div>
-        </Reveal>
-      </section>
+          <div className="w-24 md:w-64 h-[1px] bg-gradient-to-l from-transparent to-[#D97706]" />
+        </div>
+      </div>
 
-      {/* Campus Life / Facilities (Library) */}
-      <section id="library" className="py-24 md:py-32 bg-white relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-[40%] h-full bg-[#EBE7E0] z-0 hidden lg:block" />
-        <Reveal>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 flex flex-col lg:flex-row items-center">
-            
-            {/* Right Content (Overlapping) - Swapped for variety */}
-            <div className="w-full lg:w-5/12 relative z-20 lg:pl-0 order-2 lg:order-2 mt-12 lg:mt-0">
-              <div className="bg-[#FAF6EE] p-10 md:p-14 border border-[#D5CFC4] shadow-[0_30px_60px_rgba(0,0,0,0.08)] relative lg:-ml-16">
-                <div className="absolute top-0 right-0 w-1.5 h-16 bg-[#D97706]" />
-                
-                <h3 className="text-[10px] md:text-xs font-bold text-[#8C7A68] uppercase tracking-[0.3em] mb-4 flex items-center gap-3">
-                  <Library className="w-4 h-4 text-[#D97706]" />
-                  State-of-the-Art Facilities
-                </h3>
-                
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-black text-[#2E2016] tracking-tight leading-[1.05] mb-8">
-                  The Grand <br />Athenaeum
-                </h2>
-                
-                <p className="text-base text-[#54483C] leading-relaxed mb-6 font-medium">
-                  Our newly renovated, multi-level library houses over 500,000 physical volumes and provides access to millions of digital journals worldwide.
-                </p>
-                
-                <p className="text-sm text-[#8C7A68] leading-relaxed mb-10">
-                  Featuring quiet study halls, collaborative tech-pods, and a rare manuscripts archive, it is the intellectual heart of the campus where students spend hours delving into research and group projects.
-                </p>
-                
-                <button
-                  className="group flex items-center gap-3 text-[#2E2016] font-bold uppercase tracking-widest text-[10px] border-b-2 border-[#D97706] pb-2 hover:text-[#D97706] transition-colors"
-                  onClick={() => {
-                    const headerBtns = Array.from(document.querySelectorAll('button'));
-                    const headerBtn = headerBtns.find(el => el.textContent?.includes('Library'));
-                    if (headerBtn) (headerBtn as HTMLElement).click();
-                  }}
-                >
-                  Explore The Library
-                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </div>
-
-            {/* Left Image (Tall Portrait) */}
-            <div className="w-full lg:w-7/12 relative z-10 order-1 lg:order-1">
-              <div className="relative w-full aspect-[4/5] lg:aspect-[3/4] overflow-hidden border-8 border-white shadow-[0_30px_60px_rgba(0,0,0,0.15)] bg-[#1C0E07]">
-                <img
-                  src="/modern_library.jpg"
-                  alt="Grand Library"
-                  className="absolute inset-0 w-full h-full object-cover grayscale-[0.25] transition-all duration-[2s] ease-[cubic-bezier(0.25,1,0.5,1)] hover:scale-105 hover:grayscale-0"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#2E2016]/50 via-transparent to-transparent z-20 pointer-events-none" />
-              </div>
-              
-              {/* Abstract Architectural Details */}
-              <div className="absolute -bottom-8 -left-8 w-48 h-48 border border-[#D97706]/40 hidden lg:block pointer-events-none" />
-              <div className="absolute -bottom-4 -left-4 w-48 h-48 border border-[#D97706]/40 hidden lg:block pointer-events-none" />
-            </div>
-
-          </div>
-        </Reveal>
-      </section>
-
+            {/* Alumni Showcase */}
+      <AlumniShowcase />
 
       {/* Support Us / Giving Section */}
       <section id="support" className="relative py-24 md:py-32 overflow-hidden bg-[#1C0E07]">
@@ -1531,3 +1541,4 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onBegin, onViewCalenda
     </div>
   );
 };
+

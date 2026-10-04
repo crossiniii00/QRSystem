@@ -125,30 +125,36 @@ export default function Page() {
 
   if (!isClient) return null;
 
+  const isAdminView = activeTab === 'admin' && !!adminToken && !!adminUser;
+
   return (
-    <div className="min-h-screen relative flex flex-col text-[#261F18] font-sans selection:bg-[#F59E0B] selection:text-[#261F18]">
+    <div className={`min-h-screen relative flex flex-col text-[#261F18] font-sans selection:bg-[#F59E0B] selection:text-[#261F18] ${isAdminView ? 'bg-[#FAF6EE]' : ''}`}>
       {/* Blurred Background Image */}
-      <div
-        className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(/school-bg-2.jpg)' }}
-      >
-        <div className="absolute inset-0 bg-[#FAF8F5]/85 backdrop-blur-md" />
-      </div>
+      {!isAdminView && (
+        <div
+          className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url(/school-bg-2.jpg)' }}
+        >
+          <div className="absolute inset-0 bg-[#FAF8F5]/85 backdrop-blur-md" />
+        </div>
+      )}
 
       {/* Floating Side Dashboard Bookmark */}
-      <FloatingBookmark />
+      {!isAdminView && <FloatingBookmark />}
 
       {/* Universal Navigation Header */}
-      <Header
-        activeTab={activeTab}
-        setActiveTab={(tab) => {
-          setActiveTab(tab);
-          if (tab === 'apply') setSubmissionResult(null);
-        }}
-        adminUser={adminUser}
-        onLogout={handleAdminLogout}
-        activeCampaignName={detectedCampaignName}
-      />
+      {!isAdminView && (
+        <Header
+          activeTab={activeTab}
+          setActiveTab={(tab) => {
+            setActiveTab(tab);
+            if (tab === 'apply') setSubmissionResult(null);
+          }}
+          adminUser={adminUser}
+          onLogout={handleAdminLogout}
+          activeCampaignName={detectedCampaignName}
+        />
+      )}
 
       {/* Main Content Viewport */}
       <main className="flex-1">
@@ -209,6 +215,7 @@ export default function Page() {
                 token={adminToken}
                 user={adminUser}
                 onLogout={handleAdminLogout}
+                onReturnHome={() => setActiveTab('home')}
               />
             ) : (
               <AdminLogin onLoginSuccess={handleAdminLoginSuccess} />
@@ -217,7 +224,7 @@ export default function Page() {
         )}
       </main>
 
-      <Footer />
+      {!isAdminView && <Footer />}
     </div>
   );
 }

@@ -85,7 +85,7 @@ export const LibraryPage: React.FC = () => {
           </Reveal>
           <Reveal delay={100}>
             <h1 className="text-5xl md:text-7xl font-serif font-black text-white tracking-tight uppercase leading-[0.9] mb-6 drop-shadow-2xl">
-              The Grand <br className="hidden md:block" /> Athenaeum
+              Saint Francis <br className="hidden md:block" /> Library
             </h1>
           </Reveal>
           <Reveal delay={200}>
@@ -309,7 +309,7 @@ export const LibraryPage: React.FC = () => {
                 <div className="text-[10px] font-black uppercase tracking-[0.2em] text-[#D97706] mb-3">
                   Campus Media
                 </div>
-                <h3 className="font-serif font-black text-3xl md:text-4xl mb-3 leading-none">The Athenaeum Tour</h3>
+                <h3 className="font-serif font-black text-3xl md:text-4xl mb-3 leading-none">Saint Francis Library Tour</h3>
                 <p className="text-[#A39171] font-medium tracking-wider text-sm max-w-md leading-relaxed">
                   Take a guided virtual walkthrough of the newly renovated East Wing and digital archives.
                 </p>
